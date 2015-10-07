@@ -35,3 +35,38 @@ a:hover .header-profile-image {
 .has-error .help-inline.error-text {
   display: inline;
 }
+
+.horizAlign div {
+  float: left;
+  clear: none; 
+}
+
+.textCenter {
+  text-align: center;
+}
+
+/*centers page */
+.pic {
+  display:block;
+    margin:auto;
+    height: 50%;
+    width: 50%;
+}
+
+#about {
+  background-color: #B2C9E2;
+  padding: 40px 10px;
+}
+
+#announcements {
+  background-color: #B2C9E2;
+  padding: 40px 10px;
+}
+
+#contact {
+  background-color: #B2C9E2;
+  padding: 40px 10px;
+}
+.bottMargin{
+  margin-bottom: 20px;
+}
