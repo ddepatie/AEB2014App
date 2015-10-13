@@ -67,6 +67,19 @@ a:hover .header-profile-image {
   background-color: #B2C9E2;
   padding: 40px 10px;
 }
+
 .bottMargin{
   margin-bottom: 20px;
+}
+
+video {
+  z-index: -1;
+  overflow: hidden;
+  min-width: 100% !important;
+}
+
+#video-text {
+  z-index: 1;
+  color: white;
+  margin-top: 100px;
 }
