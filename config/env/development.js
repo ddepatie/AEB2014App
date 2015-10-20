@@ -6,8 +6,8 @@ module.exports = {
   db: {
  uri:process.env.MONGOHQ_URL||process.env.MONGOLAB_URI||'mongodb://group10c:2015@ds035664.mongolab.com:35664/group10c',
     options: {
-      user: '',
-      pass: ''
+      user: 'group10c',
+      pass: '2015'
     },
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
