@@ -3,11 +3,9 @@
 module.exports = {
   client: {
     lib: {
-      css: [
-        'public/lib/bootstrap/dist/css/bootstrap.css',
-        'public/lib/bootstrap/dist/css/bootstrap-theme.css'
-      ],
       js: [
+        'public/lib/jquery/dist/jquery.min.js',
+        'public/lib/bootstrap/dist/js/bootstrap.min.js',
         'public/lib/angular/angular.js',
         'public/lib/angular-resource/angular-resource.js',
         'public/lib/angular-animate/angular-animate.js',
@@ -17,8 +15,11 @@ module.exports = {
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/angular-file-upload/angular-file-upload.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
-        'public/lib/animatescroll/jquery-1.8.3.min.js',
         'public/lib/animatescroll/animatescroll.js'
+      ],
+      css: [
+        'public/lib/bootstrap/dist/css/bootstrap.css',
+        'public/lib/bootstrap/dist/css/bootstrap-theme.css'
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },
