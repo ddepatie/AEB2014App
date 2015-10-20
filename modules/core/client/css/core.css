@@ -55,17 +55,17 @@ a:hover .header-profile-image {
 
 #about {
   background-color: #B2C9E2;
-  padding: 40px 10px;
+  background-image: none;
 }
 
 #announcements {
   background-color: #B2C9E2;
-  padding: 40px 10px;
+  background-image: none;
 }
 
 #contact {
   background-color: #B2C9E2;
-  padding: 40px 10px;
+  background-image: none;
 }
 
 .bottMargin{
@@ -78,8 +78,54 @@ video {
   min-width: 100% !important;
 }
 
-#video-text {
+.video-text {
   z-index: 1;
   color: white;
+}
+
+#video-header {
   margin-top: 100px;
+}
+
+#footer-divider {
+  background-color: #FF4A00;
+  width: 100%;
+  height: 10px;
+}
+
+#monogram {
+  z-index: 1;
+  margin-top: -18px;
+}
+
+#brand {
+  max-height: 45px;
+  margin-top: -10px;
+}
+
+.category {
+  height: 300px;
+  width: 100%;
+  color: white;
+  padding-top: 250px;
+}
+
+#cat1 {
+  background-color: red;
+}
+
+#cat2 {
+  background-color: blue;
+}
+
+#cat3 {
+  background-color: yellow;
+}
+
+#cat4 {
+  background-color: green;
+}
+
+#cat5 {
+  background-color: orange;
 }
