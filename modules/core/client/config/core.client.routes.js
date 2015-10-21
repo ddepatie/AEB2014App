@@ -17,17 +17,25 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       url: '/',
       templateUrl: 'modules/core/client/views/home.client.view.html'
     })
-    .state('cat1', {
-      url: '/cat1',
-      templateUrl: 'modules/core/client/views/cat1.client.view.html'
+    .state('health', {
+      url: '/health',
+      templateUrl: 'modules/core/client/views/health.client.view.html'
     })
-    .state('cat2', {
-      url: '/cat2',
-      templateUrl: 'modules/core/client/views/cat2.client.view.html'
+    .state('economy', {
+      url: '/economy',
+      templateUrl: 'modules/core/client/views/economy.client.view.html'
     })
-    .state('cat3', {
-      url: '/cat3',
-      templateUrl: 'modules/core/client/views/cat3.client.view.html'
+    .state('technology', {
+      url: '/technology',
+      templateUrl: 'modules/core/client/views/technology.client.view.html'
+    })
+    .state('development', {
+      url: '/development',
+      templateUrl: 'modules/core/client/views/development.client.view.html'
+    })
+    .state('environment', {
+      url: '/environment',
+      templateUrl: 'modules/core/client/views/environment.client.view.html'
     })
     .state('not-found', {
       url: '/not-found',
