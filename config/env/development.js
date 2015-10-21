@@ -4,10 +4,10 @@ var defaultEnvConfig = require('./default');
 
 module.exports = {
   db: {
- uri:process.env.MONGOHQ_URL||process.env.MONGOLAB_URI||'mongodb://group10c:2015@ds035664.mongolab.com:35664/group10c',
+ uri:process.env.MONGOHQ_URL||process.env.MONGOLAB_URI||'mongodb://admin:group10cuf@ds041934.mongolab.com:41934/aeb2014',
     options: {
-      user: 'group10c',
-      pass: '2015'
+      user: 'admin',
+      pass: 'group10cuf'
     },
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
