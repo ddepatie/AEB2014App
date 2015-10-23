@@ -95,7 +95,7 @@
         </ul>
       </li>
     </ul>
-    <ul class="nav navbar-nav navbar-right" ng-show="$(inArray(authentication.user.roles, 'admin')">
+    <ul class="nav navbar-nav navbar-right" ng-show="{{authentication.user.roles[1] == 'admin'}}">
       <li ui-sref-active="active">
         <a ui-sref="authentication.submit">Submit File</a>
       </li>
