@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$state', 'Authentication', 'Menus', '$location',
-  function ($scope, $state, Authentication, Menus, $location) {
+angular.module('core').controller('HeaderController', ['$scope', '$state', 'Authentication', 'Menus', '$location', 'Tags',
+  function ($scope, $state, Authentication, Menus, $location, Tags) {
     // Expose view variables
     $scope.$state = $state;
     $scope.authentication = Authentication;
@@ -23,5 +23,8 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     $scope.isActive = function(viewLocation) {
       return viewLocation === $location.path();
     };
+
+    $scope.tags = Tags.query();
+    console.log($scope.tags);
   }
 ]);
