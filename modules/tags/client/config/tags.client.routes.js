@@ -12,19 +12,19 @@ angular.module('tags').config(['$stateProvider',
 		}).
 		state('tags.list', {
 			url: '',
-			templateUrl: 'modules/tags/views/list-tags.client.view.html'
+			templateUrl: 'modules/tags/client/views/list-tags.client.view.html'
 		}).
 		state('tags.create', {
 			url: '/create',
-			templateUrl: 'modules/tags/views/create-tag.client.view.html'
+			templateUrl: 'modules/tags/client/views/create-tag.client.view.html'
 		}).
 		state('tags.view', {
 			url: '/:tagId',
-			templateUrl: 'modules/tags/views/view-tag.client.view.html'
+			templateUrl: 'modules/tags/client/views/view-tag.client.view.html'
 		}).
 		state('tags.edit', {
 			url: '/:tagId/edit',
-			templateUrl: 'modules/tags/views/edit-tag.client.view.html'
+			templateUrl: 'modules/tags/client/views/edit-tag.client.view.html'
 		});
 	}
 ]);
