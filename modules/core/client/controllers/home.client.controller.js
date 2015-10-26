@@ -1,10 +1,18 @@
 'use strict';
 
 angular.module('core')
-	.controller('HomeController', ['$scope', 'Authentication',
-  	function ($scope, Authentication) {
+	.controller('HomeController', ['$scope', 'Authentication','Topics','Tags',
+  	function ($scope, Authentication, Topics, Tags) {
     	// This provides Authentication context.
     	$scope.authentication = Authentication;
+
+        $scope.tags = Tags.query(function() {
+            console.log($scope.tags);
+        });
+      
+        $scope.topics = Topics.query(function() {
+            console.log($scope.topics);
+        });
   	}
 ]);
 
