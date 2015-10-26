@@ -51,7 +51,7 @@
         <ul class="dropdown-menu">
           <li>
             <div class="input-group" style="padding: 5px 10px; width: 200px;">
-              <input type="text" class="form-control" placeholder="Search">
+              <input type="text" ng-model="typing" typeahead="item.tag for item in tags | filter: $viewValue:startsWith | orderBy: '+tag'" typeahead-on-select="doSomethingOnSelect(item.tag)" class="form-control" placeholder="Search">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Go!</button>
               </span>
@@ -97,7 +97,7 @@
     </ul>
     <form id="search-bar" class="navbar-form navbar-right form-group" role="search">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search">
+        <input type="text" ng-model="typing" typeahead="item.tag for item in tags | filter: $viewValue:startsWith | orderBy: '+tag'" typeahead-on-select="doSomethingOnSelect(item.tag)" class="form-control" placeholder="Search">
         <span class="input-group-btn">
           <button type="submit" class="btn btn-default">Go!</button>
         </span>
