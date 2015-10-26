@@ -13,7 +13,7 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     $scope.startsWith = function (state, viewValue) {
       // Filter out undesired properties
       if(typeof state === 'string' && !state.toLowerCase().includes(">") && !state.toLowerCase().includes("<") && !state.toLowerCase().includes("unknown")) {
-        return state.substr(0, viewValue.length).toLowerCase() == viewValue.toLowerCase();
+        return state.substr(0, viewValue.length).toLowerCase() === viewValue.toLowerCase();
       }
     };
 
