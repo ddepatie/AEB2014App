@@ -90,9 +90,14 @@
           </li>
           <li class="divider"></li>
           <li>
-            <a href="/api/auth/signout" target="_self">Signout</a>
+            <a href="/api/auth/signout" target="_self">Sign Out</a>
           </li>
         </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-show="{{authentication.user.roles[1] == 'admin'}}">
+      <li ui-sref-active="active">
+        <a ui-sref="authentication.submit">Submit File</a>
       </li>
     </ul>
     <form id="search-bar" class="navbar-form navbar-right form-group" role="search">
