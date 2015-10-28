@@ -10,10 +10,39 @@ var mongoose = require('mongoose'),
  * Doc Schema
  */
 var DocSchema = new Schema({
-	name: {
+	title: {
 		type: String,
 		default: '',
-		required: 'Please fill Doc name',
+		required: 'Please fill Doc title',
+		trim: true
+	},
+	description: {
+		type: String,
+		default: '',
+		required: 'Please fill Doc description',
+		trim: true
+	},
+	type: {
+		type: String,
+		default: '',
+		required: 'Please fill Doc type',
+		trim: true
+	},
+	url: {
+		type: String,
+		default: '',
+		required: 'Please fill Doc url',
+		trim: true
+	},
+	thumbnail_image: {
+		type: String,
+		default: '',
+		required: 'Please fill Doc url',
+		trim: true
+	},
+	tags: {
+		type: String,
+		default: '',
 		trim: true
 	},
 	created: {

@@ -9,7 +9,11 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
 		$scope.create = function() {
 			// Create new Doc object
 			var doc = new Docs ({
-				name: this.name
+				title: this.title,
+				description: this.description,
+				type: this.type,
+				url: this.url,
+				tags: this.tags
 			});
 
 			// Redirect after save
@@ -17,7 +21,11 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
 				$location.path('docs/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.title = '';
+				$scope.description = '';
+				$scope.type = '';
+				$scope.url = '';
+				$scope.tags = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
