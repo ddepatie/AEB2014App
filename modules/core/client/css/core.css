@@ -58,7 +58,7 @@
     height: 300px;
     width: 100%;
     color: white;
-    padding-top: 250px;
+    padding-top: 100px;
   }
 
   #search-reveal {
@@ -176,23 +176,23 @@ video {
 }
 
 #cat1 {
-  background-color: red;
+  background-color: #814374;
 }
 
 #cat2 {
-  background-color: blue;
+  background-color: #51A39D;
 }
 
 #cat3 {
-  background-color: yellow;
+  background-color: #B7695C;
 }
 
 #cat4 {
-  background-color: green;
+  background-color: #CDBB79;
 }
 
 #cat5 {
-  background-color: orange;
+  background-color: #06425C;
 }
 
 #cat-title {
