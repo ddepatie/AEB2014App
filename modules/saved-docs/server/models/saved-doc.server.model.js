@@ -15,13 +15,13 @@ var SavedDocSchema = new Schema({
 		default: '',
 		trim: true
 	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	},
 	created: {
 		type: Date,
 		default: Date.now
+	},
+	user: {
+		type: Schema.ObjectId,
+		ref: 'User'
 	}
 });
 
