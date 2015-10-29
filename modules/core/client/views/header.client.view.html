@@ -34,6 +34,7 @@
       <li ng-show="isActive('/')">
         <a href="" onclick="$('#contact').animatescroll({padding:30});">Contact</a>
       </li>
+
       <li class="dropdown" ng-show="isActive('/health') || isActive('/economy') || isActive('/technology') || isActive('/development') || isActive('/environment')">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
         <ul class="dropdown-menu">
@@ -98,6 +99,11 @@
     <ul class="nav navbar-nav navbar-right" ng-show="{{authentication.user.roles[1] == 'admin'}}">
       <li ui-sref-active="active">
         <a ui-sref="authentication.submit">Submit File</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-show="{{authentication.user.roles[1] == 'admin'}}">
+      <li ui-sref-active="active">
+        <a ui-sref="authentication.submit">Analytics</a>
       </li>
     </ul>
     <form id="search-bar" class="navbar-form navbar-right form-group" role="search">
