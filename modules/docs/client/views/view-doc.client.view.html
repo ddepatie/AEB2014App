@@ -10,9 +10,10 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
-	<iframe src="http://docs.google.com/gview?url={{doc.url}}&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
+	<iframe ng-src="{{getPowerpointSrc(doc.url)}}" style="width:600px; height:500px;" frameborder="0"></iframe>
 	<small>
 		<em class="text-muted">
+			<a hrref>
 			Posted on
 			<span data-ng-bind="doc.created | date:'mediumDate'"></span>
 			by

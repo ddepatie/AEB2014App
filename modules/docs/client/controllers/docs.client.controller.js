@@ -31,6 +31,10 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
 			});
 		};
 
+		$scope.getPowerpointSrc = function (url) {
+		  return "http://docs.google.com/gview?url=" + url + "&embedded=true";
+		};
+
 		// Remove existing Doc
 		$scope.remove = function( doc ) {
 			if ( doc ) { doc.$remove();
