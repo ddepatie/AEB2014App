@@ -1,0 +1,19 @@
+<section data-ng-controller="SavedDocsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Saved docs</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="savedDoc in savedDocs" data-ng-href="/#!/saved-docs/{{savedDoc._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="savedDoc.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="savedDoc.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="savedDoc.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!savedDocs.$resolved || savedDocs.length">
+    	No Saved docs yet, why don't you <a href="/#!/saved-docs/create">create one</a>?
+    </div>
+</section>
