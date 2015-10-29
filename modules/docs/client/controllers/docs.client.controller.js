@@ -13,6 +13,7 @@ angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '
 				description: this.description,
 				type: this.type,
 				url: this.url,
+				thumbnail_image: this.thumbnail_image,
 				tags: this.tags
 			});
 

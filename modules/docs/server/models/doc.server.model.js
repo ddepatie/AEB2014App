@@ -37,7 +37,7 @@ var DocSchema = new Schema({
 	thumbnail_image: {
 		type: String,
 		default: '',
-		required: 'Please fill Doc url',
+		required: 'Please fill Doc thumbnail_image',
 		trim: true
 	},
 	tags: {
