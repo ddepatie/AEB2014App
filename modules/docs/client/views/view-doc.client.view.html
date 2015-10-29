@@ -1,0 +1,23 @@
+<section data-ng-controller="DocsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="doc.title"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id == doc.user._id">
+		<a class="btn btn-primary" href="/#!/docs/{{doc._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<iframe ng-src="{{getPowerpointSrc(doc.url)}}" style="width:600px; height:500px;" frameborder="0"></iframe>
+	<small>
+		<em class="text-muted">
+			<a hrref>
+			Posted on
+			<span data-ng-bind="doc.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="doc.user.displayName"></span>
+		</em>
+	</small>
+</section>
