@@ -1,10 +1,11 @@
 'use strict';
 
 // Docs controller
-angular.module('docs').controller('DocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Docs',
-	function($scope, $stateParams, $location, Authentication, Docs ) {
+angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$stateParams', '$location', 'Authentication', 'Docs',
+	function($scope, $rootScope, $stateParams, $location, Authentication, Docs ) {
 		$scope.authentication = Authentication;
 
+		console.log($rootScope.searchText);
 		// Create new Doc
 		$scope.create = function() {
 			// Create new Doc object

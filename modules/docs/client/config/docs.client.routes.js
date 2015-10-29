@@ -31,6 +31,10 @@ angular.module('docs').config(['$stateProvider',
 			data: {
 	          roles: ['user', 'admin']
 	        }
+		}).
+		state('results', {
+			url: '/results',
+			templateUrl: 'modules/docs/client/views/show-results.client.view.html'
 		});
 	}
 ]);
