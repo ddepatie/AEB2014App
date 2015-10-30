@@ -3,7 +3,7 @@
         <h1>Saved docs</h1>
     </div>
     <div class="list-group">
-        <a data-ng-repeat="savedDoc in savedDocs" data-ng-href="/#!/saved-docs/{{savedDoc._id}}" class="list-group-item">
+        <a data-ng-repeat="savedDoc in savedDocs | filter:userMatch(authentication.user._id)" data-ng-href="/#!/saved-docs/{{savedDoc._id}}" class="list-group-item">
 			<small class="list-group-item-text">
 				Posted on
 				<span data-ng-bind="savedDoc.created | date:'medium'"></span>

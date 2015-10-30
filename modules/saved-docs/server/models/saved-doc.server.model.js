@@ -11,9 +11,7 @@ var mongoose = require('mongoose'),
  */
 var SavedDocSchema = new Schema({
 	doc: {
-		type: Schema.ObjectId,
-		default: '',
-		trim: true
+		type: Schema.Types.ObjectId
 	},
 	created: {
 		type: Date,

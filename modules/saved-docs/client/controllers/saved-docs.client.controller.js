@@ -6,18 +6,14 @@ angular.module('saved-docs').controller('SavedDocsController', ['$scope', '$stat
 		$scope.authentication = Authentication;
 
 		// Create new Saved doc
-		$scope.create = function() {
+		this.create = function(newDoc) {
 			// Create new Saved doc object
 			var savedDoc = new SavedDocs ({
-				name: this.name
+				doc: newDoc
 			});
 
 			// Redirect after save
 			savedDoc.$save(function(response) {
-				$location.path('saved-docs/' + response._id);
-
-				// Clear form fields
-				$scope.name = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -60,6 +56,12 @@ angular.module('saved-docs').controller('SavedDocsController', ['$scope', '$stat
 			$scope.savedDoc = SavedDocs.get({ 
 				savedDocId: $stateParams.savedDocId
 			});
+		};
+
+		$scope.userMatch = function(authUser) {
+			return function(userSavedDoc){
+				return userSavedDoc.user._id === authUser;
+			};
 		};
 	}
 ]);
