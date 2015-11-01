@@ -37,6 +37,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       url: '/environment',
       templateUrl: 'modules/savedocs/client/views/create-savedoc.client.view.html'
     })
+    .state('analytics', {
+      url: '/analytics',
+      templateUrl: 'modules/core/client/views/analytics.client.view.html'
+    })
     .state('not-found', {
       url: '/not-found',
       templateUrl: 'modules/core/client/views/404.client.view.html',
