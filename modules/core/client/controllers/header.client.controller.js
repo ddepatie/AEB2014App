@@ -37,6 +37,6 @@ angular.module('core').controller('HeaderController', ['$scope','$rootScope', '$
 
     $scope.doSomethingOnSelect = function(tag){
         $location.path("/results");
-    }
+    };
   }
 ]);

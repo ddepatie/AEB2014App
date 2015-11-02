@@ -5,7 +5,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 	function($scope, $rootScope, $stateParams, $location, Authentication, Docs ) {
 		$scope.authentication = Authentication;
 
-		console.log($rootScope.searchText);
+		
 		// Create new Doc
 		$scope.create = function() {
 			// Create new Doc object
