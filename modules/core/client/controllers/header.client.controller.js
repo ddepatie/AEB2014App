@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$state', 'Authentication', 'Menus', '$location', 'Tags','Topics',
-  function ($scope, $state, Authentication, Menus, $location, Tags, Topics) {
+angular.module('core').controller('HeaderController', ['$scope','$rootScope', '$state', 'Authentication', 'Menus', '$location', 'Tags','Topics',
+  function ($scope, $state, $rootScope, Authentication, Menus, $location, Tags, Topics) {
     // Expose view variables
     $scope.$state = $state;
     $scope.authentication = Authentication;
-    $scope.typing = undefined;
+    $rootScope.searchText = undefined;
     $scope.tags = Tags.query(function() {
             console.log($scope.tags);
     });
@@ -33,6 +33,10 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
 
     $scope.isActive = function(viewLocation) {
       return viewLocation === $location.path();
+    };
+
+    $scope.doSomethingOnSelect = function(tag){
+        $location.path("/results");
     };
   }
 ]);

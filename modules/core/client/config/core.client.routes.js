@@ -35,7 +35,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     })
     .state('environment', {
       url: '/environment',
-      templateUrl: 'modules/savedocs/client/views/create-savedoc.client.view.html'
+      templateUrl: 'modules/core/client/views/environment.client.view.html'
     })
     .state('analytics', {
       url: '/analytics',
