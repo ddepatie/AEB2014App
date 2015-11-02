@@ -14,9 +14,6 @@ angular.module('core')
             console.log($scope.topics);
         });
 
-        $scope.analytics = Users.count(function(){
-            console.log
-        });
   	}
 
 
