@@ -13,7 +13,7 @@
   <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
     <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
 
-      <!--<li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}}" dropdown="item.type === 'dropdown'">
+      <li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}}" dropdown="item.type === 'dropdown'">
         <a ng-switch-when="dropdown" class="dropdown-toggle" dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
         <ul ng-switch-when="dropdown" class="dropdown-menu">
           <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(authentication.user);" ui-sref-active="active">
@@ -21,7 +21,7 @@
           </li>
         </ul>
         <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
-      </li>-->
+      </li>
       <li ng-show="isActive('/')">
         <a href="" onclick="$('#categories').animatescroll({padding:95});">Categories</a>
       </li>
@@ -102,7 +102,7 @@
     </ul>
     <form id="search-bar" class="navbar-form navbar-right form-group" role="search">
       <div class="input-group">
-        <input type="text" ng-model="typing" typeahead="item.tag for item in tags | filter: $viewValue:startsWith | orderBy: '+tag'" typeahead-on-select="doSomethingOnSelect(item.tag)" class="form-control" placeholder="Search">
+        <input type="text" ng-model="$root.searchText" typeahead="item.tag for item in tags | filter: $viewValue:startsWith | orderBy: '+tag'" typeahead-on-select="doSomethingOnSelect(item.tag)" class="form-control" placeholder="Search">
         <span class="input-group-btn">
           <button type="submit" class="btn btn-default">Go!</button>
         </span>

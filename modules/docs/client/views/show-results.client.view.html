@@ -1,0 +1,21 @@
+<section data-ng-controller="DocsController" data-ng-init="find()">
+    <div class="page-header">
+        
+        <h2>Results for {{$root.searchText}}</h2>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="doc in docs | filter: $root.searchText" ui-sref="docs.view({docId: doc._id})" class="list-group-item">
+			<div style="margin-bottom:20px; width:300px; background-color: #E6E6E6; font-family: Tahoma, Geneva, sans-serif">
+                <div  style="display: inline-block;">
+                    <img alt={{doc.type}} src={{doc.thumbnail_image}} style="width:150px;height:100px;">
+                </div>
+                <div  style="display: inline-block; width:130px">
+                  {{ doc.description + ', ' + doc.type}}
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!docs.$resolved || docs.length">
+    	No Docs yet, why don't you <a href="/#!/docs/create">create one</a>?
+    </div>
+</section>
