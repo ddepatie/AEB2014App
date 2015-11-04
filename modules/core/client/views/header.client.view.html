@@ -23,16 +23,16 @@
         <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
       </li>
       <li ng-show="isActive('/')">
-        <a href="" onclick="$('#categories').animatescroll({padding:95});">Categories</a>
+        <a href="#categories" onclick="$('#categories').animatescroll({padding:95});">Categories</a>
       </li>
       <li ng-show="isActive('/')">
-        <a href="" onclick="$('#about').animatescroll({padding:30});">About</a>
+        <a href="#about" onclick="$('#about').animatescroll({padding:30});">About</a>
       </li>
       <li ng-show="isActive('/')">
-        <a href="" onclick="$('#announcements').animatescroll({padding:30});">Announcements</a>
+        <a href="#announcements" onclick="$('#announcements').animatescroll({padding:30});">Announcements</a>
       </li>
       <li ng-show="isActive('/')">
-        <a href="" onclick="$('#contact').animatescroll({padding:30});">Contact</a>
+        <a href="#contact" onclick="$('#contact').animatescroll({padding:30});">Contact</a>
       </li>
       <li class="dropdown" ng-show="isActive('/health') || isActive('/economy') || isActive('/technology') || isActive('/development') || isActive('/environment')">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
