@@ -11,11 +11,11 @@
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                     <h3>Filters</h3>
-                    <p><input type = "radio" name = "Health">&nbsp;Health</p>
-                    <p><input type = "radio" name = "Economy">&nbsp;Economy</p>
-                    <p><input type = "radio" name = "Techonology">&nbsp;Techonology</p>
-                    <p><input type = "radio" name = "Development">&nbsp;Development</p>
-                    <p><input type = "radio" name = "Environment">&nbsp;Environment</p>
+                    <p><input type="checkbox" name="topic" value="Health">&nbsp;Health</p>
+                    <p><input type="checkbox" name="topic" value="Economy">&nbsp;Economy</p>
+                    <p><input type="checkbox" name="topic" value="Techonology">&nbsp;Techonology</p>
+                    <p><input type="checkbox" name="topic" value="Development">&nbsp;Development</p>
+                    <p><input type="checkbox" name="topic" value="Environment">&nbsp;Environment</p>
                 </div>
                 <div id="content" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 list-group">
                     <a data-ng-repeat="doc in docs | filter: $root.searchText | filter: $root.filters" ui-sref="docs.view({docId: doc._id})" class="list-group-item">
