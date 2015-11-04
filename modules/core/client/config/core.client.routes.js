@@ -40,6 +40,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     .state('analytics', {
       url: '/analytics',
       templateUrl: 'modules/core/client/views/analytics.client.view.html'
+
     })
     .state('not-found', {
       url: '/not-found',
