@@ -9,11 +9,11 @@
 		<a class="btn btn-primary" data-ng-click="remove();">
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
-		<div ng-controller="SavedDocsController as sdCtrl">
-			<a class="btn btn-primary" ng-click="sdCtrl.create(doc._id)">
-				<i class="glyphicon glyphicon-plus"></i>
-			</a>
-		</div>
+	</div>
+	<div ng-controller="SavedDocsController as sdCtrl" class="pull-right" ng-show="authentication.user">
+		<a class="btn btn-primary" ng-click="sdCtrl.create(doc._id)">
+			<i class="glyphicon glyphicon-plus"></i>
+		</a>
 	</div>
 	<iframe ng-src="{{getPowerpointSrc(doc.url)}}" style="width:600px; height:500px;" frameborder="0"></iframe>
 	<small>
