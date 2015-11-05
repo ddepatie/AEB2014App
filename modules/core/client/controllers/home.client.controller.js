@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('core')
-	.controller('HomeController', ['$scope', 'Authentication','Topics','Tags',
-  	function ($scope, Authentication, Topics, Tags) {
+	.controller('HomeController', ['$scope', 'Authentication','Topics','Tags','Analytics',
+  	function ($scope, Authentication, Topics, Tags, Analytics) {
     	// This provides Authentication context.
     	$scope.authentication = Authentication;
 
@@ -13,7 +13,10 @@ angular.module('core')
         $scope.topics = Topics.query(function() {
             console.log($scope.topics);
         });
+
   	}
+
+
 ]);
 
 angular.module('app', ['angularFileUpload'])

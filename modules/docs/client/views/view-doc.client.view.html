@@ -10,12 +10,16 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
+<<<<<<< HEAD
 	<div ng-controller="SavedDocsController as sdCtrl" class="pull-right" ng-show="authentication.user">
 		<a class="btn btn-primary" ng-click="sdCtrl.create(doc._id)">
 			<i class="glyphicon glyphicon-plus"></i>
 		</a>
 	</div>
 	<iframe ng-src="{{getPowerpointSrc(doc.url)}}" style="width:600px; height:500px;" frameborder="0"></iframe>
+=======
+	<img alt={{doc.type}} src={{doc.thumbnail_image}} style="width:600px;height:500px;">
+>>>>>>> master
 	<small>
 		<em class="text-muted">
 			<a hrref>
