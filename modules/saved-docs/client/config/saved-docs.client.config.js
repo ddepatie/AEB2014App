@@ -15,11 +15,5 @@ angular.module('saved-docs').run(['Menus',
 			title: 'List Saved docs',
 			state: 'saved-docs.list'
 		});
-
-		// Add the dropdown create item
-		Menus.addSubMenuItem('topbar', 'saved-docs', {
-			title: 'Create Saved doc',
-			state: 'saved-docs.create'
-		});
 	}
 ]);
