@@ -6,10 +6,16 @@ angular.module('saved-docs').controller('SavedDocsController', ['$scope', '$stat
 		$scope.authentication = Authentication;
 
 		// Create new Saved doc
-		this.create = function(newDoc) {
+		this.create = function(newDoc, newTitle, newDescription, newType, newUrl, newThumbnail_image, newTags) {
 			// Create new Saved doc object
 			var savedDoc = new SavedDocs ({
-				doc: newDoc
+				doc: newDoc,
+				title: newTitle,
+				description: newDescription,
+				type: newType,
+				url: newUrl,
+				thumbnail_image: newThumbnail_image,
+				tags: newTags
 			});
 
 			// Redirect after save

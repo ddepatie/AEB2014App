@@ -11,7 +11,7 @@
 		</a>
 	</div>
 	<div ng-controller="SavedDocsController as sdCtrl" class="pull-right" ng-show="authentication.user">
-		<a class="btn btn-primary" ng-click="sdCtrl.create(doc._id)">
+		<a class="btn btn-primary" ng-click="sdCtrl.create(doc._id, doc.title, doc.description, doc.type, doc.url, doc.thumbnail_image, doc.tags)">
 			<i class="glyphicon glyphicon-plus"></i>
 		</a>
 	</div>
