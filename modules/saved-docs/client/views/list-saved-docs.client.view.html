@@ -3,7 +3,7 @@
         <h1>Saved Docs</h1>
     </div>
     <div class="list-group">
-        <div data-ng-repeat="savedDoc in savedDocs" class="col-sm-4 text-center" style="text-decoration: none;">
+        <div data-ng-repeat="savedDoc in savedDocs | filter:userMatch(authentication.user._id)" class="col-sm-4 text-center" style="text-decoration: none;">
             <a href="/#!/saved-docs/{{savedDoc._id}}">
                 <h3>{{savedDoc.title}}</h3>
             </a>
