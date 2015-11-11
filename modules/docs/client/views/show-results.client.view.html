@@ -18,7 +18,7 @@
                     <p><input type="checkbox" name="topic" ng-click="editFilter('environment');" value="Environment">&nbsp;Environment</p>
                 </div>
                 <div id="content" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 list-group">
-                    <a data-ng-repeat="doc in docs | filter: $root.searchText | filter: filters.toString() " ui-sref="docs.view({docId: doc._id})" class="list-group-item">
+                    <a data-ng-repeat="doc in docs | filter: $root.searchText | filter: checkFilters " ui-sref="docs.view({docId: doc._id})" class="list-group-item">
             			<div style="margin-bottom:20px; width:300px; background-color: #E6E6E6; font-family: Tahoma, Geneva, sans-serif">
                             <div  style="display: inline-block;">
                                 <img alt={{doc.type}} src={{doc.thumbnail_image}} style="width:150px;height:100px;">

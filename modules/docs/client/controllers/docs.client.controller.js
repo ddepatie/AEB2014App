@@ -37,18 +37,29 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			var flag = false;
 			for (var i = 0; i < $scope.total; i++) {
 				if ($scope.filters[i] == str) {
-					$scope.filters.pop(str);
+					$scope.filters.splice(i, 1);
 					flag = true;
-					$scope.total = $scope.total-1;
+					$scope.total--;
 				}
 			}
 
 			if (!flag) {
 				$scope.filters.push(str)
-				$scope.total = $scope.total+1;
+				$scope.total++;
 			}
+			window.alert("List: " + $scope.filters.toString());
 		}
 		
+		$scope.checkFilters = function( doc ) {
+  			var flag = true;
+
+  			for (var i = 0; i < $scope.total; i++) {
+  				if (doc.tags.indexOf($scope.filters[i]) == -1)
+  					flag = false;
+  			}
+  			return flag;
+		}
+
 		$scope.getPowerpointSrc = function (url) {
 		  return "http://docs.google.com/gview?url=" + url + "&embedded=true";
 		};
