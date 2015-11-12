@@ -47,7 +47,6 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				$scope.filters.push(str)
 				$scope.total++;
 			}
-			window.alert("List: " + $scope.filters.toString());
 		}
 		
 		$scope.checkFilters = function( doc ) {
