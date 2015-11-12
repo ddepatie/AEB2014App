@@ -36,7 +36,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		$scope.editFilter = function( str ) {
 			var flag = false;
 			for (var i = 0; i < $scope.total; i++) {
-				if ($scope.filters[i] == str) {
+				if ($scope.filters[i] === str) {
 					$scope.filters.splice(i, 1);
 					flag = true;
 					$scope.total--;
@@ -44,20 +44,20 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			}
 
 			if (!flag) {
-				$scope.filters.push(str)
+				$scope.filters.push(str);
 				$scope.total++;
 			}
-		}
+		};
 		
 		$scope.checkFilters = function( doc ) {
   			var flag = true;
 
   			for (var i = 0; i < $scope.total; i++) {
-  				if (doc.tags.indexOf($scope.filters[i]) == -1)
+  				if (doc.tags.indexOf($scope.filters[i]) === -1)
   					flag = false;
   			}
   			return flag;
-		}
+		};
 
 		$scope.getPowerpointSrc = function (url) {
 		  return "http://docs.google.com/gview?url=" + url + "&embedded=true";
