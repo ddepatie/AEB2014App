@@ -8,6 +8,11 @@ angular.module('core').controller('HeaderController', ['$scope','$rootScope', '$
     $rootScope.searchText = undefined;
     $scope.tags = Tags.query(function() {
             console.log($scope.tags);
+
+    });
+    $scope.topics = Topics.query(function() {
+            console.log($scope.topics);
+
     });
 
     $scope.startsWith = function (state, viewValue) {

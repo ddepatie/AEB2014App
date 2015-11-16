@@ -10,19 +10,15 @@ var mongoose = require('mongoose'),
  * Tag Schema
  */
 var TagSchema = new Schema({
-	name: {
+	tag: {
 		type: String,
 		default: '',
 		required: 'Please fill Tag name',
 		trim: true
 	},
-	created: {
-		type: Date,
-		default: Date.now
-	},
-	user: {
+	topicId: {
 		type: Schema.ObjectId,
-		ref: 'User'
+		ref: 'Topic'
 	}
 });
 

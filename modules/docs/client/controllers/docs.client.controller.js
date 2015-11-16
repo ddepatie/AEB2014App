@@ -1,8 +1,8 @@
 'use strict';
 
 // Docs controller
-angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$stateParams', '$location', 'Authentication', 'Docs',
-	function($scope, $rootScope, $stateParams, $location, Authentication, Docs ) {
+angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$stateParams', '$location', 'Authentication', 'Docs', 'Tags',
+	function($scope, $rootScope, $stateParams, $location, Authentication, Docs, Tags ) {
 		$scope.authentication = Authentication;
 
 		
@@ -67,6 +67,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		// Find a list of Docs
 		$scope.find = function() {
 			$scope.docs = Docs.query();
+			$scope.tags = Tags.query();
 		};
 
 		// Find existing Doc
