@@ -1,8 +1,8 @@
 'use strict';
 
 // Saved docs controller
-angular.module('saved-docs').controller('SavedDocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'SavedDocs', 
-	function($scope, $stateParams, $location, Authentication, SavedDocs ) {
+angular.module('saved-docs').controller('SavedDocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'SavedDocs', '$window',
+	function($scope, $stateParams, $location, Authentication, SavedDocs, $window ) {
 		$scope.authentication = Authentication;
 
 		// Create new Saved doc
@@ -20,7 +20,7 @@ angular.module('saved-docs').controller('SavedDocsController', ['$scope', '$stat
 
 			// Redirect after save
 			savedDoc.$save(function(response) {
-				/*Notify.sendMsg('NewSavedDoc', {'id': response._id});*/
+				$window.location.reload();
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -91,16 +91,3 @@ angular.module('saved-docs').controller('SavedDocsController', ['$scope', '$stat
 		};
 	}
 ]);
-
-/*angular.module('saved-docs').directive('', ['SavedDocs', 'Notify', 
-	function(Customers, Notify) {
-		return {
-			restrict: 'A',
-			transclude: true,
-			link: function(scope, element, attrs){
-				Notify.getMsg('NewCustomer', function(event, data) {
-					scope.customersCtrl.customers = Customers.query();
-				});
-			}
-		};
-}]);*/
