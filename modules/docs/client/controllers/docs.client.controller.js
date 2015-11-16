@@ -4,8 +4,8 @@
 angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$stateParams', '$location', 'Authentication', 'Docs',
 	function($scope, $rootScope, $stateParams, $location, Authentication, Docs ) {
 		$scope.authentication = Authentication;
-
-		
+		$scope.filters = [];
+		$scope.total = 0;
 		// Create new Doc
 		$scope.create = function() {
 			// Create new Doc object
@@ -31,6 +31,32 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+		};
+
+		$scope.editFilter = function( str ) {
+			var flag = false;
+			for (var i = 0; i < $scope.total; i++) {
+				if ($scope.filters[i] === str) {
+					$scope.filters.splice(i, 1);
+					flag = true;
+					$scope.total--;
+				}
+			}
+
+			if (!flag) {
+				$scope.filters.push(str);
+				$scope.total++;
+			}
+		};
+		
+		$scope.checkFilters = function( doc ) {
+  			var flag = true;
+
+  			for (var i = 0; i < $scope.total; i++) {
+  				if (doc.tags.indexOf($scope.filters[i]) === -1)
+  					flag = false;
+  			}
+  			return flag;
 		};
 
 		$scope.getPowerpointSrc = function (url) {
