@@ -1,7 +1,7 @@
 'use strict';
 
 // Saved docs controller
-angular.module('saved-docs').controller('SavedDocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'SavedDocs',
+angular.module('saved-docs').controller('SavedDocsController', ['$scope', '$stateParams', '$location', 'Authentication', 'SavedDocs', 
 	function($scope, $stateParams, $location, Authentication, SavedDocs ) {
 		$scope.authentication = Authentication;
 
@@ -20,6 +20,7 @@ angular.module('saved-docs').controller('SavedDocsController', ['$scope', '$stat
 
 			// Redirect after save
 			savedDoc.$save(function(response) {
+				/*Notify.sendMsg('NewSavedDoc', {'id': response._id});*/
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -69,5 +70,37 @@ angular.module('saved-docs').controller('SavedDocsController', ['$scope', '$stat
 				return userSavedDoc.user._id === authUser;
 			};
 		};
+
+		this.hasDoc = function(authUser, docId) {
+			for (var i = 0; i <= $scope.savedDocs.length; ++i) {
+				if(i === $scope.savedDocs.length)
+					return false;
+				if(authUser === $scope.savedDocs[i].user._id && docId === $scope.savedDocs[i].doc) {
+					return true;
+				}
+			}
+		};
+
+		this.removeByDocId = function(authUser, docId) {
+			for (var i in $scope.savedDocs) {
+				if (authUser === $scope.savedDocs[i].user._id && docId === $scope.savedDocs[i].doc) {
+					$scope.savedDocs[i].$remove();
+					$scope.savedDocs.splice(i, 1);
+				}
+			}
+		};
 	}
 ]);
+
+/*angular.module('saved-docs').directive('', ['SavedDocs', 'Notify', 
+	function(Customers, Notify) {
+		return {
+			restrict: 'A',
+			transclude: true,
+			link: function(scope, element, attrs){
+				Notify.getMsg('NewCustomer', function(event, data) {
+					scope.customersCtrl.customers = Customers.query();
+				});
+			}
+		};
+}]);*/

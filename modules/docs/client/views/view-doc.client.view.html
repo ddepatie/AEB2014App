@@ -10,16 +10,19 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
-	<div ng-controller="SavedDocsController as sdCtrl" class="pull-right" ng-show="authentication.user">
-		<a class="btn btn-primary" ng-click="sdCtrl.create(doc._id, doc.title, doc.description, doc.type, doc.url, doc.thumbnail_image, doc.tags)">
+	<div ng-controller="SavedDocsController as sdCtrl" class="pull-right" ng-show="authentication.user" ng-init="find()">
+		<a class="btn btn-primary" ng-hide="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.create(doc._id, doc.title, doc.description, doc.type, doc.url, doc.thumbnail_image, doc.tags)">
 			<i class="glyphicon glyphicon-plus"></i>
+		</a>
+		<a class="btn btn-primary" ng-show="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.removeByDocId(authentication.user._id, doc._id)">
+			<i class="glyphicon glyphicon-ok"></i>
 		</a>
 	</div>
 	<iframe ng-src="{{getPowerpointSrc(doc.url)}}" style="width:600px; height:500px;" frameborder="0"></iframe>
 	<img alt={{doc.type}} src={{doc.thumbnail_image}} style="width:600px;height:500px;">
 	<small>
 		<em class="text-muted">
-			<a hrref>
+			<a href>
 			Posted on
 			<span data-ng-bind="doc.created | date:'mediumDate'"></span>
 			by
