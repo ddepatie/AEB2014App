@@ -11,11 +11,36 @@
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                     <h3>Filters</h3>
-                    <p><input type="checkbox" name="topic" ng-click="editFilter('health');" value="Health">&nbsp;Health</p>
-                    <p><input type="checkbox" name="topic" ng-click="editFilter('economy');" value="Economy">&nbsp;Economy</p>
-                    <p><input type="checkbox" name="topic" ng-click="editFilter('technology');" value="Techonology">&nbsp;Techonology</p>
-                    <p><input type="checkbox" name="topic" ng-click="editFilter('development');" value="Development">&nbsp;Development</p>
-                    <p><input type="checkbox" name="topic" ng-click="editFilter('environment');" value="Environment">&nbsp;Environment</p>
+                    <p><input type="checkbox" name="topic" ng-click="editFilter('health');" value="Health" style="size: 12px;"><font size="+1">&nbsp;Health</font></p>
+
+                    <p><input ng-show="$root.healthChecked" type="checkbox" name="subtopic" ng-click="editFilter('food safety');">&nbsp;Food Safety</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('disease');" ng-show="$root.healthChecked">&nbsp;Disease</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('nutrition');" ng-show="$root.healthChecked">&nbsp;Nutrition</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('waste');" ng-show="$root.healthChecked">&nbsp;Waste</p> 
+                    
+                    <p><input type="checkbox" name="topic" ng-click="editFilter('economy');" value="Economy"><font size="+1">&nbsp;Economy</font></p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('farmers');" ng-show="$root.economyChecked">&nbsp;Farmers</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('prices');" ng-show="$root.economyChecked">&nbsp;Prices</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('markets and trade');" ng-show="$root.economyChecked">&nbsp;Markets and Trade</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('consumers');" ng-show="$root.economyChecked">&nbsp;Consumers</p>
+                    
+                    <p><input type="checkbox" name="topic" ng-click="editFilter('technology');"><font size="+1">&nbsp;Techonology</font></p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('gmos');" ng-show="$root.technologyChecked">&nbsp;GMOs</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('automation');" ng-show="$root.technologyChecked">&nbsp;Automation</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('production methods');" ng-show="$root.technologyChecked">&nbsp;Production Methods</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('computing');" ng-show="$root.technologyChecked">&nbsp;Computing</p>
+                    
+                    <p><input type="checkbox" name="topic" ng-click="editFilter('development');" value="Development"><font size="+1">&nbsp;Development</font></p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('poverty');" ng-show="$root.developmentChecked">&nbsp;Poverty</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('hunger');" ng-show="$root.developmentChecked">&nbsp;Hunger</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('sustainability');" ng-show="$root.developmentChecked">&nbsp;Sustainability</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('aid');" ng-show="$root.developmentChecked">&nbsp;Aid</p>
+                    
+                    <p><input type="checkbox" name="topic" ng-click="editFilter('environment');" value="Environment"><font size="+1">&nbsp;Environment</font></p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('water');" ng-show="$root.environmentChecked">&nbsp;Water</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('pollution');" ng-show="$root.environmentChecked">&nbsp;Pollution</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('land');" ng-show="$root.environmentChecked">&nbsp;Land</p>
+                    <p><input type="checkbox" name="subtopic" ng-click="editFilter('climate');" ng-show="$root.environmentChecked">&nbsp;Climate</p>
                 </div>
                 <div id="content" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 list-group">
                     <a data-ng-repeat="doc in docs | filter: $root.searchText | filter: checkFilters " ui-sref="docs.view({docId: doc._id})" class="list-group-item">
