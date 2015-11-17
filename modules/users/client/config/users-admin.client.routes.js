@@ -44,6 +44,18 @@ angular.module('users.admin.routes').config(['$stateProvider',
             });
           }]
         }
+      })
+      .state('admin.about-edit', {
+        url: '/edit-about',
+        templateUrl: 'modules/abouts/client/views/edit-about.client.view.html',
+        controller: 'AboutsController',
+        resolve: {
+          userResolve: ['$stateParams', 'Admin', function ($stateParams, Admin) {
+            return Admin.get({
+              userId: $stateParams.userId
+            });
+          }]
+        }
       });
   }
 ]);

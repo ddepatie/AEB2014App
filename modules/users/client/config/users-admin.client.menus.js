@@ -12,5 +12,10 @@ angular.module('users.admin').run(['Menus',
       title: 'Add Announcements',
       state: 'admin.announcements'
     });
+
+    Menus.addSubMenuItem('topbar', 'admin', {
+      title: 'Edit About Section',
+      state: 'admin.about-edit'
+    });
   }
 ]);
