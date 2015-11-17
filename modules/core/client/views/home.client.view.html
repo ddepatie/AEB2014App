@@ -1,4 +1,4 @@
-<div ng-controller="HomeController">
+<div ng-controller="AnnouncementsController" ng-init="find()">
 
   <section>
     <div class="embed-responsive embed-responsive-16by9 textCenter">
@@ -11,26 +11,12 @@
 
   <div id="cat-title">
     <h3 class="video-text">Get Started</h3>
-    <a href="#categories" onclick="$('#categories').animatescroll({padding:95})">
+    <a href="" onclick="$('#categories').animatescroll({padding:95})">
       <h3 class="glyphicon glyphicon-menu-down video-text"></h3>
     </a>
     <h2>Categories</h2>
   </div>
 
-
-<!-- Testing out databse query!!! -->
-<!-- <div>
-  <div ng-repeat="topic in topics" class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="padding: 0px;">
-          <a href="/{{topic.topic.toLowerCase()}}" style="text-decoration: none;">
-            <div id="cat{{$index + 1}}" class="category">
-              <h3 class="textCenter">{{topic.topic}}</h3>
-            </div>
-          </a>
-        </div>
-</div> -->
-
-
-<!-- Category display may change from original wireframe based on client's pictures -->
   <section id="categories">
     <div class="container">
       <div class="row">
@@ -78,90 +64,31 @@
     </div>
   </section>
 
-  <!--<section>
-    <div class="well" style="padding-bottom: 100px;">
-      <h2 class="textCenter">Search:</h2>
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4 textCenter">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for...">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Go!</button>
-          </span>
-        </div>
-      </div>
-      <div class="col-lg-4"></div>
-    </div>
-  </section>-->
-
   <br>
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-      <section id="about" class="well well-sm bottMargin">
+      <section id="about" class="well well-sm bottMargin" ng-controller="AboutsController">
         <h2 class="page-header textCenter">About</h2>
-        <img src="http://placehold.it/150x150" class="img-rounded" align="left" style="padding: 15px;">
-        <p class="textCenter text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus orci quis felis condimentum, ut dictum libero mattis. In accumsan tortor id sollicitudin sodales. Nam efficitur, justo vel maximus tincidunt, justo sapien laoreet mi, sed aliquam justo lorem eu libero. Praesent nisi nibh, semper at porta ut, hendrerit eget mi. Morbi nisi mi, fringilla non varius at, iaculis eu risus. Vestibulum laoreet posuere imperdiet. Sed dignissim, odio ut sollicitudin convallis, tortor tortor iaculis ligula, vel rutrum enim massa id metus. Morbi vel urna eget massa scelerisque fringilla. Donec posuere tortor augue, lacinia pretium nunc aliquam non.</p>
+        <img ng-src="{{abouts[0].imageUrl}}" class="img-rounded" align="left" style="padding: 0px 15px; width: 150px;">
+        <p class="text-center text-justify" ng-bind="abouts[0].text"></p>
       </section>
     </div>
+
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
       <section id="announcements" class="well well-sm bottMargin">
         <h2 class="page-header textCenter">Announcements</h2>
-        <ul class="list-group pre-scrollable">
-          <li class="list-group-item">
-            <h4 class="list-group-item-heading">Sample</h4>
-            <div style="overflow: auto;">
-              <p class="list-group-item-text">sample text</p>
-            </div>
-            <small class="list-group-item-text text-muted">
-              Posted on DATE by USER
+        <div class="list-group pre-scrollable">
+          <a data-ng-repeat="announcement in announcements" data-ng-href="/#!/announcements/{{announcement._id}}" class="list-group-item">
+            <h4 class="list-group-item-heading" data-ng-bind="announcement.title"></h4>
+            <p class="list-group-item-text" ng-bind="announcement.text"></p>
+            <small class="list-group-item-text">
+              Posted on
+              <span data-ng-bind="announcement.created | date:'medium'"></span>
+              by
+              <span data-ng-bind="announcement.user.displayName"></span>
             </small>
-          </li>
-          <li class="list-group-item">
-            <h4 class="list-group-item-heading">Sample</h4>
-            <div style="overflow: auto;">
-              <p class="list-group-item-text">sample text</p>
-            </div>
-            <small class="list-group-item-text text-muted">
-              Posted on DATE by USER
-            </small>
-          </li>
-          <li class="list-group-item">
-            <h4 class="list-group-item-heading">Sample</h4>
-            <div style="overflow: auto;">
-              <p class="list-group-item-text">sample text</p>
-            </div>
-            <small class="list-group-item-text text-muted">
-              Posted on DATE by USER
-            </small>
-          </li>
-          <li class="list-group-item">
-            <h4 class="list-group-item-heading">Sample</h4>
-            <div style="overflow: auto;">
-              <p class="list-group-item-text">sample text</p>
-            </div>
-            <small class="list-group-item-text text-muted">
-              Posted on DATE by USER
-            </small>
-          </li>
-          <li class="list-group-item">
-            <h4 class="list-group-item-heading">Sample</h4>
-            <div style="overflow: auto;">
-              <p class="list-group-item-text">sample text</p>
-            </div>
-            <small class="list-group-item-text text-muted">
-              Posted on DATE by USER
-            </small>
-          </li>
-          <li class="list-group-item">
-            <h4 class="list-group-item-heading">Sample</h4>
-            <div style="overflow: auto;">
-              <p class="list-group-item-text">sample text</p>
-            </div>
-            <small class="list-group-item-text text-muted">
-              Posted on DATE by USER
-            </small>
-          </li>
-        </ul>
+          </a>
+        </div>
       </section>
     </div>
   </div>

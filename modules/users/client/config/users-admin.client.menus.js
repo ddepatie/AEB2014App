@@ -7,5 +7,15 @@ angular.module('users.admin').run(['Menus',
       title: 'Manage Users',
       state: 'admin.users'
     });
+
+   	Menus.addSubMenuItem('topbar', 'admin', {
+      title: 'Add Announcements',
+      state: 'admin.announcements'
+    });
+
+    Menus.addSubMenuItem('topbar', 'admin', {
+      title: 'Edit About Section',
+      state: 'admin.about-edit'
+    });
   }
 ]);

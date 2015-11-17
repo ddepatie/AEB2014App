@@ -32,6 +32,30 @@ angular.module('users.admin.routes').config(['$stateProvider',
             });
           }]
         }
+      })
+      .state('admin.announcements', {
+        url: '/announcements',
+        templateUrl: 'modules/announcements/client/views/create-announcement.client.view.html',
+        controller: 'AnnouncementsController',
+        resolve: {
+          userResolve: ['$stateParams', 'Admin', function ($stateParams, Admin) {
+            return Admin.get({
+              userId: $stateParams.userId
+            });
+          }]
+        }
+      })
+      .state('admin.about-edit', {
+        url: '/edit-about',
+        templateUrl: 'modules/abouts/client/views/edit-about.client.view.html',
+        controller: 'AboutsController',
+        resolve: {
+          userResolve: ['$stateParams', 'Admin', function ($stateParams, Admin) {
+            return Admin.get({
+              userId: $stateParams.userId
+            });
+          }]
+        }
       });
   }
 ]);
