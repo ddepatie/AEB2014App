@@ -56,6 +56,18 @@ angular.module('users.admin.routes').config(['$stateProvider',
             });
           }]
         }
+      })
+      .state('admin.contact-edit', {
+        url: '/edit-contact',
+        templateUrl: 'modules/contacts/client/views/edit-contact.client.view.html',
+        controller: 'ContactsController',
+        resolve: {
+          userResolve: ['$stateParams', 'Admin', function ($stateParams, Admin) {
+            return Admin.get({
+              userId: $stateParams.userId
+            });
+          }]
+        }
       });
   }
 ]);

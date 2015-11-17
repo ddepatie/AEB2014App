@@ -17,5 +17,10 @@ angular.module('users.admin').run(['Menus',
       title: 'Edit About Section',
       state: 'admin.about-edit'
     });
+
+    Menus.addSubMenuItem('topbar', 'admin', {
+      title: 'Edit Contact Section',
+      state: 'admin.contact-edit'
+    });
   }
 ]);
