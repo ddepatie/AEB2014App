@@ -1,4 +1,4 @@
-<div ng-controller="HomeController">
+<div ng-controller="AnnouncementsController" ng-init="find()">
 
   <section>
     <div class="embed-responsive embed-responsive-16by9 textCenter">
@@ -11,12 +11,11 @@
 
   <div id="cat-title">
     <h3 class="video-text">Get Started</h3>
-    <a href="#categories" onclick="$('#categories').animatescroll({padding:95})">
+    <a href="" onclick="$('#categories').animatescroll({padding:95})">
       <h3 class="glyphicon glyphicon-menu-down video-text"></h3>
     </a>
     <h2>Categories</h2>
   </div>
-
 
 <!-- Testing out databse query!!! -->
 <!-- <div>
@@ -29,8 +28,6 @@
         </div>
 </div> -->
 
-
-<!-- Category display may change from original wireframe based on client's pictures -->
   <section id="categories">
     <div class="container">
       <div class="row">
@@ -103,65 +100,22 @@
         <p class="textCenter text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus orci quis felis condimentum, ut dictum libero mattis. In accumsan tortor id sollicitudin sodales. Nam efficitur, justo vel maximus tincidunt, justo sapien laoreet mi, sed aliquam justo lorem eu libero. Praesent nisi nibh, semper at porta ut, hendrerit eget mi. Morbi nisi mi, fringilla non varius at, iaculis eu risus. Vestibulum laoreet posuere imperdiet. Sed dignissim, odio ut sollicitudin convallis, tortor tortor iaculis ligula, vel rutrum enim massa id metus. Morbi vel urna eget massa scelerisque fringilla. Donec posuere tortor augue, lacinia pretium nunc aliquam non.</p>
       </section>
     </div>
+
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
       <section id="announcements" class="well well-sm bottMargin">
         <h2 class="page-header textCenter">Announcements</h2>
-        <ul class="list-group pre-scrollable">
-          <li class="list-group-item">
-            <h4 class="list-group-item-heading">Sample</h4>
-            <div style="overflow: auto;">
-              <p class="list-group-item-text">sample text</p>
-            </div>
-            <small class="list-group-item-text text-muted">
-              Posted on DATE by USER
+        <div class="list-group pre-scrollable">
+          <a data-ng-repeat="announcement in announcements" data-ng-href="/#!/announcements/{{announcement._id}}" class="list-group-item">
+            <h4 class="list-group-item-heading" data-ng-bind="announcement.title"></h4>
+            <p class="list-group-item-text" ng-bind="announcement.text"></p>
+            <small class="list-group-item-text">
+              Posted on
+              <span data-ng-bind="announcement.created | date:'medium'"></span>
+              by
+              <span data-ng-bind="announcement.user.displayName"></span>
             </small>
-          </li>
-          <li class="list-group-item">
-            <h4 class="list-group-item-heading">Sample</h4>
-            <div style="overflow: auto;">
-              <p class="list-group-item-text">sample text</p>
-            </div>
-            <small class="list-group-item-text text-muted">
-              Posted on DATE by USER
-            </small>
-          </li>
-          <li class="list-group-item">
-            <h4 class="list-group-item-heading">Sample</h4>
-            <div style="overflow: auto;">
-              <p class="list-group-item-text">sample text</p>
-            </div>
-            <small class="list-group-item-text text-muted">
-              Posted on DATE by USER
-            </small>
-          </li>
-          <li class="list-group-item">
-            <h4 class="list-group-item-heading">Sample</h4>
-            <div style="overflow: auto;">
-              <p class="list-group-item-text">sample text</p>
-            </div>
-            <small class="list-group-item-text text-muted">
-              Posted on DATE by USER
-            </small>
-          </li>
-          <li class="list-group-item">
-            <h4 class="list-group-item-heading">Sample</h4>
-            <div style="overflow: auto;">
-              <p class="list-group-item-text">sample text</p>
-            </div>
-            <small class="list-group-item-text text-muted">
-              Posted on DATE by USER
-            </small>
-          </li>
-          <li class="list-group-item">
-            <h4 class="list-group-item-heading">Sample</h4>
-            <div style="overflow: auto;">
-              <p class="list-group-item-text">sample text</p>
-            </div>
-            <small class="list-group-item-text text-muted">
-              Posted on DATE by USER
-            </small>
-          </li>
-        </ul>
+          </a>
+        </div>
       </section>
     </div>
   </div>
