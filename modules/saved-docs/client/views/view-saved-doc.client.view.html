@@ -1,0 +1,21 @@
+<section data-ng-controller="SavedDocsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="savedDoc.title"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id == savedDoc.user._id || authentication.user.roles[1] == 'admin'">
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<iframe ng-src="{{getPowerpointSrc(doc.url)}}" style="width:600px; height:500px;" frameborder="0"></iframe>
+	<img alt={{savedDoc.type}} src={{savedDoc.thumbnail_image}} style="width:600px;height:500px;">
+	<small>
+		<em class="text-muted">
+			<a hrref>
+			Posted on
+			<span data-ng-bind="savedDoc.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="savedDoc.user.displayName"></span>
+		</em>
+	</small>
+</section>
