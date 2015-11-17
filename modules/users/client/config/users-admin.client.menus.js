@@ -8,6 +8,11 @@ angular.module('users.admin').run(['Menus',
       state: 'admin.users'
     });
 
+    Menus.addSubMenuItem('topbar', 'admin', {
+      title: 'Analytics',
+      state: 'admin.analytics'
+    });
+
    	Menus.addSubMenuItem('topbar', 'admin', {
       title: 'Add Announcements',
       state: 'admin.announcements'
