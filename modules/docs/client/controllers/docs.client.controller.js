@@ -55,8 +55,8 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			else if (str == "economy")
 				$scope.economyChecked = !$scope.economyChecked;
 
-			else if (str == "techonology")
-				$scope.techonologyChecked = !$scope.technologyChecked;
+			else if (str == "technology")
+				$scope.technologyChecked = !$scope.technologyChecked;
 
 			else if (str == "development")
 				$scope.developmentChecked = !$scope.developmentChecked;
