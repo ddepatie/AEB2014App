@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 // Configuring the Chat module
 angular.module('chat').run(['Menus',
@@ -9,4 +9,4 @@ angular.module('chat').run(['Menus',
       state: 'chat'
     });
   }
-]);
+]);*/

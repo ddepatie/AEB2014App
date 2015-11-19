@@ -34,9 +34,6 @@
       <li ng-show="isActive('/')">
         <a href="" onclick="$('#contact').animatescroll({padding:30});">Contact</a>
       </li>
-      <li ui-sref-active="active" ng-show="{{authentication.user.roles[1] == 'admin'}}">
-        <a href="/analytics">Analytics</a>
-      </li>
 
       <li class="dropdown" ng-show="isActive('/health') || isActive('/economy') || isActive('/technology') || isActive('/development') || isActive('/environment')">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>

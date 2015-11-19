@@ -3,7 +3,7 @@
 		<h1 data-ng-bind="tag.name"></h1>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == tag.user._id">
-		<a class="btn btn-primary" href="/#!/tags/{{tag._id}}/edit">
+		<a class="btn btn-primary" href="/admin/tags/{{tag._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
 		<a class="btn btn-primary" data-ng-click="remove();">
