@@ -3,7 +3,7 @@
         <h1>Tags</h1>
     </div>
     <div class="list-group">
-        <a data-ng-repeat="tag in tags" data-ng-href="/#!/tags/{{tag._id}}" class="list-group-item">
+        <a data-ng-repeat="tag in tags" data-ng-href="/admin/tags/{{tag._id}}" class="list-group-item">
 			<small class="list-group-item-text">
 				Posted on
 				<span data-ng-bind="tag.created | date:'medium'"></span>
