@@ -6,12 +6,17 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		$scope.authentication = Authentication;
 		$scope.filters = [];
 		$scope.total = 0;
-		$scope.healthChecked = false;
-		$scope.economyChecked = false;
-		$scope.technologyChecked = false;
-		$scope.developmentChecked = false;
-		$scope.environmentChecked = false;
-		
+		$rootScope.healthChecked = false;
+		$rootScope.economyChecked = false;
+		$rootScope.technologyChecked = false;
+		$rootScope.developmentChecked = false;
+		$rootScope.environmentChecked = false;
+		$scope.healthTopics = ["food safety", "disease", "nutrition", "waste"];
+		$scope.economyTopics = ["farmers", "prices", "markets and trade", "consumers"];
+		$scope.technologyTopics = ["gmos", "automation", "production methods", "computing"];
+		$scope.developmentTopics = ["poverty", "hunger", "sustainability", "aid"];
+		$scope.environmentTopics = ["water", "pollution", "land", "climate"];
+
 		// Create new Doc
 		$scope.create = function() {
 			// Create new Doc object
@@ -39,8 +44,11 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			});
 		};
 
+		// Used to add/remove filters on search results page
 		$scope.editFilter = function( str ) {
-			var flag = false;
+
+			var flag = false; //flag whether or not filter is in our list
+
 			for (var i = 0; i < $scope.total; i++) {
 				if ($scope.filters[i] === str) {
 					$scope.filters.splice(i, 1);
@@ -49,27 +57,69 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				}
 			}
 
-			if (str === "health")
-				$scope.healthChecked = !$scope.healthChecked;
-
-			else if (str === "economy")
-				$scope.economyChecked = !$scope.economyChecked;
-
-			else if (str === "technology")
-				$scope.technologyChecked = !$scope.technologyChecked;
-
-			else if (str === "development")
-				$scope.developmentChecked = !$scope.developmentChecked;
-
-			else if (str === "environment")
-				$scope.environmentChecked = !$scope.environmentChecked;
-
 			if (!flag) {
 				$scope.filters.push(str);
 				$scope.total++;
 			}
+
+			// Code to collapse/expand subtopic filters
+
+			if (str === "health") {
+				$scope.healthChecked = !$scope.healthChecked;
+				if(!$scope.healthChecked)
+					$scope.uncheckSubtopics($scope.healthTopics);
+			}
+
+			else if (str === "economy") {
+				$scope.economyChecked = !$scope.economyChecked;
+				if(!$scope.economyChecked)
+					$scope.uncheckSubtopics($scope.economyTopics);
+			}
+
+			else if (str === "technology") {
+				$scope.technologyChecked = !$scope.technologyChecked;
+				if(!$scope.technologyChecked)
+					$scope.uncheckSubtopics($scope.technologyTopics);
+			}
+
+			else if (str === "development") {
+				$scope.developmentChecked = !$scope.developmentChecked;
+				if(!$scope.developmentChecked)
+					$scope.uncheckSubtopics($scope.developmentTopics);
+			}
+
+			else if (str === "environment") {
+				$scope.environmentChecked = !$scope.environmentChecked;
+				if(!$scope.environmentChecked)
+					$scope.uncheckSubtopics($scope.environmentTopics);
+			}
+
+			window.alert($scope.filters.toString());
 		};
 
+		// Called when topic group is unchecked and collapsed on search results page
+		// Removes any subtopic filters (from collapsed group) from our array
+		$scope.uncheckSubtopics = function ( arr ) {
+			var box;
+			for (var i = 0; i < arr.length; i++){
+				for (var j = 0; j < $scope.filters.length; j++) {
+					if (arr[i] === $scope.filters[j]) {
+						box = document.getElementById(arr[i]);
+						box.checked = false;
+						$scope.filters.splice(j, 1);
+						$scope.total--;
+					}
+				}
+			}
+		};
+
+		$rootScope.preselectFilter = function ( str ) {
+			$scope.editFilter(str);
+			window.alert("Here with string: " + str);
+		};
+
+
+		// Used to format desc string and show only first 80 characters
 		$scope.generateDescription = function( doc ) {
 			var description = doc.description.toString();
 			var new_description = "";
@@ -82,6 +132,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			return new_description;
 		};
 
+		// Used to format tags string and show only first 80 characters 
 		$scope.generateTags = function( doc ) {
 			var tags = doc.tags.toString();
 			var new_tags = "";
@@ -99,6 +150,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			return new_tags;
 		};
 
+		// Checks if the passed doc contains all the filters in our array
 		$scope.checkFilters = function( doc ) {
   			var flag = true;
 
