@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('analytics').controller('HomeController', ['$scope', '$stateParams', '$location', 'Authentication', 'Analytics',
+angular.module('analytics').controller('AnalyticsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Analytics',
 	function($scope, $stateParams, $location, Authentication, Analytics ) {
 		$scope.authentication = Authentication;
 

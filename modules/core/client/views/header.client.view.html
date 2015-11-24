@@ -34,9 +34,6 @@
       <li ng-show="isActive('/')">
         <a href="" onclick="$('#contact').animatescroll({padding:30});">Contact</a>
       </li>
-      <li ui-sref-active="active" ng-show="{{authentication.user.roles[1] == 'admin'}}">
-        <a href="/analytics">Analytics</a>
-      </li>
 
       <li class="dropdown" ng-show="isActive('/health') || isActive('/economy') || isActive('/technology') || isActive('/development') || isActive('/environment')">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
@@ -99,14 +96,9 @@
         </ul>
       </li>
     </ul>
-    <ul class="nav navbar-nav navbar-right" ng-show="{{authentication.user.roles[1] == 'admin'}}">
-      <li ui-sref-active="active">
-        <a ui-sref="authentication.submit">Submit File</a>
-      </li>
-    </ul>
-    <form id="search-bar" class="navbar-form navbar-right form-group" role="search">
+    <form id="search-bar" class="navbar-form navbar-right form-group" role="search" ng-submit="goToResultsPage()">
       <div class="input-group">
-        <input type="text" ng-model="$root.searchText" typeahead="item.tag for item in tags | filter: $viewValue:startsWith | orderBy: '+tag'" typeahead-on-select="doSomethingOnSelect(item.tag)" class="form-control" placeholder="Search">
+        <input type="text" ng-model="$root.searchText" typeahead="item.tag for item in tags | filter: $viewValue:startsWith | orderBy: '+tag'" typeahead-on-select="goToResultsPage()" class="form-control" placeholder="Search">
         <span class="input-group-btn">
           <button type="submit" class="btn btn-default">Go!</button>
         </span>

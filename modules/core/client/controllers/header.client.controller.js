@@ -40,7 +40,7 @@ angular.module('core').controller('HeaderController', ['$scope','$rootScope', '$
       return viewLocation === $location.path();
     };
 
-    $scope.doSomethingOnSelect = function(tag){
+    $scope.goToResultsPage = function(){
         $location.path("/results");
     };
   }

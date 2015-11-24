@@ -6,6 +6,12 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		$scope.authentication = Authentication;
 		$scope.filters = [];
 		$scope.total = 0;
+		$scope.healthChecked = false;
+		$scope.economyChecked = false;
+		$scope.technologyChecked = false;
+		$scope.developmentChecked = false;
+		$scope.environmentChecked = false;
+		
 		// Create new Doc
 		$scope.create = function() {
 			// Create new Doc object
@@ -43,12 +49,56 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				}
 			}
 
+			if (str === "health")
+				$scope.healthChecked = !$scope.healthChecked;
+
+			else if (str === "economy")
+				$scope.economyChecked = !$scope.economyChecked;
+
+			else if (str === "technology")
+				$scope.technologyChecked = !$scope.technologyChecked;
+
+			else if (str === "development")
+				$scope.developmentChecked = !$scope.developmentChecked;
+
+			else if (str === "environment")
+				$scope.environmentChecked = !$scope.environmentChecked;
+
 			if (!flag) {
 				$scope.filters.push(str);
 				$scope.total++;
 			}
 		};
-		
+
+		$scope.generateDescription = function( doc ) {
+			var description = doc.description.toString();
+			var new_description = "";
+			
+			if (description.length > 80)
+				new_description = description.substring(0,79) + "...";
+			else 
+				new_description = description;
+
+			return new_description;
+		};
+
+		$scope.generateTags = function( doc ) {
+			var tags = doc.tags.toString();
+			var new_tags = "";
+
+			for (var i = 0; i < tags.length && i < 80; i++) {
+				if (tags.charAt(i) === ',' && tags.charAt(i+1) !== ' ')
+					new_tags += ", ";
+				else
+					new_tags += tags.charAt(i);
+			}
+
+			if (tags.length > 80)
+				new_tags += "...";
+
+			return new_tags;
+		};
+
 		$scope.checkFilters = function( doc ) {
   			var flag = true;
 
