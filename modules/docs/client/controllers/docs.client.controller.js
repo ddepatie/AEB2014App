@@ -11,6 +11,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		$scope.technologyChecked = false;
 		$scope.developmentChecked = false;
 		$scope.environmentChecked = false;
+		//Settings for dropdown menu
 		$scope.dropSettings = {
     		scrollableHeight: '300px',
     		scrollable: true,
@@ -19,6 +20,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
     		externalIdProp: '',
     		enableSearch: true
 		};
+		//Tags selected from dropdowm menu
 		$scope.selectedTags = [];
 
 		$scope.healthTopics = ["food safety", "disease", "nutrition", "waste"];
@@ -206,6 +208,16 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				$scope.environmentChecked = true;
 				$scope.editFilter('environment');
 			}						
+		};
+
+		$scope.removeTag = function(tagId){
+			//This methoed removes selected tag with givenID from array selectedTags.
+			for (var i = $scope.selectedTags.length - 1; i >= 0; i--) {
+				if($scope.selectedTags[i]._id === tagId){
+					$scope.selectedTags.splice(i, 1);
+					break;
+				}
+			};
 		};
 
 		// Update existing Doc
