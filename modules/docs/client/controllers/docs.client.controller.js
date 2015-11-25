@@ -20,7 +20,6 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
     		enableSearch: true
 		};
 		$scope.selectedTags = [];
-		
 
 		$scope.healthTopics = ["food safety", "disease", "nutrition", "waste"];
 		$scope.economyTopics = ["farmers", "prices", "markets and trade", "consumers"];
@@ -132,29 +131,35 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 
 		// Used to format tags string and show only first 80 characters 
 		$scope.generateTags = function( doc ) {
-			var tags = doc.tags.toString();
+			var tagsList = doc.tags;
+			var tags = "";
 			var new_tags = "";
-
-			for (var i = 0; i < tags.length && i < 80; i++) {
-				if (tags.charAt(i) === ',' && tags.charAt(i+1) !== ' ')
-					new_tags += ", ";
-				else
-					new_tags += tags.charAt(i);
+			
+			for (var i = 0; i < tagsList.length; i++) {
+				tags += tagsList[i].tag;
+				if (i+1 !== tagsList.length)
+					tags += ", ";
 			}
 
 			if (tags.length > 80)
-				new_tags += "...";
+				new_tags = tags.substring(0,79) + "...";
+
+			else
+				new_tags = tags;
 
 			return new_tags;
 		};
 
-		// Checks if the passed doc contains all the filters in our array
+		// Checks if the passed doc's tags contain all the filters in our array
 		$scope.checkFilters = function( doc ) {
   			var flag = true;
-
-  			for (var i = 0; i < $scope.total; i++) {
-  				if (doc.tags.indexOf($scope.filters[i]) === -1)
-  					flag = false;
+  			var tagsList = doc.tags;
+  			for (var i = 0; i < $scope.total && flag; i++) {
+  				flag = false;
+  				for (var j = 0; j < tagsList.length; j++) {
+	  				if (tagsList[j].tag === $scope.filters[i])
+	  					flag = true;
+  				}
   			}
   			return flag;
 		};
