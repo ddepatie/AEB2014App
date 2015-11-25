@@ -181,27 +181,27 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 
 		$scope.initialize = function() {
 
-			if ($stateParams.filterId == 1) {
+			if ($stateParams.filterId === 1) {
 				$scope.healthChecked = true;
 				$scope.editFilter('health');
 			}
-			else if ($stateParams.filterId == 2) {
+			else if ($stateParams.filterId === 2) {
 				$scope.economyChecked = true;
 				$scope.editFilter('economy');
 			}
-			else if ($stateParams.filterId == 3) {
+			else if ($stateParams.filterId === 3) {
 				$scope.technologyChecked = true;
 				$scope.editFilter('technology');
 			}
-			else if ($stateParams.filterId == 4) {
+			else if ($stateParams.filterId === 4) {
 				$scope.developmentChecked = true;
 				$scope.editFilter('development');
 			}
-			else if ($stateParams.filterId == 5) {
+			else if ($stateParams.filterId === 5) {
 				$scope.environmentChecked = true;
 				$scope.editFilter('environment');
 			}						
-		}
+		};
 
 		// Update existing Doc
 		$scope.update = function() {
