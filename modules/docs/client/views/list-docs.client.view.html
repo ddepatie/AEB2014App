@@ -4,12 +4,15 @@
     </div>
     <div class="list-group">
         <a data-ng-repeat="doc in docs" ui-sref="docs.view({docId: doc._id})" class="list-group-item">
-			<div style="margin-bottom:20px; width:300px; background-color: #E6E6E6; font-family: Tahoma, Geneva, sans-serif">
-                <div  style="display: inline-block;">
-                    <img alt={{doc.type}} src={{doc.thumbnail_image}} style="width:150px;height:100px;">
+			<div style="margin-bottom:20px; width:1106px; background-color: #DCDCDC; font-family: Tahoma, Geneva, sans-serif">
+                <div style="display:inline;">
+                    <img alt={{doc.type}} src={{doc.thumbnail_image}} style="width:165px;height:120px;">
                 </div>
-                <div  style="display: inline-block; width:130px">
-                  {{ doc.description + ', ' + doc.type}}
+                <div style="display:inline-block; vertical-align:top; width:600px">
+                    <font size="+1"> {{ doc.title }} </font>
+                    <p> {{ generateDescription(doc) }} </p>
+                        {{ 'Type: ' + doc.type }}
+                    <p> {{ 'Tags: ' + generateTags(doc) }} </p>
                 </div>
             </div>
         </a>

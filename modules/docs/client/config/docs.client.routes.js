@@ -35,6 +35,10 @@ angular.module('docs').config(['$stateProvider',
 		state('results', {
 			url: '/results',
 			templateUrl: 'modules/docs/client/views/show-results.client.view.html'
+		}).
+		state('results-init', {
+			url: '/results/:filterId',
+			templateUrl: 'modules/docs/client/views/show-results.client.view.html'
 		});
 	}
 ]);
