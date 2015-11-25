@@ -217,7 +217,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 					$scope.selectedTags.splice(i, 1);
 					break;
 				}
-			};
+			}
 		};
 
 		// Update existing Doc
