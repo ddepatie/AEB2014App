@@ -20,6 +20,14 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
     		enableSearch: true
 		};
 		$scope.selectedTags = [];
+		
+
+		$scope.healthTopics = ["food safety", "disease", "nutrition", "waste"];
+		$scope.economyTopics = ["farmers", "prices", "markets and trade", "consumers"];
+		$scope.technologyTopics = ["gmos", "automation", "production methods", "computing"];
+		$scope.developmentTopics = ["poverty", "hunger", "sustainability", "aid"];
+		$scope.environmentTopics = ["water", "pollution", "land", "climate"];
+
 		// Create new Doc
 		$scope.create = function() {
 			// Create new Doc object
@@ -47,8 +55,11 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			});
 		};
 
+		// Used to add/remove filters on search results page
 		$scope.editFilter = function( str ) {
-			var flag = false;
+
+			var flag = false; //flag whether or not filter is in our list
+
 			for (var i = 0; i < $scope.total; i++) {
 				if ($scope.filters[i] === str) {
 					$scope.filters.splice(i, 1);
@@ -57,27 +68,56 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				}
 			}
 
-			if (str === "health")
-				$scope.healthChecked = !$scope.healthChecked;
-
-			else if (str === "economy")
-				$scope.economyChecked = !$scope.economyChecked;
-
-			else if (str === "technology")
-				$scope.technologyChecked = !$scope.technologyChecked;
-
-			else if (str === "development")
-				$scope.developmentChecked = !$scope.developmentChecked;
-
-			else if (str === "environment")
-				$scope.environmentChecked = !$scope.environmentChecked;
-
 			if (!flag) {
 				$scope.filters.push(str);
 				$scope.total++;
 			}
+
+			// Code to collapse/expand subtopic filters
+
+			if (str === "health") {
+				if(!$scope.healthChecked)
+					$scope.uncheckSubtopics($scope.healthTopics);
+			}
+
+			else if (str === "economy") {
+				if(!$scope.economyChecked)
+					$scope.uncheckSubtopics($scope.economyTopics);
+			}
+
+			else if (str === "technology") {
+				if(!$scope.technologyChecked)
+					$scope.uncheckSubtopics($scope.technologyTopics);
+			}
+
+			else if (str === "development") {
+				if(!$scope.developmentChecked)
+					$scope.uncheckSubtopics($scope.developmentTopics);
+			}
+
+			else if (str === "environment") {
+				if(!$scope.environmentChecked)
+					$scope.uncheckSubtopics($scope.environmentTopics);
+			}
 		};
 
+		// Called when topic group is unchecked and collapsed on search results page
+		// Removes any subtopic filters (from collapsed group) from our array
+		$scope.uncheckSubtopics = function ( arr ) {
+			var box;
+			for (var i = 0; i < arr.length; i++){
+				for (var j = 0; j < $scope.filters.length; j++) {
+					if (arr[i] === $scope.filters[j]) {
+						box = document.getElementById(arr[i]);
+						box.checked = false;
+						$scope.filters.splice(j, 1);
+						$scope.total--;
+					}
+				}
+			}
+		};
+
+		// Used to format desc string and show only first 80 characters
 		$scope.generateDescription = function( doc ) {
 			var description = doc.description.toString();
 			var new_description = "";
@@ -90,6 +130,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			return new_description;
 		};
 
+		// Used to format tags string and show only first 80 characters 
 		$scope.generateTags = function( doc ) {
 			var tags = doc.tags.toString();
 			var new_tags = "";
@@ -107,6 +148,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			return new_tags;
 		};
 
+		// Checks if the passed doc contains all the filters in our array
 		$scope.checkFilters = function( doc ) {
   			var flag = true;
 
@@ -137,6 +179,30 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			}
 		};
 
+		$scope.initialize = function() {
+
+			if ($stateParams.filterId == 1) {
+				$scope.healthChecked = true;
+				$scope.editFilter('health');
+			}
+			else if ($stateParams.filterId == 2) {
+				$scope.economyChecked = true;
+				$scope.editFilter('economy');
+			}
+			else if ($stateParams.filterId == 3) {
+				$scope.technologyChecked = true;
+				$scope.editFilter('technology');
+			}
+			else if ($stateParams.filterId == 4) {
+				$scope.developmentChecked = true;
+				$scope.editFilter('development');
+			}
+			else if ($stateParams.filterId == 5) {
+				$scope.environmentChecked = true;
+				$scope.editFilter('environment');
+			}						
+		}
+
 		// Update existing Doc
 		$scope.update = function() {
 			var doc = $scope.doc ;
@@ -150,6 +216,9 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 
 		// Find a list of Docs
 		$scope.find = function() {
+			if ($stateParams.filterId) { 
+				$scope.initialize(); 
+			}
 			$scope.docs = Docs.query();
 			$scope.getTags = Tags.query();
 		};
