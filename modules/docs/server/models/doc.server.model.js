@@ -41,7 +41,7 @@ var DocSchema = new Schema({
 		trim: true
 	},
 	tags: {
-		type: String,
+		type: Schema.Types.Mixed,
 		default: '',
 		trim: true
 	},

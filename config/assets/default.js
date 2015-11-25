@@ -15,7 +15,9 @@ module.exports = {
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/angular-file-upload/angular-file-upload.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
-        'public/lib/animatescroll/animatescroll.js'
+        'public/lib/animatescroll/animatescroll.js',
+        'public/lib/lodash/dist/lodash.min.js',
+        'public/lib/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js'
       ],
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.css',

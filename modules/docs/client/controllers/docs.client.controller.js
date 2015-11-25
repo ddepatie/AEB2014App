@@ -11,7 +11,15 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		$scope.technologyChecked = false;
 		$scope.developmentChecked = false;
 		$scope.environmentChecked = false;
-		
+		$scope.dropSettings = {
+    		scrollableHeight: '300px',
+    		scrollable: true,
+    		displayProp: 'tag',
+    		idProp: '_id',
+    		externalIdProp: '',
+    		enableSearch: true
+		};
+		$scope.selectedTags = [];
 		// Create new Doc
 		$scope.create = function() {
 			// Create new Doc object
@@ -21,7 +29,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				type: this.type,
 				url: this.url,
 				thumbnail_image: this.thumbnail_image,
-				tags: this.tags
+				tags: $scope.selectedTags
 			});
 
 			// Redirect after save
@@ -143,7 +151,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		// Find a list of Docs
 		$scope.find = function() {
 			$scope.docs = Docs.query();
-			$scope.tags = Tags.query();
+			$scope.getTags = Tags.query();
 		};
 
 		// Find existing Doc
