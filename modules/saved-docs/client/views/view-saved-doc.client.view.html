@@ -4,7 +4,8 @@
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == savedDoc.user._id || authentication.user.roles[1] == 'admin'">
 		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
+		Unsave
+			<i class="glyphicon glyphicon-remove" style="padding-left:5px; padding-bottom:-3px;"></i>
 		</a>
 	</div>
 	<iframe ng-src="{{getPowerpointSrc(doc.url)}}" style="width:600px; height:500px;" frameborder="0"></iframe>
