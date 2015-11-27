@@ -48,25 +48,28 @@
                     <p><input type="checkbox" name="subtopic" id="climate" ng-click="editFilter('climate');">&nbsp;Climate</p>
                     </div>
                 </div>
-                <div ng-show="$root.searchText || filters[0]" id="content" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 list-group" style="padding-bottom:20px;">
-                    <a data-ng-repeat="doc in filteredDocs = (docs | filter: $root.searchText | filter: checkFilters)" ui-sref="docs.view({docId: doc._id})">
-            			<div style="margin-bottom:20px; width:800px; background-color: #DCDCDC; font-family: Tahoma, Geneva, sans-serif">
-                            <div style="display:inline;">
-                                <img alt={{doc.type}} src={{doc.thumbnail_image}} style="width:165px;height:120px;">
-                            </div>
-                            <div style="display:inline-block; vertical-align:top; width:600px; color: #555;">
-                                <font size="+1"> {{ doc.title }} </font>
-                                <p> {{ generateDescription(doc) }} </p>
-                                    {{ 'Type: ' + doc.type }}
-                                <p> {{ 'Tags: ' + generateTags(doc) }} </p>
-                            </div>
-                        </div>
-                    </a>
+                <div ng-show="$root.searchText || filters[0]" id="content" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 list-group" style="padding-bottom:20px;">
+                    <div>
+                    <ul style="list-style-type: none;">
+                        <li ng-repeat="doc in filteredDocs = (docs | filter: $root.searchText | filter: checkFilters)" class="col-md-4 col-sm-6 col-xs-12 col-lg-3 cl1">
+                            <div class="resultBox">
+                                <div class="element">
+                                    <a ui-sref="docs.view({docId: doc._id})" style="background: url({{doc.thumbnail_image}}) 50% 50% no-repeat;display: block;width: auto; height:50%; background-size : 100% auto; padding:10px">
+                                    </a>
+                                    <div>
+                                        <h2 style="overflow:hidden; max-height:45px; margin: 0; margin-bottom: 5px"><b> {{doc.title}} </b></h2>
+                                        <p style="overflow:hidden; max-height:45px; margin: 0">{{ doc.description+ ', ' + x.type}}</p>
+                                    </div>
+                                </div>
+                            <div>
+                        </li>
+                    </ul>
+                    </div>
                     <div ng-show="!filteredDocs.length" style="width:400px;">
                         <h3>No results found.</h3>
                     </div>
                 </div>
-                <div ng-hide="$root.searchText || filters[0]" id="content" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 list-group" style="padding-bottom:20px;">
+                <div ng-hide="$root.searchText || filters[0]" id="content" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 list-group" style="padding-bottom:20px;">
                     <div style="width:600px;">
                         <h3>No results found.</h3>
                         <h4>(Use the search bar or filters to find results)</h4>
