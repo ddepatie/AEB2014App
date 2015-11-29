@@ -1,6 +1,6 @@
 @media (max-width: 767px) {
   #video-header {
-    margin-top: 10px;
+    margin-top: 30px;
   }
 
   .category {
@@ -38,7 +38,7 @@ body {
 
 @media (min-width: 992px) and (max-width: 1200px) {
   #video-header {
-    margin-top: 100px;
+    margin-top: 120px;
   }
 
   .category {
@@ -55,7 +55,7 @@ body {
 
 @media (min-width: 1200px) {
   #video-header {
-    margin-top: 100px;
+    margin-top: 120px;
   }
 
   .category {
