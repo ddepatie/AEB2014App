@@ -2,7 +2,7 @@
 	<div class="page-header">
 		<h1 data-ng-bind="doc.title"></h1>
 	</div>
-	<div ng-controller="SavedDocsController as sdCtrl" style="float:right" ng-show="authentication.user" ng-init="find()">
+	<div ng-controller="SavedDocsController as sdCtrl" style="float:left" ng-show="authentication.user" ng-init="find()">
 		<a class="btn btn-primary" ng-hide="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.create(doc._id, doc.title, doc.description, doc.type, doc.url, doc.thumbnail_image, doc.tags)">
 			Save
 			<i class="glyphicon glyphicon-plus" style="padding-left:5px;"></i>
