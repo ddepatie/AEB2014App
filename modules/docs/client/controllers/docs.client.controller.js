@@ -46,7 +46,8 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				type: this.type,
 				url: this.url,
 				thumbnail_image: this.thumbnail_image,
-				tags: $scope.selectedTags
+				tags: $scope.selectedTags,
+				viewCount: 0
 			});
 
 			// Redirect after save
@@ -59,6 +60,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				$scope.type = '';
 				$scope.url = '';
 				$scope.tags = '';
+				$scope.viewCount = 0;
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -233,6 +235,13 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+		};
+		$scope.updateViewCount = function(){
+			var doc = $scope.doc ;
+			//var viewCount = $scope.viewCount;
+			doc.$update(
+				{$inc: doc.viewCount}
+				);
 		};
 
 		// Find a list of Docs

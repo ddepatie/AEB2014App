@@ -53,6 +53,23 @@ exports.update = function(req, res) {
 	});
 };
 
+exports.updateViewCount = function(req, res){
+	var doc = req.doc ;
+	doc = _.extend(doc, req.body);
+
+	doc.save(function(err){
+		if(err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		}
+		else{
+			
+			res.jsonp(doc);
+		}
+	});
+};
+
 /**
  * Delete an Doc
  */
