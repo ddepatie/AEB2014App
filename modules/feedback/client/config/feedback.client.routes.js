@@ -12,7 +12,10 @@ angular.module('feedback').config(['$stateProvider',
 		}).
 		state('feedback.list', {
 			url: '',
-			templateUrl: 'modules/feedback/client/views/list-feedback.client.view.html'
+			templateUrl: 'modules/feedback/client/views/list-feedback.client.view.html',
+			data: {
+							roles: ['admin']
+					}
 		}).
 		state('feedback.create', {
 			url: '/create',

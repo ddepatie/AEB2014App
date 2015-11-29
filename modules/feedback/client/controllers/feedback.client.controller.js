@@ -12,7 +12,7 @@ angular.module('feedback').controller('FeedbackController', ['$scope', '$statePa
 				title: this.title,
 				text: this.text
 			});
-
+      
 			// Redirect after save
 			feedback.$save(function(response) {
 				$location.path('feedback/' + response._id);
