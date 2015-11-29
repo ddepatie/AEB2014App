@@ -4,8 +4,7 @@
     </div>
 
     <section id="categories">
-        <div class="container">
-            <div class="row">
+        <div class="container-fluid">
                 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="padding-bottom:20px;"> 
                     <h2 style="padding-bottom:4px;">Filters</h2>
                     <p><input type="checkbox" name="topic" ng-model="healthChecked" ng-click="editFilter('health');"><font size="+1">&nbsp;Health</font></p>
@@ -49,22 +48,29 @@
                     </div>
                 </div>
                 <div ng-show="$root.searchText || filters[0]" id="content" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 list-group" style="padding-bottom:20px;">
-                    <div>
-                    <ul style="list-style-type: none;">
-                        <li ng-repeat="doc in filteredDocs = (docs | filter: $root.searchText | filter: checkFilters)" class="col-md-4 col-sm-6 col-xs-12 col-lg-3 cl1">
-                            <div class="resultBox">
-                                <div class="element">
-                                    <a ui-sref="docs.view({docId: doc._id})" style="background: url({{doc.thumbnail_image}}) 50% 50% no-repeat;display: block;width: auto; height:50%; background-size : 100% auto; padding:10px">
-                                    </a>
-                                    <div>
-                                        <h2 style="overflow:hidden; max-height:45px; margin: 0; margin-bottom: 5px"><b> {{doc.title}} </b></h2>
-                                        <p style="overflow:hidden; max-height:45px; margin: 0">{{ doc.description+ ', ' + x.type}}</p>
+                        <ul><!-- display documents in resizable boxes -->
+                            <li ng-repeat="doc in filteredDocs = (docs | filter: $root.searchText | filter: checkFilters)" class="col-md-6 col-sm-6 col-xs-12 col-lg-4 padding-15">
+                                <div class="resize_box">
+                                    <div class="resize_box_content">
+                                        <!-- display doc thumbnail and crop to fit -->
+                                        <a ui-sref="docs.view({docId: doc._id})">
+                                        <div class="cropped-image" style="background: url({{doc.thumbnail_image}}); background-size : 100% auto;">
+                                            <!-- insert text here to go inside the picture -->
+                                        </div>
+                                        </a>
+                                        <!-- title and description are 105px tall -->
+                                        <div>
+                                            <h2 style="overflow:hidden; max-height:46px; margin-top: 15px; line-height:23px">
+                                                {{doc.title}}
+                                            </h2>
+                                            <p style="overflow:hidden; max-height:44px; margin: 0; line-height:22px">
+                                                <font color=#a6a6a6> {{ doc.description+ ', ' + x.type}} </font>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            <div>
-                        </li>
-                    </ul>
-                    </div>
+                                <div>
+                            </li>
+                        </ul>
                     <div ng-show="!filteredDocs.length" style="width:400px;">
                         <h3>No results found.</h3>
                     </div>
@@ -79,6 +85,5 @@
             <div class="alert alert-warning text-center" data-ng-hide="!docs.$resolved || docs.length">
             	No Docs yet, why don't you <a href="/#!/docs/create">create one</a>?
             </div>
-        </div>
     </section>
 </section>

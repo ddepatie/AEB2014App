@@ -1,14 +1,18 @@
-.resultBox {
+.resize_box {
     position: relative;
-    padding: calc(50% + 100px) 0 0 0;
+    padding: calc(60% + 105px) 0 0 0;
     font-family: Tahoma, Geneva, sans-serif;
 }
-.cl1 {
-    background-color: #F7F7F7;
+
+.padding-15 {
     padding: 15px;
-    float: left;
 }
-.element {
+
+.cropped-image {
+    height:60%;
+}
+
+.resize_box_content {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -17,27 +21,10 @@
     background-color: white;
 }
 
-/* responsive text queries */
-@media screen and (max-width: 992px) {
-  h1 {
-    font-size: 24px;  
-  }
-  h2 {
-    font-size: 22px; 
-  }
-  h3 {
-    font-size: 18px;  
-  }
+ul {
+    list-style-type: none;
 }
 
-@media screen and (max-width: 768px) {
-  h1 {
-    font-size: 20px;  
-  }
-  h2 {
-    font-size: 18px;  
-  }
-  h3 {
-    font-size: 16px;  
-  }
+h2 {
+font-size: 18px;
 }
