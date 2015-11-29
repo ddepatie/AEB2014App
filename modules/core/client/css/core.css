@@ -19,6 +19,16 @@ body {
   background-color: #f5f5f5;
 }
 
+center {
+  color:#DDDDDD;
+}
+
+h3 {
+  color:#DDDDDD;
+}
+
+
+
 @media (min-width: 1px){
   #video-header {
     margin-top: 75px;
