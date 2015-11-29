@@ -2,7 +2,31 @@
 	<div class="page-header">
 		<h1 data-ng-bind="doc.title"></h1>
 	</div>
-	<div ng-controller="SavedDocsController as sdCtrl" class="pull-right row" ng-show="authentication.user" ng-init="find()">
+	<div ng-switch on="doc.type">
+		<!-- google powerpoint/document/pdf viewer -->
+		<div ng-switch-when="ppt/pptx">
+			<iframe ng-src="{{'http://docs.google.com/gview?url='+ doc.url +'&embedded=true' | trustAsResourceUrl}}" class="col-md-10 col-lg-11 col-xs-12 col-sm-10" style="height:500px" frameborder="0"></iframe>
+		</div>
+		<!-- TODO prezi embedding -->
+		<div ng-switch-when="prezi">
+			<iframe id="iframe_container" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" class="col-md-9 col-lg-9 col-xs-9 col-sm-9" style="height:500px" src="https://prezi.com/embed/c2dn7lls4rsc/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;landing_data=bHVZZmNaNDBIWnNjdEVENDRhZDFNZGNIUE43MHdLNWpsdFJLb2ZHanI5enlwNU1hQmxVTnkrdGlwUjZWeWRWbjlBPT0&amp;landing_sign=ii2uzlcsDAC_T1TU0yMEBEt1W1fKeFavKx0TMErdztk"></iframe>
+		</div>
+		<!-- TODO image embedding -->
+		<div ng-switch-when="png" ng-switch-when="jpg" ng-switch-when="image">
+			<img alt={{doc.type}} src={{doc.url}} style="width:600px;height:500px;">
+		</div>
+		<div ng-switch-when="jpg" ng-switch-when="image">
+			<img alt={{doc.type}} src={{doc.url}} style="width:600px;height:500px;">
+		</div>
+		<div ng-switch-when="image">
+			<img alt={{doc.type}} src={{doc.url}} style="width:600px;height:500px;">
+		</div>
+	</div>
+	<div class="visible-xs-block" style=" width:100%; float:left; height:30px">
+	</div>
+	<div class="visible-xs-block" style="margin-left:30px; float:left; height:10px">
+	</div>
+	<div ng-controller="SavedDocsController as sdCtrl" style="float:left" ng-show="authentication.user" ng-init="find()">
 		<a class="btn btn-primary" ng-hide="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.create(doc._id, doc.title, doc.description, doc.type, doc.url, doc.thumbnail_image, doc.tags)">
 			Save
 			<i class="glyphicon glyphicon-plus" style="padding-left:5px;"></i>
@@ -24,17 +48,4 @@
 			</a>
 		</div>
 	</div>
-	<div ng-switch on="doc.type">
-		<!-- google powerpoint/document/pdf viewer -->
-		<div ng-switch-when="ppt/pptx">
-			<iframe ng-src="{{'http://docs.google.com/gview?url='+ doc.url +'&embedded=true' | trustAsResourceUrl}}" class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="height:500px" frameborder="0"></iframe>
-		</div>
-		<!-- TODO prezi embedding -->
-		<div ng-switch-when="prezi">
-			<iframe id="iframe_container" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="height:500px" src="https://prezi.com/embed/c2dn7lls4rsc/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;landing_data=bHVZZmNaNDBIWnNjdEVENDRhZDFNZGNIUE43MHdLNWpsdFJLb2ZHanI5enlwNU1hQmxVTnkrdGlwUjZWeWRWbjlBPT0&amp;landing_sign=ii2uzlcsDAC_T1TU0yMEBEt1W1fKeFavKx0TMErdztk"></iframe>
-		</div>
-		<!-- TODO image embedding -->
-		<div ng-switch-when="png" ng-switch-when="jpg" ng-switch-when="image">
-			<img alt={{doc.type}} src={{doc.url}} style="width:600px;height:500px;">
-		</div>
 </section>
