@@ -5,10 +5,18 @@
     <div class="list-group">
         <ul><!-- display documents in resizable boxes -->
             <li ng-repeat="doc in savedDocs | filter:userMatch(authentication.user._id)" class="col-md-6 col-sm-4 col-xs-12 col-lg-3 padding-15">
-                <div class="resize_box">
+                <div class="resize_box" ng-show="doc">
                     <div class="resize_box_content">
+                        <div ng-controller="SavedDocsController as sdCtrl" style="float:right" ng-show="authentication.user" ng-init="find()">
+                            <a class="btn btn-primary" ng-click="sdCtrl.removeByDocId(authentication.user._id, doc.doc)">
+                                <i class="glyphicon glyphicon-remove"></i>
+                                <!-- x-button to unsave doc -->
+                            </a>                                
+                        </div>  
                         <!-- display doc thumbnail and crop to fit -->
-                        <a ui-sref="docs.view({docId: doc._id})">
+                        <a ui-sref="docs.view({docId: doc.doc})">
+                            <div class="cropped-image" style="background: url({{doc.thumbnail_image}}); background-size : 100% auto;">
+                            </div>
                         </a>
                         <div>
                             <h2 style="overflow:hidden; max-height:46px; margin-top: 15px; line-height:23px">
