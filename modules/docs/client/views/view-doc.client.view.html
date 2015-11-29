@@ -2,21 +2,27 @@
 	<div class="page-header">
 		<h1 data-ng-bind="doc.title"></h1>
 	</div>
-	<div class="pull-right" data-ng-show="authentication.user._id == doc.user._id || authentication.user.roles[1] == 'admin'">
-		<a class="btn btn-primary" href="/#!/docs/{{doc._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
-	<div ng-controller="SavedDocsController as sdCtrl" class="pull-right" ng-show="authentication.user" ng-init="find()">
+	<div ng-controller="SavedDocsController as sdCtrl" class="pull-right row" ng-show="authentication.user" ng-init="find()">
 		<a class="btn btn-primary" ng-hide="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.create(doc._id, doc.title, doc.description, doc.type, doc.url, doc.thumbnail_image, doc.tags)">
-			<i class="glyphicon glyphicon-plus"></i>
+			Save
+			<i class="glyphicon glyphicon-plus" style="padding-left:5px;"></i>
 		</a>
 		<a class="btn btn-primary" ng-show="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.removeByDocId(authentication.user._id, doc._id)">
-			<i class="glyphicon glyphicon-ok"></i>
+			Unsave
+			<i class="glyphicon glyphicon-remove" style="padding-left:5px;"></i>
 		</a>
+		<div data-ng-show="authentication.user._id == doc.user._id || authentication.user.roles[1] == 'admin'" style="padding-top:10px; padding-bottom:8px">
+			<a class="btn btn-primary" href="/#!/docs/{{doc._id}}/edit">
+				Edit &nbsp;
+				<i class="glyphicon glyphicon-edit"></i>
+			</a>
+		</div>
+		<div data-ng-show="authentication.user._id == doc.user._id || authentication.user.roles[1] == 'admin'">
+			<a class="btn btn-primary" data-ng-click="remove();">
+				Delete &nbsp;
+				<i class="glyphicon glyphicon-trash"></i>
+			</a>
+		</div>
 	</div>
 	<div ng-switch on="doc.type">
 		<!-- google powerpoint/document/pdf viewer -->
