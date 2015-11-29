@@ -12,6 +12,10 @@
     height:60%;
 }
 
+center {
+    color:black;
+}
+
 .resize_box_content {
     position: absolute;
     top: 0;
