@@ -4,8 +4,7 @@
     </div>
 
     <section id="categories">
-        <div class="container">
-            <div class="row">
+        <div class="container-fluid">
                 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="padding-bottom:20px;"> 
                     <h2 style="padding-bottom:4px;">Filters</h2>
                     <p><input type="checkbox" name="topic" ng-model="healthChecked" ng-click="editFilter('health');"><font size="+1">&nbsp;Health</font></p>
@@ -48,25 +47,35 @@
                     <p><input type="checkbox" name="subtopic" id="climate" ng-click="editFilter('climate');">&nbsp;Climate</p>
                     </div>
                 </div>
-                <div ng-show="$root.searchText || filters[0]" id="content" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 list-group" style="padding-bottom:20px;">
-                    <a data-ng-repeat="doc in filteredDocs = (docs | filter: $root.searchText | filter: checkFilters)" ui-sref="docs.view({docId: doc._id})">
-            			<div style="margin-bottom:20px; width:800px; background-color: #DCDCDC; font-family: Tahoma, Geneva, sans-serif">
-                            <div style="display:inline;">
-                                <img alt={{doc.type}} src={{doc.thumbnail_image}} style="width:165px;height:120px;">
-                            </div>
-                            <div style="display:inline-block; vertical-align:top; width:600px; color: #555;">
-                                <font size="+1"> {{ doc.title }} </font>
-                                <p> {{ generateDescription(doc) }} </p>
-                                    {{ 'Type: ' + doc.type }}
-                                <p> {{ 'Tags: ' + generateTags(doc) }} </p>
-                            </div>
-                        </div>
-                    </a>
+                <div ng-show="$root.searchText || filters[0]" id="content" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 list-group" style="padding-bottom:20px;">
+                        <ul><!-- display documents in resizable boxes -->
+                            <li ng-repeat="doc in filteredDocs = (docs | filter: $root.searchText | filter: checkFilters)" class="col-md-6 col-sm-6 col-xs-12 col-lg-4 padding-15">
+                                <div class="resize_box">
+                                    <div class="resize_box_content">
+                                        <!-- display doc thumbnail and crop to fit -->
+                                        <a ui-sref="docs.view({docId: doc._id})">
+                                        <div class="cropped-image" style="background: url({{doc.thumbnail_image}}); background-size : 100% auto;">
+                                            <!-- insert text here to go inside the picture -->
+                                        </div>
+                                        </a>
+                                        <!-- title and description are 105px tall -->
+                                        <div>
+                                            <h2 style="overflow:hidden; max-height:46px; margin-top: 15px; line-height:23px">
+                                                {{doc.title}}
+                                            </h2>
+                                            <p style="overflow:hidden; max-height:44px; margin: 0; line-height:22px">
+                                                <font color=#a6a6a6> {{ doc.description+ ', ' + x.type}} </font>
+                                            </p>
+                                        </div>
+                                    </div>
+                                <div>
+                            </li>
+                        </ul>
                     <div ng-show="!filteredDocs.length" style="width:400px;">
                         <h3>No results found.</h3>
                     </div>
                 </div>
-                <div ng-hide="$root.searchText || filters[0]" id="content" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 list-group" style="padding-bottom:20px;">
+                <div ng-hide="$root.searchText || filters[0]" id="content" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 list-group" style="padding-bottom:20px;">
                     <div style="width:600px;">
                         <h3>No results found.</h3>
                         <h4>(Use the search bar or filters to find results)</h4>
@@ -76,6 +85,5 @@
             <div class="alert alert-warning text-center" data-ng-hide="!docs.$resolved || docs.length">
             	No Docs yet, why don't you <a href="/#!/docs/create">create one</a>?
             </div>
-        </div>
     </section>
 </section>
