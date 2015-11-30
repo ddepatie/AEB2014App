@@ -16,9 +16,8 @@ var TagSchema = new Schema({
 		required: 'Please fill Tag name',
 		trim: true
 	},
-	topicId: {
-		type: Schema.ObjectId,
-		ref: 'Topic'
+	topicID: {
+		type: Schema.Types.Mixed
 	}
 });
 

@@ -59,8 +59,10 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				$scope.description = '';
 				$scope.type = '';
 				$scope.url = '';
+
 				$scope.tags = '';
-				$scope.viewCount = 0;
+
+				$scope.selectedTags = [];
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -231,19 +233,25 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		// Update existing Doc
 		$scope.update = function() {
 			var doc = $scope.doc ;
-
+			doc.viewCount += 1;
+			console.log(doc.viewCount);
 			doc.$update(function() {
 				$location.path('docs/' + doc._id);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+
 		};
 		$scope.updateViewCount = function(){
 			var doc = $scope.doc ;
 			//var viewCount = $scope.viewCount;
-			doc.$update(
-				{$inc: doc.viewCount}
-				);
+			doc.viewCount += 1;
+			console.log(doc.viewCount);
+			doc.$update(function() {
+				//$location.path('docs/' + doc._id);
+			}, function(errorResponse) {
+				//$scope.error = errorResponse.data.message;
+			});
 		};
 
 		// Find a list of Docs
@@ -260,11 +268,8 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			$scope.doc = Docs.get({ 
 				docId: $stateParams.docId
 			});
-			$scope.doc.$scope.update({
-				$inc: {
-					viewCount: 1
-				}
-			});
+			$scope.updateViewCount();
+
 		};
 	}
 ]);

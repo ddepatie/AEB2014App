@@ -6,8 +6,15 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
+
+      <div class="input-group navbar-toggle" style="padding: 5px 10px; width: calc(100% - 155px); float:right;">
+        <input type="text" ng-model="typing" typeahead="item.tag for item in tags | filter: $viewValue:startsWith | orderBy: '+tag'" typeahead-on-select="doSomethingOnSelect(item.tag)" class="form-control" placeholder="Search">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Go!</button>
+        </span>
+      </div>
     <a ui-sref="home" class="navbar-brand" onclick="$('html').animatescroll();" style="padding-top:0">
-      <center><i class="fa fa-home fa-2x" style="padding-top:6px; padding-right:2px"></i></center>
+      <center><i class="fa fa-home fa-2x" style="padding-top:6px; padding-right:2px; color:#9d9d9d;"></i></center>
     </a>
   </div>
   <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
@@ -51,7 +58,7 @@
         </a>
         <ul class="dropdown-menu">
           <li>
-            <div class="input-group" style="padding: 5px 10px; width: 200px;">
+            <div class="input-group" style="padding: 5px 10px; width: 200px; margin-top:2px;">
               <input type="text" ng-model="typing" typeahead="item.tag for item in tags | filter: $viewValue:startsWith | orderBy: '+tag'" typeahead-on-select="doSomethingOnSelect(item.tag)" class="form-control" placeholder="Search">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Go!</button>

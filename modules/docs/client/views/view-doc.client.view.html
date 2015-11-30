@@ -1,8 +1,9 @@
-<section class="container" data-ng-controller="DocsController" data-ng-init="findOne()" data-ng-submit="updateViewCount()">
+<section class="container" data-ng-controller="DocsController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="doc.title"></h1>
 	</div>
-	<div ng-controller="SavedDocsController as sdCtrl" style="float:right" ng-show="authentication.user" ng-init="find()">
+	
+	<!--><div ng-controller="SavedDocsController as sdCtrl" style="float:right" ng-show="authentication.user" ng-init="find()">
 		<a class="btn btn-primary" ng-hide="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.create(doc._id, doc.title, doc.description, doc.type, doc.url, doc.thumbnail_image, doc.tags)">
 			Save
 			<i class="glyphicon glyphicon-plus" style="padding-left:5px;"></i>
@@ -24,6 +25,7 @@
 			</a>
 		</div>
 	</div>
+	-->
 	<div ng-switch on="doc.type">
 		<!-- google powerpoint/document/pdf viewer -->
 		<div ng-switch-when="ppt/pptx">
@@ -34,18 +36,39 @@
 			<iframe id="iframe_container" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" class="col-md-9 col-lg-9 col-xs-9 col-sm-9" style="height:500px" src="https://prezi.com/embed/c2dn7lls4rsc/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;landing_data=bHVZZmNaNDBIWnNjdEVENDRhZDFNZGNIUE43MHdLNWpsdFJLb2ZHanI5enlwNU1hQmxVTnkrdGlwUjZWeWRWbjlBPT0&amp;landing_sign=ii2uzlcsDAC_T1TU0yMEBEt1W1fKeFavKx0TMErdztk"></iframe>
 		</div>
 		<!-- TODO image embedding -->
-		<div ng-switch-when="png" ng-switch-when="jpg" ng-switch-when="image">
+		<div ng-switch-when="png" style="float:left">
 			<img alt={{doc.type}} src={{doc.url}} style="width:600px;height:500px;">
 		</div>
-		<div ng-switch-when="jpg" ng-switch-when="image">
+		<div ng-switch-when="jpg" style="float:left">
 			<img alt={{doc.type}} src={{doc.url}} style="width:600px;height:500px;">
 		</div>
-		<div ng-switch-when="image">
+		<div ng-switch-when="image" style="float:left">
 			<img alt={{doc.type}} src={{doc.url}} style="width:600px;height:500px;">
 		</div>
 	</div>
 	<div class="visible-xs-block" style=" width:100%; float:left; height:30px">
 	</div>
-	<div class="visible-xs-block" style="margin-left:30px; float:left; height:10px">
+
+	<div ng-controller="SavedDocsController as sdCtrl" style="float:left" ng-show="authentication.user" ng-init="find()">
+		<a class="btn btn-primary" ng-hide="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.create(doc._id, doc.title, doc.description, doc.type, doc.url, doc.thumbnail_image, doc.tags)">
+			Save
+			<i class="glyphicon glyphicon-plus" style="padding-left:5px;"></i>
+		</a>
+		<a class="btn btn-primary" ng-show="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.removeByDocId(authentication.user._id, doc._id)">
+			Unsave
+			<i class="glyphicon glyphicon-remove" style="padding-left:5px;"></i>
+		</a>
+		<div data-ng-show="authentication.user._id == doc.user._id || authentication.user.roles[1] == 'admin'" style="padding-top:10px; padding-bottom:8px">
+			<a class="btn btn-primary" href="/#!/docs/{{doc._id}}/edit">
+				Edit &nbsp;
+				<i class="glyphicon glyphicon-edit"></i>
+			</a>
+		</div>
+		<div data-ng-show="authentication.user._id == doc.user._id || authentication.user.roles[1] == 'admin'">
+			<a class="btn btn-primary" data-ng-click="remove();">
+				Delete &nbsp;
+				<i class="glyphicon glyphicon-trash"></i>
+			</a>
+		</div>
 	</div>
 </section>
