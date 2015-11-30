@@ -38,7 +38,7 @@ angular.module('tags').controller('TagsController', ['$scope', '$stateParams', '
 		$scope.create = function() {
 			// Create new Tag object
 			var tag = new Tags ({
-				tag: this.name,
+				tag: this.tag,
 				topicID: $scope.selectedTopics
 			});
 
