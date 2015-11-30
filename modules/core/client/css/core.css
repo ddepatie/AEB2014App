@@ -1,6 +1,6 @@
 @media (max-width: 767px) {
   #video-header {
-    margin-top: 10px;
+    margin-top: 30px;
   }
 
   .category {
@@ -15,7 +15,21 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 992px) {
+body {
+  background-color: #f5f5f5;
+}
+
+center {
+  color:#DDDDDD;
+}
+
+h3 {
+  color:#DDDDDD;
+}
+
+
+
+@media (min-width: 1px){
   #video-header {
     margin-top: 75px;
   }
@@ -24,7 +38,7 @@
     height: 250px;
     width: 100%;
     color: white;
-    padding-top: 200px;
+    padding-top: 70px;
   }
 
   #search-bar {
@@ -32,16 +46,38 @@
   }
 }
 
-@media (min-width: 992px) and (max-width: 1200px) {
+@media (min-width: 768px){
   #video-header {
-    margin-top: 100px;
+    margin-top: 75px;
   }
 
   .category {
-    height: 300px;
+    height: 250px;
     width: 100%;
     color: white;
-    padding-top: 250px;
+    padding-top: 70px;
+  }
+
+  #search-bar {
+    display: none;
+  }
+}
+
+@media (min-width: 980px) {
+  #video-header {
+    margin-top: 120px;
+  }
+
+  .category {
+    float: left;
+    height: 300px;
+    width: 20%;
+    color: white;
+    padding-top: 100px;
+  }
+
+  #search-bar {
+    display: block;
   }
 
   #search-reveal {
@@ -49,14 +85,24 @@
   }
 }
 
+.content {
+  margin-top: 50px;
+}
+
+.undecorated-link:hover {
+  text-decoration: none;
+}
+
+
+
 @media (min-width: 1200px) {
   #video-header {
-    margin-top: 100px;
+    margin-top: 120px;
   }
 
   .category {
     height: 300px;
-    width: 100%;
+    width: 20%;
     color: white;
     padding-top: 100px;
   }

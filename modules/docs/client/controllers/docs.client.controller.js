@@ -1,5 +1,13 @@
 'use strict';
 
+//filter to allow embedded google doc viewer to work with custom src
+angular.module('docs')
+.filter('trustAsResourceUrl', ['$sce', function($sce) {
+    return function(val) {
+        return $sce.trustAsResourceUrl(val);
+    };
+}]);
+
 // Docs controller
 angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$stateParams', '$location', 'Authentication', 'Docs', 'Tags',
 	function($scope, $rootScope, $stateParams, $location, Authentication, Docs, Tags ) {
@@ -50,7 +58,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				$scope.description = '';
 				$scope.type = '';
 				$scope.url = '';
-				$scope.tags = '';
+				$scope.selectedTags = [];
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -164,10 +172,6 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
   				}
   			}
   			return flag;
-		};
-
-		$scope.getPowerpointSrc = function (url) {
-		  return "http://docs.google.com/gview?url=" + url + "&embedded=true";
 		};
 
 		// Remove existing Doc

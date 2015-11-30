@@ -2,80 +2,86 @@
     <div class="page-header">
         <h1>Search Results</h1>
     </div>
-
+    <div class="visible-xs-block" style="margin-left:40px; float:left; height:10px">
+    </div>
     <section id="categories">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="padding-bottom:20px;"> 
-                    <h2 style="padding-bottom:4px;">Filters</h2>
-                    <p><input type="checkbox" name="topic" ng-model="healthChecked" ng-click="editFilter('health');"><font size="+1">&nbsp;Health</font></p>
-                    <div ng-show="healthChecked" style="margin-left:10px;">
-                    <p><input type="checkbox" name="subtopic" id="food safety" ng-click="editFilter('food safety');">&nbsp;Food Safety</p>
-                    <p><input type="checkbox" name="subtopic" id="disease" ng-click="editFilter('disease');">&nbsp;Disease</p>
-                    <p><input type="checkbox" name="subtopic" id="nutrition" ng-click="editFilter('nutrition');">&nbsp;Nutrition</p>
-                    <p><input type="checkbox" name="subtopic" id="waste" ng-click="editFilter('waste');">&nbsp;Waste</p>
-                    </div>
-
-                    <p><input type="checkbox" name="topic" ng-model="economyChecked" ng-click="editFilter('economy');"><font size="+1">&nbsp;Economy</font></p>
-                    <div ng-show="economyChecked" style="margin-left:10px;">
-                    <p><input type="checkbox" name="subtopic" id="farmers" ng-click="editFilter('farmers');">&nbsp;Farmers</p>
-                    <p><input type="checkbox" name="subtopic" id="prices" ng-click="editFilter('prices');">&nbsp;Prices</p>
-                    <p><input type="checkbox" name="subtopic" id="markets and trade" ng-click="editFilter('markets and trade');">&nbsp;Markets and Trade</p>
-                    <p><input type="checkbox" name="subtopic" id="consumers" ng-click="editFilter('consumers');">&nbsp;Consumers</p>
-                    </div>
-
-                    <p><input type="checkbox" name="topic" ng-model="technologyChecked" ng-click="editFilter('technology');"><font size="+1">&nbsp;Technology</font></p>
-                    <div ng-show="technologyChecked" style="margin-left:10px;">
-                    <p><input type="checkbox" name="subtopic" id="gmos" ng-click="editFilter('gmos');">&nbsp;GMOs</p>
-                    <p><input type="checkbox" name="subtopic" id="automation" ng-click="editFilter('automation');">&nbsp;Automation</p>
-                    <p><input type="checkbox" name="subtopic" id="production methods" ng-click="editFilter('production methods');">&nbsp;Production Methods</p>
-                    <p><input type="checkbox" name="subtopic" id="computing" ng-click="editFilter('computing');">&nbsp;Computing</p>
-                    </div>
-                    
-                    <p><input type="checkbox" name="topic" ng-model="developmentChecked" ng-click="editFilter('development');"><font size="+1">&nbsp;Development</font></p>
-                    <div ng-show="developmentChecked" style="margin-left:10px;">
-                    <p><input type="checkbox" name="subtopic" id="poverty" ng-click="editFilter('poverty');">&nbsp;Poverty</p>
-                    <p><input type="checkbox" name="subtopic" id="hunger" ng-click="editFilter('hunger');">&nbsp;Hunger</p>
-                    <p><input type="checkbox" name="subtopic" id="sustainability" ng-click="editFilter('sustainability');">&nbsp;Sustainability</p>
-                    <p><input type="checkbox" name="subtopic" id="aid" ng-click="editFilter('aid');">&nbsp;Aid</p>
-                    </div>
-
-                    <p><input type="checkbox" name="topic" ng-model="environmentChecked" ng-click="editFilter('environment');"><font size="+1">&nbsp;Environment</font></p>
-                    <div ng-show="environmentChecked" style="margin-left:10px;">
-                    <p><input type="checkbox" name="subtopic" id="water" ng-click="editFilter('water');">&nbsp;Water</p>
-                    <p><input type="checkbox" name="subtopic" id="pollution" ng-click="editFilter('pollution');">&nbsp;Pollution</p>
-                    <p><input type="checkbox" name="subtopic" id="land" ng-click="editFilter('land');">&nbsp;Land</p>
-                    <p><input type="checkbox" name="subtopic" id="climate" ng-click="editFilter('climate');">&nbsp;Climate</p>
-                    </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12" style="padding-bottom:20px; padding-left:30px;"> 
+                <p style="padding-bottom:4px"><font size="5">Filters</font></p>
+                <p><input type="checkbox" name="topic" ng-model="healthChecked" ng-click="editFilter('health');"><font size="+1">&nbsp;Health</font></p>
+                <div ng-show="healthChecked" style="margin-left:10px;">
+                <p><input type="checkbox" name="subtopic" id="food safety" ng-click="editFilter('food safety');">&nbsp;Food Safety</p>
+                <p><input type="checkbox" name="subtopic" id="disease" ng-click="editFilter('disease');">&nbsp;Disease</p>
+                <p><input type="checkbox" name="subtopic" id="nutrition" ng-click="editFilter('nutrition');">&nbsp;Nutrition</p>
+                <p><input type="checkbox" name="subtopic" id="waste" ng-click="editFilter('waste');">&nbsp;Waste</p>
                 </div>
-                <div ng-show="$root.searchText || filters[0]" id="content" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 list-group" style="padding-bottom:20px;">
-                    <a data-ng-repeat="doc in filteredDocs = (docs | filter: $root.searchText | filter: checkFilters)" ui-sref="docs.view({docId: doc._id})">
-            			<div style="margin-bottom:20px; width:800px; background-color: #DCDCDC; font-family: Tahoma, Geneva, sans-serif">
-                            <div style="display:inline;">
-                                <img alt={{doc.type}} src={{doc.thumbnail_image}} style="width:165px;height:120px;">
-                            </div>
-                            <div style="display:inline-block; vertical-align:top; width:600px; color: #555;">
-                                <font size="+1"> {{ doc.title }} </font>
-                                <p> {{ generateDescription(doc) }} </p>
-                                    {{ 'Type: ' + doc.type }}
-                                <p> {{ 'Tags: ' + generateTags(doc) }} </p>
-                            </div>
-                        </div>
-                    </a>
-                    <div ng-show="!filteredDocs.length" style="width:400px;">
-                        <h3>No results found.</h3>
-                    </div>
+
+                <p><input type="checkbox" name="topic" ng-model="economyChecked" ng-click="editFilter('economy');"><font size="+1">&nbsp;Economy</font></p>
+                <div ng-show="economyChecked" style="margin-left:10px;">
+                <p><input type="checkbox" name="subtopic" id="farmers" ng-click="editFilter('farmers');">&nbsp;Farmers</p>
+                <p><input type="checkbox" name="subtopic" id="prices" ng-click="editFilter('prices');">&nbsp;Prices</p>
+                <p><input type="checkbox" name="subtopic" id="markets and trade" ng-click="editFilter('markets and trade');">&nbsp;Markets and Trade</p>
+                <p><input type="checkbox" name="subtopic" id="consumers" ng-click="editFilter('consumers');">&nbsp;Consumers</p>
                 </div>
-                <div ng-hide="$root.searchText || filters[0]" id="content" class="col-lg-2 col-md-2 col-sm-2 col-xs-2 list-group" style="padding-bottom:20px;">
-                    <div style="width:600px;">
-                        <h3>No results found.</h3>
-                        <h4>(Use the search bar or filters to find results)</h4>
-                    </div>
+
+                <p><input type="checkbox" name="topic" ng-model="technologyChecked" ng-click="editFilter('technology');"><font size="+1">&nbsp;Technology</font></p>
+                <div ng-show="technologyChecked" style="margin-left:10px;">
+                <p><input type="checkbox" name="subtopic" id="gmos" ng-click="editFilter('gmos');">&nbsp;GMOs</p>
+                <p><input type="checkbox" name="subtopic" id="automation" ng-click="editFilter('automation');">&nbsp;Automation</p>
+                <p><input type="checkbox" name="subtopic" id="production methods" ng-click="editFilter('production methods');">&nbsp;Production Methods</p>
+                <p><input type="checkbox" name="subtopic" id="computing" ng-click="editFilter('computing');">&nbsp;Computing</p>
+                </div>
+                
+                <p><input type="checkbox" name="topic" ng-model="developmentChecked" ng-click="editFilter('development');"><font size="+1">&nbsp;Development</font></p>
+                <div ng-show="developmentChecked" style="margin-left:10px;">
+                <p><input type="checkbox" name="subtopic" id="poverty" ng-click="editFilter('poverty');">&nbsp;Poverty</p>
+                <p><input type="checkbox" name="subtopic" id="hunger" ng-click="editFilter('hunger');">&nbsp;Hunger</p>
+                <p><input type="checkbox" name="subtopic" id="sustainability" ng-click="editFilter('sustainability');">&nbsp;Sustainability</p>
+                <p><input type="checkbox" name="subtopic" id="aid" ng-click="editFilter('aid');">&nbsp;Aid</p>
+                </div>
+
+                <p><input type="checkbox" name="topic" ng-model="environmentChecked" ng-click="editFilter('environment');"><font size="+1">&nbsp;Environment</font></p>
+                <div ng-show="environmentChecked" style="margin-left:10px;">
+                <p><input type="checkbox" name="subtopic" id="water" ng-click="editFilter('water');">&nbsp;Water</p>
+                <p><input type="checkbox" name="subtopic" id="pollution" ng-click="editFilter('pollution');">&nbsp;Pollution</p>
+                <p><input type="checkbox" name="subtopic" id="land" ng-click="editFilter('land');">&nbsp;Land</p>
+                <p><input type="checkbox" name="subtopic" id="climate" ng-click="editFilter('climate');">&nbsp;Climate</p>
                 </div>
             </div>
-            <div class="alert alert-warning text-center" data-ng-hide="!docs.$resolved || docs.length">
-            	No Docs yet, why don't you <a href="/#!/docs/create">create one</a>?
+            <div ng-show="$root.searchText || filters[0]" id="content" class="col-lg-10 col-md-10 col-sm-9 col-xs-12 list-group" style="padding-bottom:20px;">
+                <ul><!-- display documents in resizable boxes -->
+                    <li ng-repeat="doc in filteredDocs = (docs | filter: $root.searchText | filter: checkFilters)" class="col-md-6 col-sm-6 col-xs-12 col-lg-4 padding-15">
+                        <div class="resize_box">
+                            <div class="resize_box_content">
+                                <!-- display doc thumbnail and crop to fit -->
+                                <a ui-sref="docs.view({docId: doc._id})">
+                                <div class="cropped-image" style="background: url({{doc.thumbnail_image}}); background-size : 100% auto;">
+                                    <!-- insert text here to go inside the picture -->
+                                </div>
+                                </a>
+                                <!-- title and description are 105px tall -->
+                                <div style="padding-left: 10px; padding-right:10px;">
+                                    <h2 style="overflow:hidden; max-height:46px; margin-top: 15px; line-height:23px">
+                                        {{doc.title}}
+                                    </h2>
+                                    <p style="overflow:hidden; max-height:44px; margin: 0; line-height:22px">
+                                        <font color=#a6a6a6> {{ doc.description+ ', ' + x.type}} </font>
+                                    </p>
+                                </div>
+                            </div>
+                        <div>
+                    </li>
+                </ul>
+            <div ng-show="!filteredDocs.length" style="width:400px;">
+                <h3>No results found.</h3>
             </div>
+        <div ng-hide="$root.searchText || filters[0]" id="content" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 list-group" style="padding-bottom:20px;">
+            <div style="width:600px;">
+                <h3>No results found.</h3>
+                <h4>(Use the search bar or filters to find results)</h4>
+            </div>
+        </div>
+        <div class="alert alert-warning text-center" data-ng-hide="!docs.$resolved || docs.length">
+        	No Docs yet, why don't you <a href="/#!/docs/create">create one</a>?
         </div>
     </section>
 </section>

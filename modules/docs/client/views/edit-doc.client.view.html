@@ -1,4 +1,4 @@
-<section data-ng-controller="DocsController" data-ng-init="findOne()">
+<section class="container" data-ng-controller="DocsController" data-ng-init="findOne()">
     <div class="page-header">
         <h1>Edit Doc</h1>
     </div>
@@ -6,9 +6,33 @@
         <form class="form-horizontal" data-ng-submit="update()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
+                    <label class="control-label" for="title">Title</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="doc.name" id="name" class="form-control" placeholder="Name" required>
+                        <input type="text" data-ng-model="doc.title" id="title" class="form-control" placeholder="Title" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="description">Description</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="doc.description" id="description" class="form-control" placeholder="Description" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="url">Url</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="doc.url" id="url" class="form-control" placeholder="Url" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="type">Type</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="doc.type" id="type" class="form-control" placeholder="Type" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="thumbnail_image">Thumbnail</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="doc.thumbnail_image" id="thumbnail_image" class="form-control" placeholder="Thumbnail" required>
                     </div>
                 </div>
                 <div class="form-group">
