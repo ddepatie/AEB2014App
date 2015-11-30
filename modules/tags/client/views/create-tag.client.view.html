@@ -1,4 +1,4 @@
-<section data-ng-controller="TagsController">
+<section data-ng-controller="TagsController" data-ng-init="find()">
     <div class="page-header">
         <h1>New Tag</h1>
     </div>
@@ -9,6 +9,30 @@
                     <label class="control-label" for="name">Name</label>
                     <div class="controls">
                         <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                        <div class="form-group">
+                            <label class="control-label" for="topics">Topics</label>
+                            <div class="controls">
+                                <div ng-dropdown-multiselect="" options="getTopics" selected-model="selectedTopics" extra-settings="dropSettings" required></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <div ng-hide="selectedTopics.length" style="margin-top:10px">
+                            <span class="row">No topics selected.</span>
+                        </div>
+                        <div ng-show="selectedTopics.length" style="margin-top:10px">
+                            <p class="row">Topics selected:</p>
+                            <div class="row">
+                                <span ng-repeat="topic in selectedTopics" class="label label-primary"
+                                style="display: inline-block;">{{getTopicName(topic._id)}}<a href=""
+                                ng-click="removeTopic(topic._id)" class="glyphicon glyphicon-remove"
+                                style="color: white; padding-left: 2px;" aria-hidden="true"></a></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
