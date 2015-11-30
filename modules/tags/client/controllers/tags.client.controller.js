@@ -89,6 +89,7 @@ angular.module('tags').controller('TagsController', ['$scope', '$stateParams', '
 
 		// Find existing Tag
 		$scope.findOne = function() {
+			//TODO: view-html doesnt read object from database
 			$scope.tag = Tags.get({ 
 				tagId: $stateParams.tagId
 			});
