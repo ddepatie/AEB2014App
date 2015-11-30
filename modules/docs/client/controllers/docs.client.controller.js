@@ -233,7 +233,6 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		// Update existing Doc
 		$scope.update = function() {
 			var doc = $scope.doc ;
-			doc.viewCount += 1;
 			console.log(doc.viewCount);
 			doc.$update(function() {
 				$location.path('docs/' + doc._id);
@@ -242,17 +241,18 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			});
 
 		};
-		$scope.updateViewCount = function(){
-			var doc = $scope.doc ;
-			//var viewCount = $scope.viewCount;
-			doc.viewCount += 1;
-			console.log(doc.viewCount);
-			doc.$update(function() {
-				//$location.path('docs/' + doc._id);
-			}, function(errorResponse) {
-				//$scope.error = errorResponse.data.message;
-			});
-		};
+		// $scope.updateViewCount = function(){
+
+		// 	var doc = $scope.doc;
+		// 	//var viewCount = $scope.viewCount;
+		// 	doc.viewCount += 1;
+		// 	console.log("this is the docCOunt: " + doc.viewCount);
+		// 	doc.$update(function() {
+		// 		//$location.path('docs/' + doc._id);
+		// 	}, function(errorResponse) {
+		// 		//$scope.error = errorResponse.data.message;
+		// 	});
+		// };
 
 		// Find a list of Docs
 		$scope.find = function() {
@@ -268,7 +268,20 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			$scope.doc = Docs.get({ 
 				docId: $stateParams.docId
 			});
-			$scope.updateViewCount();
+
+		};
+		$scope.findOneView = function() {
+			$scope.doc = Docs.get({ 
+				docId: $stateParams.docId
+			});
+			$scope.doc.viewCount = $scope.doc.viewCount + 1;
+			console.log($scope.doc.viewCount);
+			$scope.doc.$update(function() {
+				// $location.path('docs/' + doc._id);
+				console.log($scope.doc);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
 
 		};
 	}
