@@ -12,6 +12,7 @@ module.exports = function(app) {
 	app.route('/api/docs/:docId').all(docsPolicy.isAllowed)
 		.get(docs.read)
 		.put(docs.update)
+		.put(docs.updateViewCount)
 		.delete(docs.delete);
 
 	// Finish by binding the Doc middleware

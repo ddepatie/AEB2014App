@@ -1,8 +1,9 @@
 <section>
   <div class="page-header">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4" ng-model="figureOutItemsToDisplay()">
         <h1>Users</h1>
+        <h1>Count: </h1><h1 ng-bind="filteredItems.length"></h1>
       </div>
       <div class="col-md-4" style="margin-top: 2em">
         <input class="form-control col-md-4" type="text" ng-model="search" placeholder="Search" ng-change="figureOutItemsToDisplay()" />

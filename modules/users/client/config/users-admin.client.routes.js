@@ -71,8 +71,8 @@ angular.module('users.admin.routes').config(['$stateProvider',
       })
       .state('admin.analytics', {
         url: '/analytics',
-        templateUrl: 'modules/core/client/views/analytics.client.view.html',
-        controller: 'AnalyticsController',
+        templateUrl: 'modules/users/client/views/admin/analytics.client.view.html',
+        controller: 'UserListController',
         resolve: {
           userResolve: ['$stateParams', 'Admin', function ($stateParams, Admin) {
             return Admin.get({

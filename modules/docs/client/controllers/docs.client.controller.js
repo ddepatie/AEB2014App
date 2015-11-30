@@ -65,7 +65,9 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				$scope.error = errorResponse.data.message;
 			});
 		};
-
+		Docs.query(function (data){
+      		$scope.thesedocs = data;
+      	 });
 		// Used to add/remove filters on search results page
 		$scope.editFilter = function( str ) {
 
@@ -257,6 +259,11 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		$scope.findOne = function() {
 			$scope.doc = Docs.get({ 
 				docId: $stateParams.docId
+			});
+			$scope.doc.$scope.update({
+				$inc: {
+					viewCount: 1
+				}
 			});
 		};
 	}

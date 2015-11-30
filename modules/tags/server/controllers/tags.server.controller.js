@@ -15,7 +15,7 @@ var _ = require('lodash'),
 exports.create = function(req, res) {
 	var tag = new Tag(req.body);
 	tag.user = req.user;
-
+	
 	tag.save(function(err) {
 		if (err) {
 			return res.status(400).send({

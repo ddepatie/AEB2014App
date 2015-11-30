@@ -5,7 +5,7 @@ angular.module('core')
   	function ($scope, Authentication, Topics, Tags, Analytics, Announcements) {
     	// This provides Authentication context.
     	$scope.authentication = Authentication;
-
+    
         /*$scope.tags = Tags.query(function() {
             console.log($scope.tags);
         });
