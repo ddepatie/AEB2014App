@@ -50,7 +50,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				$scope.description = '';
 				$scope.type = '';
 				$scope.url = '';
-				$scope.tags = '';
+				$scope.selectedTags = [];
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

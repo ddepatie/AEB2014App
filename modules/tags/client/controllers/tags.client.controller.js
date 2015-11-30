@@ -1,23 +1,54 @@
 'use strict';
 
 // Tags controller
-angular.module('tags').controller('TagsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Tags',
-	function($scope, $stateParams, $location, Authentication, Tags ) {
+angular.module('tags').controller('TagsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Topics','Tags',
+	function($scope, $stateParams, $location, Authentication, Topics,Tags ) {
 		$scope.authentication = Authentication;
+
+		//Settings for dropdown menu
+		$scope.dropSettings = {
+    		scrollableHeight: '300px',
+    		scrollable: true,
+    		displayProp: 'topic',
+    		idProp: '_id',
+    		externalIdProp: '_id'
+		};
+		//Topics selected from dropdowm menu
+		$scope.selectedTopics = [];
+
+		$scope.getTopicName = function(topicId){
+			for (var i = $scope.getTopics.length - 1; i >= 0; i--) {
+				if($scope.getTopics[i]._id === topicId){
+					return $scope.getTopics[i].topic;
+				}
+			}
+		};
+
+		$scope.removeTopic = function(topicId){
+			//This method removes selected topic with givenID from array selectedTags.
+			for (var i = $scope.selectedTopics.length - 1; i >= 0; i--) {
+				if($scope.selectedTopics[i]._id === topicId){
+					$scope.selectedTopics.splice(i, 1);
+					break;
+				}
+			}
+		};
 
 		// Create new Tag
 		$scope.create = function() {
 			// Create new Tag object
 			var tag = new Tags ({
-				name: this.name
+				tag: this.name,
+				topicID: $scope.selectedTopics
 			});
 
 			// Redirect after save
 			tag.$save(function(response) {
-				$location.path('tags/' + response._id);
+				$location.path('admin/tags/' + response._id);
 
 				// Clear form fields
 				$scope.name = '';
+				$scope.selectedTopics = [];
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -53,6 +84,7 @@ angular.module('tags').controller('TagsController', ['$scope', '$stateParams', '
 		// Find a list of Tags
 		$scope.find = function() {
 			$scope.tags = Tags.query();
+			$scope.getTopics = Topics.query();
 		};
 
 		// Find existing Tag
