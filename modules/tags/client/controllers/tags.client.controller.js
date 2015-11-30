@@ -47,7 +47,7 @@ angular.module('tags').controller('TagsController', ['$scope', '$stateParams', '
 				$location.path('admin/tags/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.tag = '';
 				$scope.selectedTopics = [];
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
@@ -65,7 +65,7 @@ angular.module('tags').controller('TagsController', ['$scope', '$stateParams', '
 				}
 			} else {
 				$scope.tag.$remove(function() {
-					$location.path('tags');
+					$location.path('/admin/tags');
 				});
 			}
 		};
@@ -75,7 +75,7 @@ angular.module('tags').controller('TagsController', ['$scope', '$stateParams', '
 			var tag = $scope.tag ;
 
 			tag.$update(function() {
-				$location.path('tags/' + tag._id);
+				$location.path('/admin/tags/' + tag._id);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
