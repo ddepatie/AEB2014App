@@ -10,10 +10,10 @@
 				by
 				<span data-ng-bind="tag.user.displayName"></span>
 			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="tag.name"></h4>
+			<h4 class="list-group-item-heading" data-ng-bind="tag.tag"></h4>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!tags.$resolved || tags.length">
-    	No Tags yet, why don't you <a href="/#!/tags/create">create one</a>?
+    	No Tags yet, why don't you <a href="/admin/tags/create">create one</a>?
     </div>
 </section>
