@@ -24,9 +24,9 @@ angular.module('feedback').config(['$stateProvider',
 		state('feedback.view', {
 			url: '/:feedbackId',
 			templateUrl: 'modules/feedback/client/views/view-feedback.client.view.html',
-			data: {
+		/*	data: {
 							roles: ['admin']
-					}
+					}*/
 		}).
 		state('feedback.edit', {
 			url: '/:feedbackId/edit',

@@ -13,7 +13,8 @@ angular.module('feedback').run(['Menus',
 		// Add the dropdown list item
 		Menus.addSubMenuItem('topbar', 'feedback', {
 			title: 'List Feedback',
-			state: 'feedback.list'
+			state: 'feedback.list',
+			roles: ['admin']
 		});
 
 		Menus.addSubMenuItem('topbar', 'feedback', {
