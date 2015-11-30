@@ -76,6 +76,10 @@ h3 {
     padding-top: 100px;
   }
 
+  #search-bar {
+    display: block;
+  }
+
   #search-reveal {
     display: none;
   }
