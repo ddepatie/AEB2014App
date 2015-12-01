@@ -9,34 +9,34 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Tags Permissions
+ * Invoke Feedback Permissions
  */
 exports.invokeRolesPolicies = function() {
 	acl.allow([{
 		roles: ['admin'],
 		allows: [{
-			resources: '/api/tags',
+			resources: '/api/feedback',
 			permissions: '*'
 		}, {
-			resources: '/api/tags/:tagId',
+			resources: '/api/feedback/:feedbackId',
 			permissions: '*'
 		}]
 	}, {
 		roles: ['user'],
 		allows: [{
-			resources: '/api/tags',
+			resources: '/api/feedback',
 			permissions: ['get', 'post']
 		}, {
-			resources: '/api/tags/:tagId',
+			resources: '/api/feedback/:feedbackId',
 			permissions: ['get']
 		}]
 	}, {
 		roles: ['guest'],
 		allows: [{
-			resources: '/api/tags',
+			resources: '/api/feedback',
 			permissions: ['get']
 		}, {
-			resources: '/api/tags/:tagId',
+			resources: '/api/feedback/:feedbackId',
 			permissions: ['get']
 		}]
 	}]);
@@ -48,8 +48,8 @@ exports.invokeRolesPolicies = function() {
 exports.isAllowed = function(req, res, next) {
 	var roles = (req.user) ? req.user.roles : ['guest'];
 
-	// If an tag is being processed and the current user created it then allow any manipulation
-	if (req.tag === req.user.id) {
+	// If feedback is being processed and the current user created it then allow any manipulation
+	if (req.feedback && req.user && req.feedback.user.id === req.user.id) {
 		return next();
 	}
 
