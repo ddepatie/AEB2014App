@@ -6,95 +6,91 @@
 var _ = require('lodash'),
 	path = require('path'),
 	mongoose = require('mongoose'),
-	Tag = mongoose.model('Tag'),
+	Feedback = mongoose.model('Feedback'),
 	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
- * Create a Tag
+ * Create Feedback
  */
 exports.create = function(req, res) {
-	var tag = new Tag(req.body);
-<<<<<<< HEAD
-	tag.user = req.user;
-	
-=======
+	var feedback = new Feedback(req.body);
+	feedback.user = req.user;
 
->>>>>>> 2b3efe014430ca409fc91d2fe80b59d33cbdf36e
-	tag.save(function(err) {
+	feedback.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(tag);
+			res.jsonp(feedback);
 		}
 	});
 };
 
 /**
- * Show the current Tag
+ * Show the current Feedback
  */
 exports.read = function(req, res) {
-	res.jsonp(req.tag);
+	res.jsonp(req.feedback);
 };
 
 /**
- * Update a Tag
+ * Update Feedback
  */
 exports.update = function(req, res) {
-	var tag = req.tag ;
+	var feedback = req.feedback ;
 
-	tag = _.extend(tag , req.body);
+	feedback = _.extend(feedback , req.body);
 
-	tag.save(function(err) {
+	feedback.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(tag);
+			res.jsonp(feedback);
 		}
 	});
 };
 
 /**
- * Delete an Tag
+ * Delete Feedback
  */
 exports.delete = function(req, res) {
-	var tag = req.tag ;
+	var feedback = req.feedback ;
 
-	tag.remove(function(err) {
+	feedback.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(tag);
+			res.jsonp(feedback);
 		}
 	});
 };
 
 /**
- * List of Tags
+ * List of Feedback
  */
-exports.list = function(req, res) { Tag.find().sort('-created').populate('user', 'displayName').exec(function(err, tags) {
+exports.list = function(req, res) { Feedback.find().sort('-created').populate('user', 'displayName').exec(function(err, feedback) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(tags);
+			res.jsonp(feedback);
 		}
 	});
 };
 
 /**
- * Tag middleware
+ * Feedback middleware
  */
-exports.tagByID = function(req, res, next, id) { Tag.findById(id).populate('user', 'displayName').exec(function(err, tag) {
+exports.feedbackByID = function(req, res, next, id) { Feedback.findById(id).populate('user', 'displayName').exec(function(err, feedback) {
 		if (err) return next(err);
-		if (! tag) return next(new Error('Failed to load Tag ' + id));
-		req.tag = tag ;
+		if (! feedback) return next(new Error('Failed to load Feedback ' + id));
+		req.feedback = feedback ;
 		next();
 	});
 };
