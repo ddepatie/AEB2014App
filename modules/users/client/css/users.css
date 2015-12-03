@@ -48,3 +48,7 @@
     font-size: 24px;
     color: #101010;
 }
+.awesome-font {
+  font-family: Century Gothic, sans-serif;
+  font-weight: 500; 
+}
