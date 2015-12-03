@@ -14,12 +14,12 @@ var _ = require('lodash'),
  */
 exports.create = function(req, res) {
 	var tag = new Tag(req.body);
-<<<<<<< HEAD
+
 	tag.user = req.user;
 	
-=======
 
->>>>>>> 2b3efe014430ca409fc91d2fe80b59d33cbdf36e
+
+
 	tag.save(function(err) {
 		if (err) {
 			return res.status(400).send({
