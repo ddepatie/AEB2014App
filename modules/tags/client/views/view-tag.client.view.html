@@ -1,8 +1,8 @@
 <section data-ng-controller="TagsController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1 data-ng-bind="tag.tag"></h1>
+		<h1 class="awesome-font" data-ng-bind="tag.tag"></h1>
 	</div>
-	<div class="pull-right" data-ng-show="authentication.user._id == tag.user._id">
+	<div class="pull-right" data-ng-show="authentication.user.roles[1] == 'admin'">
 		<a class="btn btn-primary" href="/admin/tags/{{tag._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
@@ -11,11 +11,4 @@
 		</a>
 	</div>
 	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="tag.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="tag.user.displayName"></span>
-		</em>
-	</small>
 </section>

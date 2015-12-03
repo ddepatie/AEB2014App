@@ -1,11 +1,11 @@
 <section data-ng-controller="DocsController" data-ng-init="find()">
     <div class="page-header">
-        <h1>Search Results</h1>
+        <h1 class="awesome-font">Search Results</h1>
     </div>
     <div class="visible-xs-block" style="margin-left:40px; float:left; height:10px">
     </div>
     <section id="categories">
-            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12" style="padding-bottom:20px; padding-left:30px;"> 
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 awesome-font" style="padding-bottom:20px; padding-left:30px;"> 
                 <p style="padding-bottom:4px"><font size="5">Filters</font></p>
                 <p><input type="checkbox" name="topic" ng-model="healthChecked" ng-click="editFilter('health');"><font size="+1">&nbsp;Health</font></p>
                 <div ng-show="healthChecked" style="margin-left:10px;">
@@ -59,12 +59,12 @@
                                 </div>
                                 </a>
                                 <!-- title and description are 105px tall -->
-                                <div style="padding-left: 10px; padding-right:10px;">
+                                <div style="padding-left: 10px; padding-right:10px; border-top: 3px solid #101010;">
                                     <h2 style="overflow:hidden; max-height:46px; margin-top: 15px; line-height:23px">
                                         {{doc.title}}
                                     </h2>
                                     <p style="overflow:hidden; max-height:44px; margin: 0; line-height:22px">
-                                        <font color=#a6a6a6> {{ doc.description+ ', ' + x.type}} </font>
+                                        <font> {{ doc.description+ ', ' + x.type}} </font>
                                     </p>
                                 </div>
                             </div>

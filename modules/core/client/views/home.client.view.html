@@ -1,44 +1,51 @@
 <div class="container" ng-controller="AnnouncementsController" ng-init="find()" style="padding: 0px;">
+  
+  <section id="header">
+      <div class="header-img textCenter">
+        <h1 class="header-text" style="padding-top:28px">EPIC APP SAUCE</h1>
+      </div>
+  </section>
+
   <section id="categories" data-ng-controller="AnnouncementsController" style="margin-top:25px">
     <div class="container">
       <div class="row">
         <div id="cat1" class="category">
           <a href="/results/1" style="text-decoration: none;">
             <div style="height:100%">
-              <center><i class="fa fa-heartbeat fa-5x" style="color:white"></i></center>
-              <h3 class="textCenter">Health</h3>
+              <center><i class="fa fa-heartbeat fa-5x" style="color:#101010"></i></center>
+              <h3 class="textCenter awesome-font" style="color:#101010">Health</h3>
             </div>
           </a>
         </div>
         <div id="cat2" class="category">
           <a href="/results/2" style="text-decoration: none;">
             <div style="height:100%">
-              <center><i class="fa fa-line-chart fa-5x" style="color:white"></i></center>
-              <h3 class="textCenter">Economy</h3>
+              <center><i class="fa fa-line-chart fa-5x" style="color:#101010"></i></center>
+              <h3 class="textCenter awesome-font" style="color:#101010">Economy</h3>
             </div>
           </a>
         </div>
         <div id="cat3" class="category">
           <a href="/results/3" style="text-decoration: none;">
             <div style="height:100%">
-              <center><i class="fa fa-laptop fa-5x" style="color:white"></i></center>
-              <h3 class="textCenter">Technology</h3>
+              <center><i class="fa fa-laptop fa-5x" style="color:#101010"></i></center>
+              <h3 class="textCenter awesome-font" style="color:#101010">Technology</h3>
             </div>
           </a>
         </div>
         <div id="cat4" class="category">
           <a href="/results/4" style="text-decoration: none;">
             <div style="height:100%">
-              <center><i class="fa fa-users fa-5x" style="color:white"></i></center>
-              <h3 class="textCenter">Development</h3>
+              <center><i class="fa fa-users fa-5x" style="color:#101010"></i></center>
+              <h3 class="textCenter awesome-font" style="color:#101010">Development</h3>
             </div>
           </a>
         </div>
         <div id="cat5" class="category">
           <a href="/results/5" style="text-decoration: none;">
             <div style="height:100%">
-              <center><i class="fa fa-tree fa-5x" style="color:white"></i></center>
-              <h3 class="textCenter">Environment</h3>
+              <center><i class="fa fa-tree fa-5x" style="color:#101010"></i></center>
+              <h3 class="textCenter awesome-font" style="color:#101010">Environment</h3>
             </div>
           </a>
         </div>
@@ -48,18 +55,18 @@
   <br>
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-      <section id="about" class="well well-sm bottMargin" ng-controller="AboutsController">
-        <h2 class="page-header textCenter" style="font-size:180%">About</h2>
+      <section id="about" class="well well-sm bottMargin" ng-controller="AboutsController" style="border-color:#c1c1c1;">
+        <h2 class="page-header textCenter awesome-font" style="font-size:180%; border-bottom:3px solid #c1c1c1">About</h2>
         <img ng-src="{{abouts[0].imageUrl}}" class="img-rounded" align="left" style="padding: 0px 15px; width: 150px;">
         <p class="text-center text-justify" ng-bind="abouts[0].text"></p>
       </section>
     </div>
 
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-      <section id="announcements" class="well well-sm bottMargin">
-        <h2 class="page-header textCenter" style="font-size:180%">Announcements</h2>
+      <section id="announcements" class="well well-sm bottMargin" style="border-color:#c1c1c1;">
+        <h2 class="page-header textCenter awesome-font" style="font-size:180%; border-bottom:3px solid #c1c1c1">Announcements</h2>
         <div class="list-group pre-scrollable">
-          <a data-ng-repeat="announcement in announcements" data-ng-href="/#!/announcements/{{announcement._id}}" class="list-group-item">
+          <a data-ng-repeat="announcement in announcements" data-ng-href="/#!/announcements/{{announcement._id}}" class="list-group-item" style="background-color:#cecece">
             <h4 class="list-group-item-heading" data-ng-bind="announcement.title"></h4>
             <p class="list-group-item-text" ng-bind="announcement.text"></p>
             <small class="list-group-item-text">
@@ -74,20 +81,20 @@
     </div>
   </div>
 
-  <section id="contact" class="well well-sm bottMargin" ng-controller="ContactsController">
-    <h2 class="page-header textCenter" style="font-size:180%">Contact</h2>
+  <section id="contact" class="well well-sm bottMargin" ng-controller="ContactsController" style="border-color:#c1c1c1;">
+    <h2 class="page-header textCenter awesome-font" style="font-size:180%; border-bottom:3px solid #c1c1c1">Contact</h2>
     <p class="textCenter" ng-bind="contacts[0].text"></p>
     <div class="row textCenter">
       <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <a href="https://www.facebook.com/fred.ifas.ufl"><i class="fa fa-facebook fa-3x"></i></a>
+        <a href="https://www.facebook.com/fred.ifas.ufl"><i class="fa fa-facebook fa-3x" style="color:#c1c1c1"></i></a>
       </div>
       <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <a href="https://twitter.com/UF_IFAS_FRED"><i class="fa fa-twitter fa-3x"></i></a>
+        <a href="https://twitter.com/UF_IFAS_FRED"><i class="fa fa-twitter fa-3x" style="color:#c1c1c1"></i></a>
       </div>
       <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <a href="https://www.youtube.com/user/IFASVideo"><i class="fa fa-youtube-play fa-3x"></i></a>
+        <a href="https://www.youtube.com/user/IFASVideo"><i class="fa fa-youtube-play fa-3x" style="color:#c1c1c1"></i></a>
       </div>
-      <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+      <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="margin-top:4px">
         <a href="http://fred.ifas.ufl.edu/news/giving-to-fre/"><img src="http://fred.ifas.ufl.edu/media/ifasufledu/rec/images/give3.png" alt="Give icon"></a>
       </div>
     </div>

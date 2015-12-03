@@ -1,11 +1,11 @@
 <section class="container" data-ng-controller="DocsController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1 data-ng-bind="doc.title"></h1>
+		<h1 class="awesome-font" data-ng-bind="doc.title"></h1>
 	</div>
 	<div ng-switch on="doc.type">
 		<!-- google powerpoint/document/pdf viewer -->
 		<div ng-switch-when="ppt/pptx">
-			<iframe ng-src="{{'http://docs.google.com/gview?url='+ doc.url +'&embedded=true' | trustAsResourceUrl}}" class="col-md-10 col-lg-11 col-xs-12 col-sm-10" style="height:500px" frameborder="0"></iframe>
+			<iframe ng-src="{{'http://docs.google.com/gview?url='+ doc.url +'&embedded=true' | trustAsResourceUrl}}" class="col-md-10 col-lg-10 col-xs-12 col-sm-10" style="height:500px" frameborder="0"></iframe>
 		</div>
 		<!-- TODO prezi embedding -->
 		<div ng-switch-when="prezi">
@@ -45,5 +45,8 @@
 				<i class="glyphicon glyphicon-trash"></i>
 			</a>
 		</div>
+	</div>
+	<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="margin-top:20px; padding-top:10px; border-top: 2px solid #eee">
+		<p>{{doc.description}}</p>
 	</div>
 </section>

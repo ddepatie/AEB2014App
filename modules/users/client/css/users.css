@@ -34,3 +34,21 @@
   min-height: 150px;
   max-height: 150px;
 }
+.auth-text {
+    font-family: Century Gothic, sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    font-size: 44px;
+    color: #101010;
+}
+.auth-desc {
+    font-family: Century Gothic, sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    font-size: 24px;
+    color: #101010;
+}
+.awesome-font {
+  font-family: Century Gothic, sans-serif;
+  font-weight: 500; 
+}
