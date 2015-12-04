@@ -50,6 +50,7 @@ angular.module('users.admin').controller('UserListController', ['$scope', '$stat
       var end = begin + $scope.itemsPerPage;
       $scope.pagedItems = $scope.filteredItems.slice(begin, end);
     };
+    
 
     $scope.pageChanged = function () {
       $scope.figureOutItemsToDisplay();
