@@ -1,31 +1,7 @@
-<section class="container" data-ng-controller="DocsController" data-ng-init="findOneView()">
+<section class="container" data-ng-controller="DocsController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 class="awesome-font" data-ng-bind="doc.title"></h1>
 	</div>
-	
-	<!--><div ng-controller="SavedDocsController as sdCtrl" style="float:right" ng-show="authentication.user" ng-init="find()">
-		<a class="btn btn-primary" ng-hide="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.create(doc._id, doc.title, doc.description, doc.type, doc.url, doc.thumbnail_image, doc.tags)">
-			Save
-			<i class="glyphicon glyphicon-plus" style="padding-left:5px;"></i>
-		</a>
-		<a class="btn btn-primary" ng-show="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.removeByDocId(authentication.user._id, doc._id)">
-			Unsave
-			<i class="glyphicon glyphicon-remove" style="padding-left:5px;"></i>
-		</a>
-		<div data-ng-show="authentication.user._id == doc.user._id || authentication.user.roles[1] == 'admin'" style="padding-top:10px; padding-bottom:8px">
-			<a class="btn btn-primary" href="/#!/docs/{{doc._id}}/edit">
-				Edit &nbsp;
-				<i class="glyphicon glyphicon-edit"></i>
-			</a>
-		</div>
-		<div data-ng-show="authentication.user._id == doc.user._id || authentication.user.roles[1] == 'admin'">
-			<a class="btn btn-primary" data-ng-click="remove();">
-				Delete &nbsp;
-				<i class="glyphicon glyphicon-trash"></i>
-			</a>
-		</div>
-	</div>
-	-->
 	<div ng-switch on="doc.type">
 		<!-- google powerpoint/document/pdf viewer -->
 		<div ng-switch-when="ppt/pptx">
@@ -54,7 +30,6 @@
 	</div>
 	<div class="visible-xs-block" style=" width:100%; float:left; height:30px">
 	</div>
-
 	<div ng-controller="SavedDocsController as sdCtrl" style="float:left" ng-show="authentication.user" ng-init="find()">
 		<a class="btn btn-primary" ng-hide="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.create(doc._id, doc.title, doc.description, doc.type, doc.url, doc.thumbnail_image, doc.tags)">
 			Save

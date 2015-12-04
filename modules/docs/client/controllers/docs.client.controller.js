@@ -294,21 +294,5 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				docId: $stateParams.docId
 			});
 		};
-		$scope.findOneView = function() {
-			$scope.doc = Docs.get({ 
-				docId: $stateParams.docId
-			});
-
-			/*$scope.docId.viewCount = $scope.docId.viewCount + 1;
-			console.log($scope.docId.viewCount);
-			$scope.doc.$update(function() {
-				// $location.path('docs/' + doc._id);
-				console.log($scope.doc);
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-*/
-
-		};
 	}
 ]);
