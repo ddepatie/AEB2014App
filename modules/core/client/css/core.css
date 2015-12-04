@@ -14,7 +14,7 @@ h3 {
 
 @media (min-width: 1px){
   #header {
-    margin-top: 15px;
+    margin-top: 30px;
   }
 
   .category {
@@ -250,4 +250,16 @@ video {
 .awesome-font {
   font-family: Century Gothic, sans-serif;
   font-weight: 500; 
+}
+
+@media (min-width: 1309px) {
+  .hideOn1308 {
+    display: block;
+  }
+}
+
+@media (max-width: 1308px) {
+  .hideOn1308 {
+    display: none;
+  }
 }
