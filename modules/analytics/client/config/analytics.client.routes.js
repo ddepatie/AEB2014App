@@ -4,7 +4,7 @@
 angular.module('analytics').config(['$stateProvider',
 	function($stateProvider) {
 		// Analytics state routing
-		$stateProvider.
+/*		$stateProvider.
 		state('analytics', {
 			abstract: true,
 			url: '/analytics',
@@ -25,6 +25,6 @@ angular.module('analytics').config(['$stateProvider',
 		state('analytics.edit', {
 			url: '/:analyticId/edit',
 			templateUrl: 'modules/analytics/client/views/edit-analytic.client.view.html'
-		});
+		});*/
 	}
 ]);
