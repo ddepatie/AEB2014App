@@ -59,17 +59,17 @@ exports.updateViewCount = function(req, res){
 	var doc = req.doc ;
 	doc = _.extend(doc, req.body);
 	var viewCount = req.doc.viewCount;
-	doc.save(function(err){
-		if(err) {
+	req.doc.viewCount(function(err, post){
+		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
-		}
-		else{
-			
-			res.jsonp(doc);
-		}
+		}else{
+
+    res.json(doc);
+  }
 	});
+	
 };
 
 /**

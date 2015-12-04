@@ -1,11 +1,11 @@
 <section data-ng-controller="DocsController" data-ng-init="find()">
     <div class="page-header">
-        <h1>Search Results</h1>
+        <h1 class="awesome-font">Search Results</h1>
     </div>
     <div class="visible-xs-block" style="margin-left:40px; float:left; height:10px">
     </div>
     <section id="categories">
-            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12" style="padding-bottom:20px; padding-left:30px;"> 
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 awesome-font" style="padding-bottom:20px; padding-left:30px;"> 
                 <p style="padding-bottom:4px"><font size="5">Filters</font></p>
                 <p><input type="checkbox" name="topic" ng-model="healthChecked" ng-click="editFilter('health');"><font size="+1">&nbsp;Health</font></p>
                 <div ng-show="healthChecked" style="margin-left:10px;">
@@ -50,6 +50,7 @@
             <div ng-show="$root.searchText || filters[0]" id="content" class="col-lg-10 col-md-10 col-sm-9 col-xs-12 list-group" style="padding-bottom:20px;">
                 <ul><!-- display documents in resizable boxes -->
                     <li ng-repeat="doc in filteredDocs = (docs | filter: $root.searchText | filter: checkFilters)" class="col-md-6 col-sm-6 col-xs-12 col-lg-4 padding-15">
+                    <span ng-click="incrementViewCount(doc)">
                         <div class="resize_box">
                             <div class="resize_box_content">
                                 <!-- display doc thumbnail and crop to fit -->
@@ -69,6 +70,7 @@
                                 </div>
                             </div>
                         <div>
+                        </span>
                     </li>
                 </ul>
             <div ng-show="!filteredDocs.length" style="width:400px;">

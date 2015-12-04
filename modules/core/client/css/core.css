@@ -263,3 +263,8 @@ video {
     font-size: 44px;
     color: #c1c1c1;
 }
+
+.awesome-font {
+  font-family: Century Gothic, sans-serif;
+  font-weight: 500; 
+}

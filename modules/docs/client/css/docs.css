@@ -34,3 +34,8 @@ ul {
 h2 {
 font-size: 18px;
 }
+
+.awesome-font {
+  font-family: Century Gothic, sans-serif;
+  font-weight: 500; 
+}
