@@ -12,7 +12,8 @@
       </div>
       <div class="list-group">
         <ul><!-- display documents in resizable boxes -->
-            <li ng-repeat="doc in docsFiltered = (docs | filter: $root.searchText | filter: checkFilters)" class="col-md-6 col-sm-4 col-xs-12 col-lg-3 padding-15">
+            <li ng-repeat="doc in docsFiltered = (docs | filter: $root.searchText | filter: checkFilters | orderBy:'viewCount':true)" class="col-md-6 col-sm-4 col-xs-12 col-lg-3 padding-15">
+            <span ng-click="incrementViewCount(doc)">
                 <div class="resize_box">
                     <div class="resize_box_content">
                         <!-- display doc thumbnail and crop to fit -->
@@ -31,7 +32,8 @@
                             </p>
                         </div>
                     </div>
-                <div>
+                
+                </span>
             </li>
         </ul>
     </div>
