@@ -12,6 +12,8 @@ h3 {
 
 
 
+/* Category and header sizing */
+
 @media (min-width: 1px){
   #header {
     margin-top: 30px;
@@ -178,17 +180,6 @@ a:hover .header-profile-image {
   margin-bottom: 20px;
 }
 
-video {
-  z-index: -1;
-  overflow: hidden;
-  min-width: 100% !important;
-}
-
-.video-text {
-  z-index: 1;
-  color: #c1c1c1;
-}
-
 #footer-divider {
   background-color: #FF4A00;
   width: 100%;
@@ -224,11 +215,6 @@ video {
 #cat5 {
   background-color: #06425C;
 }
-
-#cat-title {
-  margin-top: -125px;
-  text-align: center;
-}
 .social-media-icon {
   color: black;
 }
@@ -251,6 +237,8 @@ video {
   font-family: Century Gothic, sans-serif;
   font-weight: 500; 
 }
+
+/* this was added to ensure the navbar didn't double in size*/
 
 @media (min-width: 1309px) {
   .hideOn1308 {
