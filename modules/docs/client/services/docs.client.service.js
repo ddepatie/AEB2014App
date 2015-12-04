@@ -24,8 +24,6 @@ angular.module('analytics').factory('Service', ['Analytics',
 
 						// Redirect after save
 						analytic.$save(function(response) {
-							console.log("Created");
-							// Clear form fields
 						});
 					}
 	};

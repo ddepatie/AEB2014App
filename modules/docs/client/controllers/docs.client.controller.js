@@ -269,8 +269,14 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		$scope.findOne = function() {
 			$scope.doc = Docs.get({
 				docId: $stateParams.docId
-			}).$promise.then(function(doc){
-				Service.create(doc);
+			});			
+		};
+
+		$scope.findOne2 = function() {
+			$scope.doc2 = Docs.get({
+				docId: $stateParams.docId
+			}).$promise.then(function(doc2){
+				Service.create(doc2);
 			});			
 		};
 
