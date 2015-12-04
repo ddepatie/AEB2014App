@@ -7,11 +7,11 @@ angular.module('core').controller('HeaderController', ['$scope','$rootScope', '$
     $scope.authentication = Authentication;
     $rootScope.searchText = undefined;
     $scope.tags = Tags.query(function() {
-            console.log($scope.tags);
+            //console.log($scope.tags);
 
     });
     $scope.topics = Topics.query(function() {
-            console.log($scope.topics);
+            //console.log($scope.topics);
 
     });
 
