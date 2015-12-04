@@ -214,6 +214,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			}						
 		};
 
+		//called when 'x' is clicked
 		$scope.removeTag = function(tagId){
 			//This methoed removes selected tag with givenID from array selectedTags.
 			for (var i = $scope.selectedTags.length - 1; i >= 0; i--) {

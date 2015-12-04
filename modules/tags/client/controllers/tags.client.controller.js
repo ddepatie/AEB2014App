@@ -16,6 +16,7 @@ angular.module('tags').controller('TagsController', ['$scope', '$stateParams', '
 		//Topics selected from dropdowm menu
 		$scope.selectedTopics = [];
 
+		//function need for dropdown select dependency
 		$scope.getTopicName = function(topicId){
 			for (var i = $scope.getTopics.length - 1; i >= 0; i--) {
 				if($scope.getTopics[i]._id === topicId){
@@ -24,6 +25,7 @@ angular.module('tags').controller('TagsController', ['$scope', '$stateParams', '
 			}
 		};
 
+		//called when 'x' is clicke on topic
 		$scope.removeTopic = function(topicId){
 			//This method removes selected topic with givenID from array selectedTags.
 			for (var i = $scope.selectedTopics.length - 1; i >= 0; i--) {
