@@ -9,8 +9,8 @@ angular.module('docs')
 }]);
 
 // Docs controller
-angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$stateParams', '$location', 'Authentication', 'Docs', 'Tags',
-	function($scope, $rootScope, $stateParams, $location, Authentication, Docs, Tags ) {
+angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$stateParams', '$location', 'Authentication', 'Docs', 'Tags', 'Analytics', 'Service',
+	function($scope, $rootScope, $stateParams, $location, Authentication, Docs, Tags, Analytics, Service ) {
 		$scope.authentication = Authentication;
 		$scope.filters = [];
 		$scope.total = 0;
@@ -265,6 +265,15 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			$scope.getTags = Tags.query();
 		};
 
+		// Find existing Doc
+		$scope.findOne = function() {
+			$scope.doc = Docs.get({
+				docId: $stateParams.docId
+			}).$promise.then(function(doc){
+				Service.create(doc);
+			});			
+		};
+
 		$scope.incrementViewCount = function(doc){
 
 			doc.viewCount += 1;
@@ -286,12 +295,6 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				$scope.selectedTags = [];
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
-			});
-		};
-		// Find existing Doc
-		$scope.findOne = function() {
-			$scope.doc = Docs.get({ 
-				docId: $stateParams.docId
 			});
 		};
 	}
