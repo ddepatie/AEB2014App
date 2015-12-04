@@ -1,12 +1,12 @@
 @media (max-width: 767px) {
-  #video-header {
-    margin-top: 30px;
+  #header {
+    margin-top: 10px;
   }
 
   .category {
     height: 150px;
     width: 100%;
-    color: white;
+    color: #101010;
     padding-top: 100px;
   }
 
@@ -20,24 +20,24 @@ body {
 }
 
 center {
-  color:#DDDDDD;
+  color:#c1c1c1;
 }
 
 h3 {
-  color:#DDDDDD;
+  color:#c1c1c1;
 }
 
 
 
 @media (min-width: 1px){
-  #video-header {
-    margin-top: 75px;
+  #header {
+    margin-top: 15px;
   }
 
   .category {
     height: 250px;
     width: 100%;
-    color: white;
+    color: #101010;
     padding-top: 70px;
   }
 
@@ -47,14 +47,14 @@ h3 {
 }
 
 @media (min-width: 768px){
-  #video-header {
-    margin-top: 75px;
+  #header {
+    margin-top: 20px;
   }
 
   .category {
     height: 250px;
     width: 100%;
-    color: white;
+    color: #101010;
     padding-top: 70px;
   }
 
@@ -64,15 +64,15 @@ h3 {
 }
 
 @media (min-width: 980px) {
-  #video-header {
-    margin-top: 120px;
+  #header {
+    margin-top: 25px;
   }
 
   .category {
     float: left;
     height: 300px;
     width: 20%;
-    color: white;
+    color: #101010;
     padding-top: 100px;
   }
 
@@ -96,14 +96,15 @@ h3 {
 
 
 @media (min-width: 1200px) {
-  #video-header {
-    margin-top: 120px;
+  #header {
+    margin-top: 30px;
+    padding-right:20px;
   }
 
   .category {
     height: 300px;
     width: 20%;
-    color: white;
+    color: #101010;
     padding-top: 100px;
   }
 
@@ -176,17 +177,17 @@ a:hover .header-profile-image {
 }
 
 #about {
-  background-color: #B2C9E2;
+  background-color: #c98f85;
   background-image: none;
 }
 
 #announcements {
-  background-color: #B2C9E2;
+  background-color: #c98f85;
   background-image: none;
 }
 
 #contact {
-  background-color: #B2C9E2;
+  background-color: #c98f85;
   background-image: none;
 }
 
@@ -202,7 +203,7 @@ video {
 
 .video-text {
   z-index: 1;
-  color: white;
+  color: #c1c1c1;
 }
 
 #footer-divider {
@@ -247,4 +248,23 @@ video {
 }
 .social-media-icon {
   color: black;
+}
+
+.header-img {
+  background-image: url("https://farm1.staticflickr.com/280/19088038082_c11bac5e85_o.jpg");
+  height: 400px;
+  width: 1170px;
+}
+
+.header-text {
+    font-family: Century Gothic, sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    font-size: 44px;
+    color: #c1c1c1;
+}
+
+.awesome-font {
+  font-family: Century Gothic, sans-serif;
+  font-weight: 500; 
 }

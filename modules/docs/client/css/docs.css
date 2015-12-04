@@ -22,7 +22,9 @@ center {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: white;
+    color: #101010;
+    background-color: #cecece;
+    border: 3px solid #101010;
 }
 
 ul {
@@ -31,4 +33,9 @@ ul {
 
 h2 {
 font-size: 18px;
+}
+
+.awesome-font {
+  font-family: Century Gothic, sans-serif;
+  font-weight: 500; 
 }

@@ -28,15 +28,16 @@
   <meta name="twitter:url" content="{{url}}">
   <meta name="twitter:image" content="{{url}}modules/core/img/brand/logo.png">
 
-  <!-- Fav Icon -->
-  <link href="{{url}}{{favicon}}" rel="shortcut icon" type="image/x-icon">
+  <!-- Tab Icon -->
+  <link rel="icon" href="http://assets.webadmin.ufl.edu/favicon.ico" type="image/x-icon" /> 
+  <link rel="shortcut icon" href="http://assets.webadmin.ufl.edu/favicon.ico" type="image/x-icon" /> 
 
   <!-- Application CSS Files -->
   {% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 
-<body class="ng-cloak">
+<body class="ng-cloak" style="background-color:#c1c1c1">
   <header ng-include="'/modules/core/client/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
   <section class="content">
     <section class="container-fluid">

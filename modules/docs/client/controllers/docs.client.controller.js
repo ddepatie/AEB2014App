@@ -233,26 +233,28 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		// Update existing Doc
 		$scope.update = function() {
 			var doc = $scope.doc ;
-			console.log(doc.viewCount);
+			//console.log(doc.viewCount);
 			doc.$update(function() {
 				$location.path('docs/' + doc._id);
+
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
 
 		};
-		// $scope.updateViewCount = function(){
+		 $scope.updateViewCount = function(){
 
-		// 	var doc = $scope.doc;
-		// 	//var viewCount = $scope.viewCount;
-		// 	doc.viewCount += 1;
-		// 	console.log("this is the docCOunt: " + doc.viewCount);
-		// 	doc.$update(function() {
-		// 		//$location.path('docs/' + doc._id);
-		// 	}, function(errorResponse) {
-		// 		//$scope.error = errorResponse.data.message;
-		// 	});
-		// };
+		 	var doc = $scope.doc;
+		 	//var viewCount = $scope.viewCount;
+		 	//doc.viewCount += 1;
+		 	//console.log("this is the docCOunt: " + doc.viewCount);
+		 	doc.$updateViewCount(function(response) {
+				$location.path('docs/' + response._id +'viewCount');
+				}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+
+		 };
 
 		// Find a list of Docs
 		$scope.find = function() {
@@ -272,19 +274,28 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			});			
 		};
 
-		/*$scope.findOneView = function() {
-			$scope.doc = Docs.get({ 
-				docId: $stateParams.docId
-			});
-			$scope.doc.viewCount = $scope.doc.viewCount + 1;
-			console.log($scope.doc.viewCount);
-			$scope.doc.$update(function() {
-				// $location.path('docs/' + doc._id);
-				console.log($scope.doc);
+		$scope.incrementViewCount = function(doc){
+
+			doc.viewCount += 1;
+			console.log(doc.viewCount);
+			
+
+			// Redirect after save
+			doc.$update(function(response) {
+				$location.path('docs/' + response._id);
+
+				// Clear form fields
+				$scope.title = '';
+				$scope.description = '';
+				$scope.type = '';
+				$scope.url = '';
+
+				$scope.tags = '';
+
+				$scope.selectedTags = [];
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-
-		};*/
+		};
 	}
 ]);
