@@ -11,3 +11,21 @@ angular.module('docs').factory('Docs', ['$resource',
 		});
 	}
 ]);
+
+angular.module('analytics').factory('Service', ['Analytics', 
+	function(Analytics){
+		var Service = {
+			create: function(doc){
+						var analytic = new Analytics ({
+							doc: doc._id,
+							title: doc.title,
+							tags: doc.tags
+						});
+
+						// Redirect after save
+						analytic.$save(function(response) {
+						});
+					}
+	};
+	return Service;
+}]);

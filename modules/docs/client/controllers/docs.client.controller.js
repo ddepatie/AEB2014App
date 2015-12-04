@@ -9,8 +9,8 @@ angular.module('docs')
 }]);
 
 // Docs controller
-angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$stateParams', '$location', 'Authentication', 'Docs', 'Tags',
-	function($scope, $rootScope, $stateParams, $location, Authentication, Docs, Tags ) {
+angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$stateParams', '$location', 'Authentication', 'Docs', 'Tags', 'Analytics', 'Service',
+	function($scope, $rootScope, $stateParams, $location, Authentication, Docs, Tags, Analytics, Service ) {
 		$scope.authentication = Authentication;
 		$scope.filters = [];
 		$scope.total = 0;
@@ -46,7 +46,8 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				type: this.type,
 				url: this.url,
 				thumbnail_image: this.thumbnail_image,
-				tags: $scope.selectedTags
+				tags: $scope.selectedTags,
+				viewCount: 0
 			});
 
 			// Redirect after save
@@ -58,12 +59,17 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				$scope.description = '';
 				$scope.type = '';
 				$scope.url = '';
+
+				$scope.tags = '';
+
 				$scope.selectedTags = [];
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
 		};
-
+		Docs.query(function (data){
+      		$scope.thesedocs = data;
+      	 });
 		// Used to add/remove filters on search results page
 		$scope.editFilter = function( str ) {
 
@@ -227,13 +233,28 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		// Update existing Doc
 		$scope.update = function() {
 			var doc = $scope.doc ;
-
+			//console.log(doc.viewCount);
 			doc.$update(function() {
 				$location.path('docs/' + doc._id);
+
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+
 		};
+		 $scope.updateViewCount = function(){
+
+		 	var doc = $scope.doc;
+		 	//var viewCount = $scope.viewCount;
+		 	//doc.viewCount += 1;
+		 	//console.log("this is the docCOunt: " + doc.viewCount);
+		 	doc.$updateViewCount(function(response) {
+				$location.path('docs/' + response._id +'viewCount');
+				}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+
+		 };
 
 		// Find a list of Docs
 		$scope.find = function() {
@@ -246,8 +267,40 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 
 		// Find existing Doc
 		$scope.findOne = function() {
-			$scope.doc = Docs.get({ 
+			$scope.doc = Docs.get({
 				docId: $stateParams.docId
+			});			
+		};
+
+		$scope.findOne2 = function() {
+			$scope.doc2 = Docs.get({
+				docId: $stateParams.docId
+			}).$promise.then(function(doc2){
+				Service.create(doc2);
+			});			
+		};
+
+		$scope.incrementViewCount = function(doc){
+
+			doc.viewCount += 1;
+			console.log(doc.viewCount);
+			
+
+			// Redirect after save
+			doc.$update(function(response) {
+				$location.path('docs/' + response._id);
+
+				// Clear form fields
+				$scope.title = '';
+				$scope.description = '';
+				$scope.type = '';
+				$scope.url = '';
+
+				$scope.tags = '';
+
+				$scope.selectedTags = [];
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
 			});
 		};
 	}

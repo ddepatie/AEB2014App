@@ -52,7 +52,11 @@ var DocSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	}
+	}/*,
+	viewCount: {
+		type: Number,
+		default: 0
+	}*/
 });
 
 mongoose.model('Doc', DocSchema);

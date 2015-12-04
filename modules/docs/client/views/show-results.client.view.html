@@ -51,7 +51,9 @@
             <!--Orders by view count, descending-->
             <div ng-show="$root.searchText || filters[0]" id="content" class="col-lg-10 col-md-10 col-sm-9 col-xs-12 list-group" style="padding-bottom:20px;">
                 <ul><!-- display documents in resizable boxes -->
+
                     <li ng-repeat="doc in filteredDocs = (docs | filter: $root.searchText | filter: checkFilters | orderBy:'viewCount':true)" class="col-md-6 col-sm-6 col-xs-12 col-lg-4 padding-15">
+                     <span ng-click="incrementViewCount(doc)">
                         <div class="resize_box">
                             <div class="resize_box_content">
                                 <!-- display doc thumbnail and crop to fit -->
@@ -70,7 +72,7 @@
                                     </div>
                                 </a>
                             </div>
-                        <div>
+                        </span>
                     </li>
                 </ul>
             <div ng-show="!filteredDocs.length" style="width:400px;">

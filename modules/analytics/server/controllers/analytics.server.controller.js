@@ -6,95 +6,91 @@
 var _ = require('lodash'),
 	path = require('path'),
 	mongoose = require('mongoose'),
-	Tag = mongoose.model('Tag'),
+	Analytic = mongoose.model('Analytic'),
 	errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
- * Create a Tag
+ * Create a Analytic
  */
 exports.create = function(req, res) {
-	var tag = new Tag(req.body);
+	var analytic = new Analytic(req.body);
+	analytic.user = req.user;
 
-	tag.user = req.user;
-	
-
-
-
-	tag.save(function(err) {
+	analytic.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(tag);
+			res.jsonp(analytic);
 		}
 	});
 };
 
 /**
- * Show the current Tag
+ * Show the current Analytic
  */
 exports.read = function(req, res) {
-	res.jsonp(req.tag);
+	res.jsonp(req.analytic);
 };
 
 /**
- * Update a Tag
+ * Update a Analytic
  */
 exports.update = function(req, res) {
-	var tag = req.tag ;
+	var analytic = req.analytic ;
 
-	tag = _.extend(tag , req.body);
+	analytic = _.extend(analytic , req.body);
 
-	tag.save(function(err) {
+	analytic.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(tag);
+			res.jsonp(analytic);
 		}
 	});
 };
 
 /**
- * Delete an Tag
+ * Delete an Analytic
  */
 exports.delete = function(req, res) {
-	var tag = req.tag ;
+	var analytic = req.analytic ;
 
-	tag.remove(function(err) {
+	analytic.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(tag);
+			res.jsonp(analytic);
 		}
 	});
 };
 
 /**
- * List of Tags
+ * List of Analytics
  */
-exports.list = function(req, res) { Tag.find().sort('-created').populate('user', 'displayName').exec(function(err, tags) {
+exports.list = function(req, res) { Analytic.find().sort('-created').populate('user', 'displayName').exec(function(err, analytics) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(tags);
+			res.jsonp(analytics);
 		}
 	});
 };
 
 /**
- * Tag middleware
+ * Analytic middleware
  */
-exports.tagByID = function(req, res, next, id) { Tag.findById(id).populate('user', 'displayName').exec(function(err, tag) {
+exports.analyticByID = function(req, res, next, id) { Analytic.findById(id).populate('user', 'displayName').exec(function(err, analytic) {
 		if (err) return next(err);
-		if (! tag) return next(new Error('Failed to load Tag ' + id));
-		req.tag = tag ;
+		if (! analytic) return next(new Error('Failed to load Analytic ' + id));
+		req.analytic = analytic ;
 		next();
 	});
 };

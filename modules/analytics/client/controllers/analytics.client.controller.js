@@ -1,34 +1,36 @@
 'use strict';
 
-angular.module('analytics').controller('AnalyticsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Analytics',
-	function($scope, $stateParams, $location, Authentication, Analytics ) {
+// Analytics controller
+angular.module('analytics').controller('AnalyticsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Analytics', '$rootScope', 'Service',
+	function($scope, $stateParams, $location, Authentication, Analytics, $rootScope, Service ) {
 		$scope.authentication = Authentication;
 
-		// Create new Savedoc
-		$scope.create = function() {
-			// Create new Savedoc object
+		// Create new Analytic
+		$scope.create = function(doc_id, docTitle, docTags) {
+			// Create new Analytic object
 			var analytic = new Analytics ({
-				name: this.name
+				doc: doc_id,
+				title: docTitle,
+				tags: docTags
 			});
 
+			console.log(doc_id);
+			console.log(docTitle);
+			console.log(docTags);
 			// Redirect after save
 			analytic.$save(function(response) {
-				$location.path('analytic/' + response._id);
-
+				console.log("Created");
 				// Clear form fields
-				$scope.name = '';
+				$scope.doc = '';
+				$scope.title = '';
+				$scope.tags = [];
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
+				console.log("Error: " + $scope.error);
 			});
 		};
 
-		$scope.count = function(){
-
-			$scope.Analytics = Analytics.count();
-
-		};
-
-		// Remove existing Savedoc
+		// Remove existing Analytic
 		$scope.remove = function( analytic ) {
 			if ( analytic ) { analytic.$remove();
 
@@ -44,7 +46,7 @@ angular.module('analytics').controller('AnalyticsController', ['$scope', '$state
 			}
 		};
 
-		// Update existing Savedoc
+		// Update existing Analytic
 		$scope.update = function() {
 			var analytic = $scope.analytic ;
 
@@ -55,15 +57,15 @@ angular.module('analytics').controller('AnalyticsController', ['$scope', '$state
 			});
 		};
 
-		// Find a list of Savedocs
+		// Find a list of Analytics
 		$scope.find = function() {
 			$scope.analytics = Analytics.query();
 		};
 
-		// Find existing Savedoc
+		// Find existing Analytic
 		$scope.findOne = function() {
 			$scope.analytic = Analytics.get({ 
-				savedocId: $stateParams.savedocId
+				analyticId: $stateParams.analyticId
 			});
 		};
 	}
