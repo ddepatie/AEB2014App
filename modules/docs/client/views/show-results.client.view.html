@@ -47,29 +47,31 @@
                 <p><input type="checkbox" name="subtopic" id="climate" ng-click="editFilter('climate');">&nbsp;Climate</p>
                 </div>
             </div>
+            <!--Display documents that meet the search text and/or filter requirements-->
+            <!--Orders by view count, descending-->
             <div ng-show="$root.searchText || filters[0]" id="content" class="col-lg-10 col-md-10 col-sm-9 col-xs-12 list-group" style="padding-bottom:20px;">
                 <ul><!-- display documents in resizable boxes -->
-                    <li ng-repeat="doc in filteredDocs = (docs | filter: $root.searchText | filter: checkFilters)" class="col-md-6 col-sm-6 col-xs-12 col-lg-4 padding-15">
-                    <span ng-click="incrementViewCount(doc)">
+
+                    <li ng-repeat="doc in filteredDocs = (docs | filter: $root.searchText | filter: checkFilters | orderBy:'viewCount':true)" class="col-md-6 col-sm-6 col-xs-12 col-lg-4 padding-15">
+                     <span ng-click="incrementViewCount(doc)">
                         <div class="resize_box">
                             <div class="resize_box_content">
                                 <!-- display doc thumbnail and crop to fit -->
                                 <a ui-sref="docs.view({docId: doc._id})">
-                                <div class="cropped-image" style="background: url({{doc.thumbnail_image}}); background-size : 100% auto;">
-                                    <!-- insert text here to go inside the picture -->
-                                </div>
+                                    <div class="cropped-image" style="background: url({{doc.thumbnail_image}}); background-size : 100% auto;">
+                                        <!-- insert text here to go inside the picture -->
+                                    </div>
+                                    <!-- title and description are 105px tall -->
+                                    <div style="padding-left: 10px; padding-right:10px; border-top: 3px solid #101010;">
+                                        <h2 style="overflow:hidden; max-height:46px; margin-top: 15px; line-height:23px">
+                                            {{doc.title}}
+                                        </h2>
+                                        <p style="overflow:hidden; max-height:44px; margin: 0; line-height:22px">
+                                            <font> {{ doc.description+ ', ' + x.type}} </font>
+                                        </p>
+                                    </div>
                                 </a>
-                                <!-- title and description are 105px tall -->
-                                <div style="padding-left: 10px; padding-right:10px; border-top: 3px solid #101010;">
-                                    <h2 style="overflow:hidden; max-height:46px; margin-top: 15px; line-height:23px">
-                                        {{doc.title}}
-                                    </h2>
-                                    <p style="overflow:hidden; max-height:44px; margin: 0; line-height:22px">
-                                        <font> {{ doc.description+ ', ' + x.type}} </font>
-                                    </p>
-                                </div>
                             </div>
-                        <div>
                         </span>
                     </li>
                 </ul>
