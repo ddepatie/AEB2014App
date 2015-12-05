@@ -13,12 +13,17 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 	function($scope, $rootScope, $stateParams, $location, Authentication, Docs, Tags, Analytics, Service ) {
 		$scope.authentication = Authentication;
 		$scope.filters = [];
+		
+		//Total number of filters checked on search page
 		$scope.total = 0;
+		 
+		//Bools to control subfilters (display when true, hide and uncheck when false)
 		$scope.healthChecked = false;
 		$scope.economyChecked = false;
 		$scope.technologyChecked = false;
 		$scope.developmentChecked = false;
 		$scope.environmentChecked = false;
+
 		//Settings for dropdown menu
 		$scope.dropSettings = {
     		scrollableHeight: '300px',
@@ -31,6 +36,8 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		//Tags selected from dropdowm menu
 		$scope.selectedTags = [];
 
+		//Subfilters by each main filter (topic)
+		//TODO: Populate these from DB and allow admin to add subfilters
 		$scope.healthTopics = ["food safety", "disease", "nutrition", "waste"];
 		$scope.economyTopics = ["farmers", "prices", "markets and trade", "consumers"];
 		$scope.technologyTopics = ["gmos", "automation", "production methods", "computing"];
@@ -70,6 +77,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		Docs.query(function (data){
       		$scope.thesedocs = data;
       	 });
+
 		// Used to add/remove filters on search results page
 		$scope.editFilter = function( str ) {
 
@@ -196,8 +204,9 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			}
 		};
 
+		//Used when routing to search page from home using category buttons
+		//Checks filter according to which button was clicked
 		$scope.initialize = function() {
-
 			if (parseInt($stateParams.filterId) === 1) {
 				$scope.healthChecked = true;
 				$scope.editFilter('health');
@@ -243,8 +252,9 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			});
 
 		};
-		 $scope.updateViewCount = function(){
 
+		//Update view count upon viewing a doc
+		 $scope.updateViewCount = function(){
 		 	var doc = $scope.doc;
 		 	//var viewCount = $scope.viewCount;
 		 	//doc.viewCount += 1;
@@ -273,6 +283,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			});			
 		};
 
+		//?? Needs documentation
 		$scope.findOne2 = function() {
 			$scope.doc2 = Docs.get({
 				docId: $stateParams.docId
@@ -281,6 +292,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			});			
 		};
 
+		//Incerement view count upon viewing a doc
 		$scope.incrementViewCount = function(doc){
 
 			doc.viewCount += 1;
