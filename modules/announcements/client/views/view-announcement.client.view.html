@@ -1,6 +1,6 @@
 <section data-ng-controller="AnnouncementsController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1 data-ng-bind="announcement.title"></h1>
+		<h1 class="awesome-font" data-ng-bind="announcement.title"></h1>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == announcement.user._id">
 		<a class="btn btn-primary" href="/#!/announcements/{{announcement._id}}/edit">

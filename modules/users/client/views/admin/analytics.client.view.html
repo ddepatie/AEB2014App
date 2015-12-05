@@ -1,46 +1,41 @@
 <section data-ng-init="find()">
   <div class="page-header">
     <div class="row">
-      <div class="padding-15">
+      <div class="awesome-font" style="padding-top:10px; padding-left:60px; padding-bottom:10px">
         <h1>Analytics</h1>
-      <div class="text-left">
-        <p>User Count: {{filteredItems.length}}</p>
-        <p>Document Count: {{docsFiltered.length}}</p>
-        <p>Tag Count: {{tagsFiltered.length}}</p>
-        <p>Announcement Count: {{announcementsFiltered.length}}</p>
-      </div>
-      </div>
-      <div class="list-group">
-        <ul><!-- display documents in resizable boxes -->
-
-            <li ng-repeat="doc in docsFiltered = (docs | filter: $root.searchText | filter: checkFilters | orderBy:'viewCount':true)" class="col-md-6 col-sm-4 col-xs-12 col-lg-3 padding-15">
-            <span ng-click="incrementViewCount(doc)">
-
-                <div class="resize_box">
-                    <div class="resize_box_content">
-                        <!-- display doc thumbnail and crop to fit -->
-                        <a ui-sref="docs.view({docId: doc._id})">
-                        <div class="cropped-image" style="background: url({{doc.thumbnail_image}}); background-size : 100% auto;">
-                            <!-- insert text here to go inside the picture -->
-                        </div>
-                        </a>
-                        <!-- title and description are 105px tall -->
-                        <div>
-                            <h2 style="overflow:hidden; max-height:46px; margin-top: 15px; line-height:23px" class="text-center">
-                                {{doc.title}}
-                            </h2>
-                            <p style="overflow:hidden; max-height:44px; margin: 0; line-height:22px" class="text-center">
-                                <font color=#a6a6a6>View Count: {{ doc.viewCount}} </font>
-                            </p>
-                        </div>
-                    </div>
-
-                
-                </span>
-
-            </li>
-        </ul>
+        <h2>User Count: {{filteredItems.length}}</h2>
+        <h2>Document Count: {{docsFiltered.length}}</h2>
+        <h2>Tag Count: {{tagsFiltered.length}}</h2>
+        <h2>Announcement Count: {{announcementsFiltered.length}}</h2>
     </div>
+    <div class="list-group">
+            <ul><!-- display documents in resizable boxes -->
+                <li ng-repeat="doc in docsFiltered = (docs | filter: $root.searchText | filter: checkFilters | orderBy:'viewCount':true)" class="col-md-6 col-sm-4 col-xs-12 col-lg-3 padding-15">
+                    <span ng-click="incrementViewCount(doc)">
+
+                        <div class="resize_box">
+                            <div class="resize_box_content">
+                                <!-- display doc thumbnail and crop to fit -->
+                                <a ui-sref="docs.view({docId: doc._id})">
+                                <div class="cropped-image" style="background: url({{doc.thumbnail_image}}); background-size : 100% auto;">
+                                    <!-- insert text here to go inside the picture -->
+                                </div>
+                                </a>
+                                <!-- title and description are 105px tall -->
+                                <div>
+                                    <h2 style="overflow:hidden; max-height:46px; margin-top: 15px; line-height:23px" class="text-center">
+                                        {{doc.title}}
+                                    </h2>
+                                    <p style="overflow:hidden; max-height:44px; margin: 0; line-height:22px" class="text-center">
+                                        <font color=#a6a6a6>View Count: {{ doc.viewCount}} </font>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                </li>
+            </ul>
+        </div>
     </div>
   </div>
 
