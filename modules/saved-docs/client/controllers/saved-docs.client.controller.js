@@ -82,13 +82,22 @@ angular.module('saved-docs').controller('SavedDocsController', ['$scope', '$stat
 		};
 
 		this.removeByDocId = function(authUser, docId) {
-			for (var i = 0; i < $scope.savedDocs.length-1; i++) {
+			for (var i = 0; i < $scope.savedDocs.length; i++) {
 				if (String(authUser) === String($scope.savedDocs[i].user._id) && String(docId) === String($scope.savedDocs[i].doc)) {
 					$scope.savedDocs[i].$remove();
 					$scope.savedDocs.splice(i, 1);
 					window.location.reload();
 				}
 			}
+		};
+
+		$scope.docNum = function(authUser) {
+			var n = 0;
+			for( var i = 0; i < $scope.savedDocs.length; i++) {
+				if(String(authUser) === String($scope.savedDocs[i].user._id))
+					n++;
+			}
+			return n;
 		};
 	}
 ]);
