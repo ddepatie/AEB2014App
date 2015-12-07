@@ -7,8 +7,8 @@
             <li ng-repeat="doc in savedDocs | filter:userMatch(authentication.user._id)" class="col-md-6 col-sm-4 col-xs-12 col-lg-3 padding-15">
                 <div class="resize_box" ng-show="doc">
                     <div class="resize_box_content">
-                        <div ng-controller="SavedDocsController as sdCtrl" style="float:right" ng-show="authentication.user" ng-init="find()">
-                            <a class="btn btn-primary" ng-click="sdCtrl.removeByDocId(authentication.user._id, doc.doc)">
+                        <div style="float:right;" ng-show="authentication.user">
+                            <a class="btn btn-primary" ng-click="remove(doc)">
                                 <i class="glyphicon glyphicon-remove"></i>
                                 <!-- x-button to unsave doc -->
                             </a>                                
@@ -31,7 +31,7 @@
             </li>
         </ul>
     </div>
-    <div class="alert alert-warning text-center" data-ng-hide="!savedDocs.$resolved || savedDocs.length">
+    <div class="alert alert-warning text-center" data-ng-hide="docNum(authentication.user._id) > 0">
         No saved documents to display
     </div>
 </section>
