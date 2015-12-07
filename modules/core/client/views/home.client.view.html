@@ -1,14 +1,16 @@
+<!-- Home (Landing) View -->
 <div class="container" ng-controller="AnnouncementsController" ng-init="find()" style="padding: 0px;">
-  
+  <!-- Top center, includes image and website title-->
   <section id="header">
       <div class="header-img textCenter">
-        <h1 class="header-text" style="padding-top:28px">EPIC APP SAUCE</h1>
+        <h1 class="header-text" style="padding-top:28px">ECONOMIC ISSUES, FOOD AND YOU</h1>
       </div>
   </section>
-
+  <!-- Category buttons routed to search results page-->
   <section id="categories" data-ng-controller="AnnouncementsController" style="margin-top:25px">
     <div class="container">
       <div class="row">
+        <!-- Health button -->
         <div id="cat1" class="category">
           <a href="/results/1" style="text-decoration: none;">
             <div style="height:100%">
@@ -17,6 +19,7 @@
             </div>
           </a>
         </div>
+        <!-- Economy button -->
         <div id="cat2" class="category">
           <a href="/results/2" style="text-decoration: none;">
             <div style="height:100%">
@@ -25,6 +28,7 @@
             </div>
           </a>
         </div>
+        <!-- Technology button -->
         <div id="cat3" class="category">
           <a href="/results/3" style="text-decoration: none;">
             <div style="height:100%">
@@ -33,6 +37,7 @@
             </div>
           </a>
         </div>
+        <!-- Development button -->
         <div id="cat4" class="category">
           <a href="/results/4" style="text-decoration: none;">
             <div style="height:100%">
@@ -41,6 +46,7 @@
             </div>
           </a>
         </div>
+        <!-- Environment button -->
         <div id="cat5" class="category">
           <a href="/results/5" style="text-decoration: none;">
             <div style="height:100%">
@@ -54,6 +60,7 @@
   </section>
   <br>
   <div class="row">
+    <!-- About section with pic -->
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
       <section id="about" class="well well-sm bottMargin" ng-controller="AboutsController" style="border-color:#c1c1c1;">
         <h2 class="page-header textCenter awesome-font" style="font-size:180%; border-bottom:3px solid #c1c1c1">About</h2>
@@ -61,7 +68,7 @@
         <p class="text-center text-justify" ng-bind="abouts[0].text"></p>
       </section>
     </div>
-
+    <!-- Announcements section -->
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
       <section id="announcements" class="well well-sm bottMargin" style="border-color:#c1c1c1;">
         <h2 class="page-header textCenter awesome-font" style="font-size:180%; border-bottom:3px solid #c1c1c1">Announcements</h2>
@@ -80,7 +87,7 @@
       </section>
     </div>
   </div>
-
+  <!-- Contact section -->
   <section id="contact" class="well well-sm bottMargin" ng-controller="ContactsController" style="border-color:#c1c1c1;">
     <h2 class="page-header textCenter awesome-font" style="font-size:180%; border-bottom:3px solid #c1c1c1">Contact</h2>
     <p class="textCenter" ng-bind="contacts[0].text"></p>

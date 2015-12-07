@@ -9,16 +9,21 @@ angular.module('docs')
 }]);
 
 // Docs controller
-angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$stateParams', '$location', 'Authentication', 'Docs', 'Tags',
-	function($scope, $rootScope, $stateParams, $location, Authentication, Docs, Tags ) {
+angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$stateParams', '$location', 'Authentication', 'Docs', 'Tags', 'Analytics', 'Service',
+	function($scope, $rootScope, $stateParams, $location, Authentication, Docs, Tags, Analytics, Service ) {
 		$scope.authentication = Authentication;
 		$scope.filters = [];
+		
+		//Total number of filters checked on search page
 		$scope.total = 0;
+		 
+		//Bools to control subfilters (display when true, hide and uncheck when false)
 		$scope.healthChecked = false;
 		$scope.economyChecked = false;
 		$scope.technologyChecked = false;
 		$scope.developmentChecked = false;
 		$scope.environmentChecked = false;
+
 		//Settings for dropdown menu
 		$scope.dropSettings = {
     		scrollableHeight: '300px',
@@ -31,6 +36,8 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		//Tags selected from dropdowm menu
 		$scope.selectedTags = [];
 
+		//Subfilters by each main filter (topic)
+		//TODO: Populate these from DB and allow admin to add subfilters
 		$scope.healthTopics = ["food safety", "disease", "nutrition", "waste"];
 		$scope.economyTopics = ["farmers", "prices", "markets and trade", "consumers"];
 		$scope.technologyTopics = ["gmos", "automation", "production methods", "computing"];
@@ -46,7 +53,8 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				type: this.type,
 				url: this.url,
 				thumbnail_image: this.thumbnail_image,
-				tags: $scope.selectedTags
+				tags: $scope.selectedTags,
+				viewCount: 0
 			});
 
 			// Redirect after save
@@ -58,11 +66,17 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				$scope.description = '';
 				$scope.type = '';
 				$scope.url = '';
+
+				$scope.tags = '';
+
 				$scope.selectedTags = [];
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
 		};
+		Docs.query(function (data){
+      		$scope.thesedocs = data;
+      	 });
 
 		// Used to add/remove filters on search results page
 		$scope.editFilter = function( str ) {
@@ -190,8 +204,9 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			}
 		};
 
+		//Used when routing to search page from home using category buttons
+		//Checks filter according to which button was clicked
 		$scope.initialize = function() {
-
 			if (parseInt($stateParams.filterId) === 1) {
 				$scope.healthChecked = true;
 				$scope.editFilter('health');
@@ -214,6 +229,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			}						
 		};
 
+		//called when 'x' is clicked
 		$scope.removeTag = function(tagId){
 			//This methoed removes selected tag with givenID from array selectedTags.
 			for (var i = $scope.selectedTags.length - 1; i >= 0; i--) {
@@ -227,13 +243,29 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		// Update existing Doc
 		$scope.update = function() {
 			var doc = $scope.doc ;
-
+			//console.log(doc.viewCount);
 			doc.$update(function() {
 				$location.path('docs/' + doc._id);
+
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+
 		};
+
+		//Update view count upon viewing a doc
+		 $scope.updateViewCount = function(){
+		 	var doc = $scope.doc;
+		 	//var viewCount = $scope.viewCount;
+		 	//doc.viewCount += 1;
+		 	//console.log("this is the docCOunt: " + doc.viewCount);
+		 	doc.$updateViewCount(function(response) {
+				$location.path('docs/' + response._id +'viewCount');
+				}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+
+		 };
 
 		// Find a list of Docs
 		$scope.find = function() {
@@ -246,8 +278,42 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 
 		// Find existing Doc
 		$scope.findOne = function() {
-			$scope.doc = Docs.get({ 
+			$scope.doc = Docs.get({
 				docId: $stateParams.docId
+			});			
+		};
+
+		//?? Needs documentation
+		$scope.findOne2 = function() {
+			$scope.doc2 = Docs.get({
+				docId: $stateParams.docId
+			}).$promise.then(function(doc2){
+				Service.create(doc2);
+			});			
+		};
+
+		//Incerement view count upon viewing a doc
+		$scope.incrementViewCount = function(doc){
+
+			doc.viewCount += 1;
+			console.log(doc.viewCount);
+			
+
+			// Redirect after save
+			doc.$update(function(response) {
+				$location.path('docs/' + response._id);
+
+				// Clear form fields
+				$scope.title = '';
+				$scope.description = '';
+				$scope.type = '';
+				$scope.url = '';
+
+				$scope.tags = '';
+
+				$scope.selectedTags = [];
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
 			});
 		};
 	}

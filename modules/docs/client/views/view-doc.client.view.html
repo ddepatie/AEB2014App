@@ -1,10 +1,16 @@
-<section class="container" data-ng-controller="DocsController" data-ng-init="findOne()">
+<section class="container" data-ng-controller="DocsController" data-ng-init="findOne(); findOne2();">
 	<div class="page-header">
 		<h1 class="awesome-font" data-ng-bind="doc.title"></h1>
 	</div>
 	<div ng-switch on="doc.type">
 		<!-- google powerpoint/document/pdf viewer -->
 		<div ng-switch-when="ppt/pptx">
+			<iframe ng-src="{{'http://docs.google.com/gview?url='+ doc.url +'&embedded=true' | trustAsResourceUrl}}" class="col-md-10 col-lg-10 col-xs-12 col-sm-10" style="height:500px" frameborder="0"></iframe>
+		</div>
+		<div ng-switch-when="doc/docx">
+			<iframe ng-src="{{'http://docs.google.com/gview?url='+ doc.url +'&embedded=true' | trustAsResourceUrl}}" class="col-md-10 col-lg-10 col-xs-12 col-sm-10" style="height:500px" frameborder="0"></iframe>
+		</div>
+		<div ng-switch-when="pdf">
 			<iframe ng-src="{{'http://docs.google.com/gview?url='+ doc.url +'&embedded=true' | trustAsResourceUrl}}" class="col-md-10 col-lg-10 col-xs-12 col-sm-10" style="height:500px" frameborder="0"></iframe>
 		</div>
 		<!-- TODO prezi embedding -->
@@ -24,7 +30,8 @@
 	</div>
 	<div class="visible-xs-block" style=" width:100%; float:left; height:30px">
 	</div>
-	<div ng-controller="SavedDocsController as sdCtrl" style="float:left" ng-show="authentication.user" ng-init="find()">
+	<div style="float:left" >
+	<div ng-controller="SavedDocsController as sdCtrl" ng-show="authentication.user" ng-init="find()">
 		<a class="btn btn-primary" ng-hide="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.create(doc._id, doc.title, doc.description, doc.type, doc.url, doc.thumbnail_image, doc.tags)">
 			Save
 			<i class="glyphicon glyphicon-plus" style="padding-left:5px;"></i>
@@ -33,6 +40,7 @@
 			Unsave
 			<i class="glyphicon glyphicon-remove" style="padding-left:5px;"></i>
 		</a>
+	</div>
 		<div data-ng-show="authentication.user._id == doc.user._id || authentication.user.roles[1] == 'admin'" style="padding-top:10px; padding-bottom:8px">
 			<a class="btn btn-primary" href="/#!/docs/{{doc._id}}/edit">
 				Edit &nbsp;
