@@ -23,7 +23,10 @@ angular.module('docs').config(['$stateProvider',
 		}).
 		state('docs.view', {
 			url: '/:docId',
-			templateUrl: 'modules/docs/client/views/view-doc.client.view.html'
+			templateUrl: 'modules/docs/client/views/view-doc.client.view.html',
+			data: {
+				roles: []
+			}
 		}).
 		state('docs.edit', {
 			url: '/:docId/edit',
