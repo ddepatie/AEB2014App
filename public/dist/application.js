@@ -1214,10 +1214,12 @@ angular.module('docs').run(['Menus',
 		// Add the dropdown create item
 		Menus.addSubMenuItem('topbar', 'docs', {
 			title: 'Create Doc',
-			state: 'docs.create'
+			state: 'docs.create',
+			roles: ['admin']
 		});
 	}
 ]);
+
 'use strict';
 
 //Setting up route
@@ -1238,21 +1240,18 @@ angular.module('docs').config(['$stateProvider',
 			url: '/create',
 			templateUrl: 'modules/docs/client/views/create-doc.client.view.html',
 			data: {
-	          roles: ['user', 'admin']
+	          roles: ['admin']
 	        }
 		}).
 		state('docs.view', {
 			url: '/:docId',
 			templateUrl: 'modules/docs/client/views/view-doc.client.view.html',
-			data: {
-				roles: []
-			}
 		}).
 		state('docs.edit', {
 			url: '/:docId/edit',
 			templateUrl: 'modules/docs/client/views/edit-doc.client.view.html',
 			data: {
-	          roles: ['user', 'admin']
+	          roles: ['admin']
 	        }
 		}).
 		state('results', {
