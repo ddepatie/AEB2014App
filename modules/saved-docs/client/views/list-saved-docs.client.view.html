@@ -7,8 +7,8 @@
             <li ng-repeat="doc in savedDocs | filter:userMatch(authentication.user._id)" class="col-md-6 col-sm-4 col-xs-12 col-lg-3 padding-15">
                 <div class="resize_box" ng-show="doc">
                     <div class="resize_box_content">
-                        <div ng-controller="SavedDocsController as sdCtrl" style="float:right" ng-show="authentication.user" ng-init="find()">
-                            <a class="btn btn-primary" ng-click="sdCtrl.removeByDocId(authentication.user._id, doc.doc)">
+                        <div style="float:right;" ng-show="authentication.user">
+                            <a class="btn btn-primary" ng-click="remove(doc)">
                                 <i class="glyphicon glyphicon-remove"></i>
                                 <!-- x-button to unsave doc -->
                             </a>                                
@@ -22,16 +22,16 @@
                             <h2 style="overflow:hidden; max-height:46px; margin-top: 15px; line-height:23px">
                                 {{doc.title}}
                             </h2>
-                            <p style="overflow:hidden; max-height:44px; margin: 0; line-height:22px">
-                                <font color=#101010> {{ doc.description+ ', ' + x.type}} </font>
+                            <p style="max-height:44px; margin: 0; line-height:22px">
+                                <font color=#101010> {{ doc.description+ ', ' + doc.type}} </font>
                             </p>
                         </div>
                     </div>
                 <div>
-            </li>
+            </li>            
         </ul>
     </div>
-    <div class="alert alert-warning text-center" data-ng-hide="!savedDocs.$resolved || savedDocs.length">
+    <div class="alert alert-warning text-center" data-ng-hide="docNum(authentication.user._id) > 0">
         No saved documents to display
     </div>
 </section>
