@@ -19,7 +19,8 @@ angular.module('docs').run(['Menus',
 		// Add the dropdown create item
 		Menus.addSubMenuItem('topbar', 'docs', {
 			title: 'Create Doc',
-			state: 'docs.create'
+			state: 'docs.create',
+			roles: ['admin']
 		});
 	}
 ]);
