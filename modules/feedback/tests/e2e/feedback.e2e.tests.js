@@ -2,7 +2,7 @@
 
 describe('Feedback E2E Tests:', function() {
 	describe('Test Feedback page', function() {
-		
+
 		it('Guests should be required to sign in to create feedback', function() {
 			browser.get('http://localhost:3000/feedback/');
 			expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/authentication/signin');
@@ -40,8 +40,8 @@ describe('Feedback E2E Tests:', function() {
 
 			element(by.id('username')).clear();
 			element(by.id('password')).clear();
-			element(by.id('username')).sendKeys('a');
-			element(by.id('password')).sendKeys('qwertyuiop1234567890');
+			element(by.id('username')).sendKeys('admin');
+			element(by.id('password')).sendKeys('Password1!');
 			browser.driver.findElement(by.xpath("//button[text() = 'Sign in']")).click();
 
 			expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/');

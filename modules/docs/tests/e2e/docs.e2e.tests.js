@@ -8,11 +8,11 @@ describe('Docs E2E Tests:', function() {
 		});
 
 		it('Guests should be able to view a specific doc', function() {
-			expect('http://localhost:3000/docs/566888fd2aa7db0e001325cb');
+			expect('http://localhost:3000/docs/566f1f6544e1c4a80927911a');
 		});
 
 		it('Guests should be able to sign into an account', function() {
-			browser.get('http://localhost:3000/authentication/signin')
+			browser.get('http://localhost:3000/authentication/signin');
 			element(by.id('username')).clear();
 			element(by.id('password')).clear();
 			element(by.id('username')).sendKeys('notadmin');
@@ -31,7 +31,7 @@ describe('Docs E2E Tests:', function() {
 		});
 
 		it('Users should be able to view a specific doc', function() {
-			expect('http://localhost:3000/docs/566888fd2aa7db0e001325cb');
+			expect('http://localhost:3000/docs/566f1f6544e1c4a80927911a');
 		  browser.get('http://localhost:3000/api/auth/signout');
 		});
 
@@ -39,8 +39,8 @@ describe('Docs E2E Tests:', function() {
 			browser.get('http://localhost:3000/authentication/signin');
 			element(by.id('username')).clear();
 			element(by.id('password')).clear();
-			element(by.id('username')).sendKeys('a');
-			element(by.id('password')).sendKeys('qwertyuiop1234567890');
+			element(by.id('username')).sendKeys('admin');
+			element(by.id('password')).sendKeys('Password1!');
 			browser.driver.findElement(by.xpath("//button[text() = 'Sign in']")).click();
 
 			expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/');
