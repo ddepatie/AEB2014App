@@ -1,4 +1,39 @@
-## Before You Begin
+# ECONOMIC ISSUES, FOOD AND YOU 
+
+## About
+The "AEB2014" project was created to inspire students to learn about global and local food and economic-related issues. It was developed using the Node.js stack, a JavaScript runtime built on Chrome's V8 JavaScript engine, and was built using HTML, CSS and AngularJS. For more information on the webapp, use the link below.
+
+#### [Click Here For the Deployed Site](http://ufdatawall.herokuapp.com/)
+
+## Features and Highlights
+
+#### Home Page
+![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/home-page.jpg)
+
+#### Search Results
+![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/search-results.jpg)
+
+#### Saved Documents Listing
+![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/saved-docs.jpg)
+
+#### Document Viewer
+![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/doc-view.png)
+
+#### Full Document Listing (Admin Only)
+![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/full-docs.jpg)
+
+#### User Management (Admin Only)
+![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/user-view.png)
+
+#### Create New Document (Admin Only)
+![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/create-doc.png)
+
+#### Analytics Viewer (Admin Only)
+![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/analytics-viewer.jpg)
+
+## Setting Up The Project
+
+### Before You Begin
 Before you begin we recommend you read about the basic building blocks that assemble a MEAN.JS application:
 * MongoDB - Go through [MongoDB Official Website](http://mongodb.org/) and proceed to their [Official Manual](http://docs.mongodb.org/manual/), which should help you understand NoSQL and MongoDB better.
 * Express - The best way to understand express is through its [Official Website](http://expressjs.com/), which has a [Getting Started](http://expressjs.com/starter/installing.html) guide, as well as an [ExpressJS Guide](http://expressjs.com/guide/error-handling.html) guide for general express topics. You can also go through this [StackOverflow Thread](http://stackoverflow.com/questions/8144214/learning-express-for-node-js) for more resources.
@@ -6,7 +41,7 @@ Before you begin we recommend you read about the basic building blocks that asse
 * Node.js - Start by going through [Node.js Official Website](http://nodejs.org/) and this [StackOverflow Thread](http://stackoverflow.com/questions/2353818/how-do-i-get-started-with-node-js), which should get you going with the Node.js platform in no time.
 
 
-## Prerequisites
+### Prerequisites
 Make sure you have installed all of the following prerequisites on your development machine:
 * Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager. If you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
 * MongoDB - [Download & Install MongoDB](http://www.mongodb.org/downloads), and make sure it's running on the default port (27017).
@@ -22,10 +57,10 @@ $ npm install -g bower
 $ npm install -g grunt-cli
 ```
 
-### Yo Generator		
+#### Yo Generator		
 -Another way would be to use the [Official Yo Generator](http://meanjs.org/generator.html), which generates a copy of the MEAN.JS 0.3.x boilerplate and supplies multiple sub-generators to ease your daily development cycles. 
 
-## Quick Install
+### Quick Install
 Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from starting to develop your MEAN application.
 
 The first thing you should do is install the Node.js dependencies. The boilerplate comes pre-bundled with a package.json file that contains the list of modules you need to start your application. To learn more about the modules installed visit the NPM & Package.json section.
@@ -41,21 +76,21 @@ This command does a few things:
 * If you're running in a development environment, it will then also install development dependencies needed for testing and running your application.
 * Finally, when the install process is over, npm will initiate a bower install command to install all the front-end modules needed for the application
 
-## Running Your Application
+### Running The Application
 After the install process is over, you'll be able to run your application using Grunt, just run grunt default task:
 
 ```
 $ grunt
 ```
 
-Your application should run on port 3000 with the *development* environment configuration, so in your browser just go to [http://localhost:3000](http://localhost:3000)
+The application should run on port 3000 with the *development* environment configuration, so in your browser just go to [http://localhost:3000](http://localhost:3000)
 
-That's it! Your application should be running. To proceed with your development, check the other sections in this documentation.
+That's it! The application should be running. To proceed with your development, check the other sections in this documentation.
 If you encounter any problems, try the Troubleshooting section.
 
 * explore `config/env/development.js` for development environment configuration options
 
-### Running in Production mode
+#### Running in Production mode
 To run your application with *production* environment configuration, execute grunt as follows:
 
 ```bash
@@ -64,7 +99,7 @@ $ grunt prod
 
 * explore `config/env/production.js` for production environment configuration options
 
-### Running with User Seed
+#### Running with User Seed
 To have default account(s) seeded at runtime:
 
 In Development:
@@ -79,7 +114,7 @@ MONGO_SEED=true grunt prod
 ```
 This will seed the admin user one time if the user does not already exist. You have to copy the password from the console and save it.
 
-### Running with TLS (SSL)
+#### Running with TLS (SSL)
 Application will start by default with secure configuration (SSL mode) turned on and listen on port 8443.
 To run your application in a secure manner you'll need to use OpenSSL and generate a set of self-signed certificates. Unix-based users can use the following command:
 
@@ -94,7 +129,7 @@ Finally, execute grunt's prod task `grunt prod`
 * enable/disable SSL mode in production environment change the `secure` option in `config/env/production.js`
 
 
-## Testing Your Application
+### Testing Your Application
 You can run the full test suite included with MEAN.JS with the test task:
 
 ```bash
@@ -115,15 +150,15 @@ And to run only the client tests, run the test:client task:
 $ grunt test:client
 ```
 
-## Getting Started With MEAN.JS
+### Getting Started With MEAN.JS
 You have your application running, but there is a lot of stuff to understand. We recommend you go over the [Official Documentation](http://meanjs.org/docs.html).
 In the docs we'll try to explain both general concepts of MEAN components and give you some guidelines to help you improve your development process. We tried covering as many aspects as possible, and will keep it updated by your request. You can also help us develop and improve the documentation by checking out the *gh-pages* branch of this repository.
 
-## Credits
+### Credits
 Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
 The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and)
 
-## License
+### License
 (The MIT License)
 
 Permission is hereby granted, free of charge, to any person obtaining
