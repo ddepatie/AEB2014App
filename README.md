@@ -1,35 +1,50 @@
-# ECONOMIC ISSUES, FOOD AND YOU 
+## Economic Issues, Food and You 
 
-## About
 The "AEB2014" project was created to inspire students to learn about global and local food and economic-related issues. It was developed using the Node.js stack, a JavaScript runtime built on Chrome's V8 JavaScript engine, and was built using HTML, CSS and AngularJS. For more information on the webapp, use the link below.
 
-#### [Click Here For the Deployed Site](http://ufdatawall.herokuapp.com/)
+##### [Click Here For the Deployed Site](http://ufdatawall.herokuapp.com/)
 
 ## Features and Highlights
 
 #### Home Page
-![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/home-page.jpg)
+The landing page has general information on the site including the title, about, announcements and contact sections. It also includes the most expanded version of the header, which allows an admin to access admin and feedback controls and allows any user to search for documents in the site and edit their account information. The category buttons in the center of the page route to the search results page as well.
+
+![Home Page](https://raw.github.com/CEN3031-Group-10c/AEB2014App/master/readme-img/home-page.jpg)
 
 #### Search Results
-![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/search-results.jpg)
+Documents can be searched for and filtered using this search results page. Documents that are shown must fit the criteria of the filters on the right-hand side, meaning their tags must match those filters selected. Selecting a main filter allows access to a list of sub-filters as shown below. Additionally, the search bar in the header filters for any documents which also contain the entered text in their titles, descriptions or tags. Clicking on a document routes to the doc view page. It is also worth noting that documents are listed in order of view count (most to least).
 
-#### Saved Documents Listing
-![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/saved-docs.jpg)
+![Search Results](https://raw.github.com/CEN3031-Group-10c/AEB2014App/master/readme-img/search-results.jpg)
 
 #### Document Viewer
-![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/doc-view.png)
+This simple document viewer can be used to view any document in our database. It adapts to the file type and is equipped to handle several document types including .pdf, .ppt and .doc, as well as virtually any image type. The buttons on the right-hand side allow any user to save/unsave a document for later, and admins have the ability to edit and remove documents from the system.
+
+![Doc View](https://raw.github.com/CEN3031-Group-10c/AEB2014App/master/readme-img/doc-view.png)
+
+#### Saved Documents Listing
+Any user or admin who has saved documents for later can view them all here. The documents are shown with a thumbnail, description, and can be removed from the saved-docs view using the blue x button.
+
+![Saved Docs](https://raw.github.com/CEN3031-Group-10c/AEB2014App/master/readme-img/saved-docs.jpg)
 
 #### Full Document Listing (Admin Only)
-![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/full-docs.jpg)
+Similar to the saved docs view, this allows any admin to view any stored document in a full-list format.
+
+![Full Docs](https://raw.github.com/CEN3031-Group-10c/AEB2014App/master/readme-img/full-docs.jpg)
 
 #### User Management (Admin Only)
-![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/user-view.png)
+This view allows admins to view basic info on every user in the system. The only editable information is the user's roles; any admin can use this feature to grant admin privileges to other users.
+
+![User View](https://raw.github.com/CEN3031-Group-10c/AEB2014App/master/readme-img/user-view.png)
 
 #### Create New Document (Admin Only)
-![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/create-doc.png)
+Another admin only feature, this allows for simple insertion of docs into the system. The fields shown will accept any text up to a character limit, with the exception of the tags and type dropdowns which have a limited number of options.
+
+![Create Doc](https://raw.github.com/CEN3031-Group-10c/AEB2014App/master/readme-img/create-doc.png)
 
 #### Analytics Viewer (Admin Only)
-![alt tag](https://raw.github.com/brettbelliveau/CEN30301-Group-10c/AEB2014App/readme-img/analytics-viewer.jpg)
+Lastly, the analytics viewer allows an admin to see basic statics on the site such as the number of docs, users, tags and announcments. It also displays any documents which have a view count greater than 0, with their respective view count, as well as a list below of each documents with the associated tags.
+
+![Analytics View](https://raw.github.com/CEN3031-Group-10c/AEB2014App/master/readme-img/analytics-viewer.jpg)
 
 ## Setting Up The Project
 
