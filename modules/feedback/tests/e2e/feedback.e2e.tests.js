@@ -2,6 +2,7 @@
 
 describe('Feedback E2E Tests:', function() {
 	describe('Test Feedback page', function() {
+		
 		it('Guests should be required to sign in to create feedback', function() {
 			browser.get('http://localhost:3000/feedback/');
 			expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/authentication/signin');
@@ -56,6 +57,7 @@ describe('Feedback E2E Tests:', function() {
 
 		it('Admins should be able to view the feedback list', function() {
 			expect(browser.get('http://localhost:3000/feedback'));
+			browser.get('http://localhost:3000/api/auth/signout');
 		});
 
 
