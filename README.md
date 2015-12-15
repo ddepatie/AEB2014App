@@ -62,7 +62,7 @@ The first thing you should do is install the Node.js dependencies. The boilerpla
 Make sure you have installed all of the following prerequisites on your development machine:
 * Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager. If you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
 * MongoDB - [Download & Install MongoDB](http://www.mongodb.org/downloads), and make sure it's running on the default port (27017).
-* Git - [Download & Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+* Git - [Download & Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to clone the existing project to your local machine.
 * Bower - You're going to use the [Bower Package Manager](http://bower.io/) to manage your front-end packages. Make sure you've installed Node.js and npm first, then install bower globally using npm:
 
 ```bash
@@ -89,6 +89,12 @@ $ npm install -g generator-meanjs
 
 ```bash
 $ git clone https://github.com/CEN3031-Group-10c/AEB2014App.git
+```
+
+If you choose to use the git bash, the command is instead:
+
+```bash
+$ clone https://github.com/CEN3031-Group-10c/AEB2014App.git
 ```
 
 ### Last Steps
@@ -141,10 +147,6 @@ $ grunt test:client
 ### Getting Started With MEAN.JS
 You have your application running, but there is a lot of stuff to understand. We recommend you go over the [Official Documentation](http://meanjs.org/docs.html).
 In the docs we'll try to explain both general concepts of MEAN components and give you some guidelines to help you improve your development process. We tried covering as many aspects as possible, and will keep it updated by your request. You can also help us develop and improve the documentation by checking out the *gh-pages* branch of this repository.
-
-### Credits
-Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
-The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and)
 
 ### License
 (The MIT License)
