@@ -24,12 +24,14 @@ describe('About Model Unit Tests:', function() {
 			displayName: 'Full Name',
 			email: 'test@test.com',
 			username: 'username',
-			password: 'password'
+			password: 'password',
+			roles: ['user', 'admin']
 		});
 
 		user.save(function() { 
 			about = new About({
 				name: 'About Name',
+				text: 'text',
 				user: user
 			});
 
