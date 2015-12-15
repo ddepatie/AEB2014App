@@ -49,7 +49,7 @@ exports.isAllowed = function(req, res, next) {
 	var roles = (req.user) ? req.user.roles : ['guest'];
 
 	// If an tag is being processed and the current user created it then allow any manipulation
-	if (req.tag === req.user.id) {
+	if (req.tag && req.user) {
 		return next();
 	}
 

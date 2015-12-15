@@ -2,7 +2,7 @@
 	<div class="page-header">
 		<h1 class="awesome-font" data-ng-bind="announcement.title"></h1>
 	</div>
-	<div class="pull-right" data-ng-show="authentication.user._id == announcement.user._id">
+	<div class="pull-right" data-ng-show="authentication.user.roles[1] == 'admin'">
 		<a class="btn btn-primary" href="/#!/announcements/{{announcement._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
