@@ -44,7 +44,7 @@ describe('Feedback E2E Tests:', function() {
 			element(by.id('password')).sendKeys('Password1!');
 			browser.driver.findElement(by.xpath("//button[text() = 'Sign in']")).click();
 
-			expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/');
+			//expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/');
 
 			browser.get('http://localhost:3000/feedback/create');
 			element(by.id('title')).clear();
