@@ -40,13 +40,14 @@ describe('About CRUD tests', function() {
 			email: 'test@test.com',
 			username: credentials.username,
 			password: credentials.password,
+			roles: ['user', 'admin'],
 			provider: 'local'
 		});
 
 		// Save a user to the test db and create new About
 		user.save(function() {
 			about = {
-				name: 'About Name'
+				text: 'About Name'
 			};
 
 			done();

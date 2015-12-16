@@ -1,6 +1,6 @@
 ## Economic Issues, Food and You 
 
-The "AEB2014" project was created to inspire students to learn about global and local food and economic-related issues. It was developed using the Node.js stack, a JavaScript runtime built on Chrome's V8 JavaScript engine, and was built using HTML, CSS and AngularJS. For more information on the webapp, use the link below.
+The "AEB2014" project was created to inspire students to learn about global and local food and economic-related issues. It was developed using MEANJS, a full-stack JavaScript solution for building web applications using MongoDB, Express, AngularJS, and Node.js. For more information on the webapp, use the link below.
 
 ##### [Click Here For the Deployed Site](http://ufdatawall.herokuapp.com/)
 
@@ -57,9 +57,12 @@ Before you begin we recommend you read about the basic building blocks that asse
 
 
 ### Prerequisites
+The first thing you should do is install the Node.js dependencies. The boilerplate comes pre-bundled with a package.json file that contains the list of modules you need to start your application. To learn more about the modules installed visit the NPM & Package.json section.
+
 Make sure you have installed all of the following prerequisites on your development machine:
 * Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager. If you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
 * MongoDB - [Download & Install MongoDB](http://www.mongodb.org/downloads), and make sure it's running on the default port (27017).
+* Git - [Download & Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to clone the existing project to your local machine.
 * Bower - You're going to use the [Bower Package Manager](http://bower.io/) to manage your front-end packages. Make sure you've installed Node.js and npm first, then install bower globally using npm:
 
 ```bash
@@ -75,10 +78,27 @@ $ npm install -g grunt-cli
 #### Yo Generator		
 -Another way would be to use the [Official Yo Generator](http://meanjs.org/generator.html), which generates a copy of the MEAN.JS 0.3.x boilerplate and supplies multiple sub-generators to ease your daily development cycles. 
 
-### Quick Install
-Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from starting to develop your MEAN application.
+```bash
+$ npm install -g yo
 
-The first thing you should do is install the Node.js dependencies. The boilerplate comes pre-bundled with a package.json file that contains the list of modules you need to start your application. To learn more about the modules installed visit the NPM & Package.json section.
+$ npm install -g generator-meanjs
+```
+
+#### Github Repository
+-To run this project, you will need to clone the github repository at this point. After installing git, in your local terminal or in the git bash, move to the directory you want to keep the project in. Then, type the following command:
+
+```bash
+$ git clone https://github.com/CEN3031-Group-10c/AEB2014App.git
+```
+
+If you choose to use the git bash, the command is instead:
+
+```bash
+$ clone https://github.com/CEN3031-Group-10c/AEB2014App.git
+```
+
+### Last Steps
+Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from starting to develop your MEAN application.
 
 To install Node.js dependencies you're going to use npm again. In the application folder run this in the command-line:
 
@@ -102,47 +122,6 @@ The application should run on port 3000 with the *development* environment confi
 
 That's it! The application should be running. To proceed with your development, check the other sections in this documentation.
 If you encounter any problems, try the Troubleshooting section.
-
-* explore `config/env/development.js` for development environment configuration options
-
-#### Running in Production mode
-To run your application with *production* environment configuration, execute grunt as follows:
-
-```bash
-$ grunt prod
-```
-
-* explore `config/env/production.js` for production environment configuration options
-
-#### Running with User Seed
-To have default account(s) seeded at runtime:
-
-In Development:
-```bash
-MONGO_SEED=true grunt
-```
-It will try to seed the users 'user' and 'admin'. If one of the user already exists, it will display an error message on the console. Just grab the passwords from the console.
-
-In Production:
-```bash
-MONGO_SEED=true grunt prod
-```
-This will seed the admin user one time if the user does not already exist. You have to copy the password from the console and save it.
-
-#### Running with TLS (SSL)
-Application will start by default with secure configuration (SSL mode) turned on and listen on port 8443.
-To run your application in a secure manner you'll need to use OpenSSL and generate a set of self-signed certificates. Unix-based users can use the following command:
-
-```bash
-$ sh ./scripts/generate-ssl-certs.sh
-```
-
-Windows users can follow instructions found [here](http://www.websense.com/support/article/kbarticle/How-to-use-OpenSSL-and-Microsoft-Certification-Authority).
-After you've generated the key and certificate, place them in the *config/sslcerts* folder.
-
-Finally, execute grunt's prod task `grunt prod`
-* enable/disable SSL mode in production environment change the `secure` option in `config/env/production.js`
-
 
 ### Testing Your Application
 You can run the full test suite included with MEAN.JS with the test task:
@@ -169,10 +148,6 @@ $ grunt test:client
 You have your application running, but there is a lot of stuff to understand. We recommend you go over the [Official Documentation](http://meanjs.org/docs.html).
 In the docs we'll try to explain both general concepts of MEAN components and give you some guidelines to help you improve your development process. We tried covering as many aspects as possible, and will keep it updated by your request. You can also help us develop and improve the documentation by checking out the *gh-pages* branch of this repository.
 
-### Credits
-Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
-The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and)
-
 ### License
 (The MIT License)
 
@@ -194,3 +169,23 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Other Organizations
+In developing this project, we used the public work of organizations beyond the scope of MEANJS. Here are the credentials for those organizations.
+
+### Bootstrap
+Code and documentation copyright 2011-2015 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
+
+### Font Awesome
+- The Font Awesome font is licensed under the SIL OFL 1.1:
+  - http://scripts.sil.org/OFL
+- Font Awesome CSS, LESS, and Sass files are licensed under the MIT License:
+  - http://opensource.org/licenses/mit-license.html
+- The Font Awesome documentation is licensed under the CC BY 3.0 License:
+  - http://creativecommons.org/licenses/by/3.0/
+- Attribution is no longer required as of Font Awesome 3.0, but much appreciated:
+  - `Font Awesome by Dave Gandy - http://fontawesome.io`
+- Full details: http://fontawesome.io/license
+
+### AngularJS Dropdown Multiselect
+- Used for dropdown multi-select in the doc and tag creation modules. [Here is the github of the Bootstrap dependency](https://github.com/dotansimha/angularjs-dropdown-multiselect)
