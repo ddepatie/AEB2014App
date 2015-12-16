@@ -58,7 +58,7 @@
       </li>
       -->
 
-      <li id="search-reveal" class="dropdown">
+      <li class="search-reveal dropdown">
         <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           <i class="glyphicon glyphicon-search"></i>
         </a>
@@ -112,7 +112,7 @@
       </li>
     </ul>
     <!--This form holds the search bar -->
-    <form id="search-bar" class="navbar-form navbar-right form-group" role="search" ng-submit="goToResultsPage()">
+    <form class="navbar-form navbar-right form-group search-bar" role="search" ng-submit="goToResultsPage()">
       <div class="input-group">
         <input type="text" ng-model="$root.searchText" typeahead="item.tag for item in tags | filter: $viewValue:startsWith | orderBy: '+tag'" typeahead-on-select="goToResultsPage()" class="form-control" placeholder="Search">
         <span class="input-group-btn">
