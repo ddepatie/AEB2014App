@@ -29,7 +29,11 @@ describe('Saved doc Model Unit Tests:', function() {
 
 		user.save(function() { 
 			savedDoc = new SavedDoc({
-				name: 'Saved doc Name',
+				title: 'something',
+				description: 'something',
+				type: 'something',
+				url: 'something',
+				thumbnail_image: 'something',
 				user: user
 			});
 
@@ -45,14 +49,51 @@ describe('Saved doc Model Unit Tests:', function() {
 			});
 		});
 
-		it('should be able to show an error when try to save without name', function(done) { 
-			savedDoc.name = '';
+		it('should be able to show an error when try to save without title', function(done) { 
+			savedDoc.title = '';
 
 			return savedDoc.save(function(err) {
 				should.exist(err);
 				done();
 			});
 		});
+
+		it('should be able to show an error when try to save without description', function(done) { 
+			savedDoc.description = '';
+
+			return savedDoc.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+
+		it('should be able to show an error when try to save without type', function(done) { 
+			savedDoc.type = '';
+
+			return savedDoc.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+
+		it('should be able to show an error when try to save without url', function(done) { 
+			savedDoc.url = '';
+
+			return savedDoc.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+
+		it('should be able to show an error when try to save without thumbnail_image', function(done) { 
+			savedDoc.thumbnail_image = '';
+
+			return savedDoc.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+
 	});
 
 	afterEach(function(done) { 

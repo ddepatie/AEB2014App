@@ -29,7 +29,7 @@ describe('Tag Model Unit Tests:', function() {
 
 		user.save(function() { 
 			tag = new Tag({
-				name: 'Tag Name',
+				tag: 'Tag Name',
 				user: user
 			});
 
@@ -45,8 +45,8 @@ describe('Tag Model Unit Tests:', function() {
 			});
 		});
 
-		it('should be able to show an error when try to save without name', function(done) { 
-			tag.name = '';
+		it('should be able to show an error when try to save without tag', function(done) { 
+			tag.tag = '';
 
 			return tag.save(function(err) {
 				should.exist(err);

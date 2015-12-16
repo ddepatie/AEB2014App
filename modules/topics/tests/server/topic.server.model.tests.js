@@ -23,13 +23,13 @@ describe('Topic Model Unit Tests:', function() {
 			lastName: 'Name',
 			displayName: 'Full Name',
 			email: 'test@test.com',
-			username: 'username',
+			usertopic: 'usertopic',
 			password: 'password'
 		});
 
 		user.save(function() { 
 			topic = new Topic({
-				name: 'Topic Name',
+				topic: 'Topic Name',
 				user: user
 			});
 
@@ -45,8 +45,8 @@ describe('Topic Model Unit Tests:', function() {
 			});
 		});
 
-		it('should be able to show an error when try to save without name', function(done) { 
-			topic.name = '';
+		it('should be able to show an error when try to save without topic', function(done) { 
+			topic.topic = '';
 
 			return topic.save(function(err) {
 				should.exist(err);

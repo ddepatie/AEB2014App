@@ -50,8 +50,44 @@ describe('Doc Model Unit Tests:', function() {
 			});
 		});
 
-		it('should be able to show an error when try to save without name', function(done) { 
-			doc.name = '';
+		it('should be able to show an error when try to save without title', function(done) { 
+			doc.title = '';
+
+			return doc.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+
+		it('should be able to show an error when try to save without description', function(done) { 
+			doc.description = '';
+
+			return doc.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+
+		it('should be able to show an error when try to save without type', function(done) { 
+			doc.type = '';
+
+			return doc.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+
+		it('should be able to show an error when try to save without url', function(done) { 
+			doc.url = '';
+
+			return doc.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+
+		it('should be able to show an error when try to save without thumbnail_image', function(done) { 
+			doc.thumbnail_image = '';
 
 			return doc.save(function(err) {
 				should.exist(err);

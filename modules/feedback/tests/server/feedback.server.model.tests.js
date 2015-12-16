@@ -29,7 +29,8 @@ describe('Feedback Model Unit Tests:', function() {
 
 		user.save(function() {
 			feedback = new Feedback({
-				name: 'Feedback Name',
+				title: 'Feedback Name',
+				text: 'Feedback Name',
 				user: user
 			});
 
@@ -45,8 +46,16 @@ describe('Feedback Model Unit Tests:', function() {
 			});
 		});
 
-		it('should be able to show an error when try to save without name', function(done) {
-			feedback.name = '';
+		it('should be able to show an error when try to save without title', function(done) {
+			feedback.title = '';
+
+			return feedback.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+		it('should be able to show an error when try to save without text', function(done) {
+			feedback.text = '';
 
 			return feedback.save(function(err) {
 				should.exist(err);
