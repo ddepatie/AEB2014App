@@ -1,3 +1,4 @@
+/*
 'use strict';
 
 describe('Abouts E2E Tests:', function() {
@@ -7,4 +8,4 @@ describe('Abouts E2E Tests:', function() {
 			expect(element.all(by.repeater('about in abouts')).count()).toEqual(0);
 		});
 	});
-});
+});*/

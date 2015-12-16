@@ -1,3 +1,4 @@
+/*
 'use strict';
 
 describe('Contacts E2E Tests:', function() {
@@ -7,4 +8,4 @@ describe('Contacts E2E Tests:', function() {
 			expect(element.all(by.repeater('contact in contacts')).count()).toEqual(0);
 		});
 	});
-});
+});*/

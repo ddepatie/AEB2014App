@@ -13,10 +13,10 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 	function($scope, $rootScope, $stateParams, $location, Authentication, Docs, Tags, Analytics, Service ) {
 		$scope.authentication = Authentication;
 		$scope.filters = [];
-		
+
 		//Total number of filters checked on search page
 		$scope.total = 0;
-		 
+
 		//Bools to control subfilters (display when true, hide and uncheck when false)
 		$scope.healthChecked = false;
 		$scope.economyChecked = false;
@@ -144,21 +144,21 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		$scope.generateDescription = function( doc ) {
 			var description = doc.description.toString();
 			var new_description = "";
-			
+
 			if (description.length > 80)
 				new_description = description.substring(0,79) + "...";
-			else 
+			else
 				new_description = description;
 
 			return new_description;
 		};
 
-		// Used to format tags string and show only first 80 characters 
+		// Used to format tags string and show only first 80 characters
 		$scope.generateTags = function( doc ) {
 			var tagsList = doc.tags;
 			var tags = "";
 			var new_tags = "";
-			
+
 			for (var i = 0; i < tagsList.length; i++) {
 				tags += tagsList[i].tag;
 				if (i+1 !== tagsList.length)
@@ -226,7 +226,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			else if (parseInt($stateParams.filterId) === 5) {
 				$scope.environmentChecked = true;
 				$scope.editFilter('environment');
-			}						
+			}
 		};
 
 		//called when 'x' is clicked
@@ -269,8 +269,8 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 
 		// Find a list of Docs
 		$scope.find = function() {
-			if ($stateParams.filterId) { 
-				$scope.initialize(); 
+			if ($stateParams.filterId) {
+				$scope.initialize();
 			}
 			$scope.docs = Docs.query();//returns all docs to the docs page
 			$scope.getTags = Tags.query();//returns all tags
@@ -280,7 +280,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		$scope.findOne = function() {
 			$scope.doc = Docs.get({
 				docId: $stateParams.docId
-			});			
+			});
 		};
 
 		//?? Needs documentation
@@ -289,7 +289,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				docId: $stateParams.docId
 			}).$promise.then(function(doc2){
 				Service.create(doc2);
-			});			
+			});
 		};
 
 		//Incerement view count upon viewing a doc
@@ -297,9 +297,15 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			//simply add one to the current doc's view count and then save
 			doc.viewCount += 1;
 			console.log(doc.viewCount);
+<<<<<<< HEAD
 			
 			//saves the document again in the same location after updating the viewcount
 			
+=======
+
+
+			// Redirect after save
+>>>>>>> herokutest
 			doc.$update(function(response) {
 				$location.path('docs/' + response._id);
 				$scope.title = '';

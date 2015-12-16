@@ -19,21 +19,24 @@ angular.module('feedback').config(['$stateProvider',
 		}).
 		state('feedback.create', {
 			url: '/create',
-			templateUrl: 'modules/feedback/client/views/create-feedback.client.view.html'
+			templateUrl: 'modules/feedback/client/views/create-feedback.client.view.html',
+			data: {
+				    roles: ['admin','user']
+			}
 		}).
 		state('feedback.view', {
 			url: '/:feedbackId',
 			templateUrl: 'modules/feedback/client/views/view-feedback.client.view.html',
-		/*	data: {
-							roles: ['admin']
-					}*/
+			data: {
+	         roles: ['admin','user']
+			}
 		}).
 		state('feedback.edit', {
 			url: '/:feedbackId/edit',
 			templateUrl: 'modules/feedback/client/views/edit-feedback.client.view.html',
 			data: {
-          		roles: ['admin']
-        	}
+				   roles: ['admin','user']
+			}
 		});
 	}
 ]);
