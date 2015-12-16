@@ -188,4 +188,4 @@ Code and documentation copyright 2011-2015 Twitter, Inc. Code released under [th
 - Full details: http://fontawesome.io/license
 
 ### AngularJS Dropdown Multiselect
-- Used for dropdown multi-select in the doc and tag creation modules. [Here is the github of the dependecy](https://github.com/dotansimha/angularjs-dropdown-multiselect)
+- Used for dropdown multi-select in the doc and tag creation modules. [Here is the github of the Bootstrap dependency](https://github.com/dotansimha/angularjs-dropdown-multiselect)
