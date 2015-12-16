@@ -186,3 +186,6 @@ Code and documentation copyright 2011-2015 Twitter, Inc. Code released under [th
 - Attribution is no longer required as of Font Awesome 3.0, but much appreciated:
   - `Font Awesome by Dave Gandy - http://fontawesome.io`
 - Full details: http://fontawesome.io/license
+
+### AngularJS Dropdown Multiselect
+- Used for dropdown multi-select in the doc and tag creation modules. [Here is the github of the dependecy](https://github.com/dotansimha/angularjs-dropdown-multiselect)
