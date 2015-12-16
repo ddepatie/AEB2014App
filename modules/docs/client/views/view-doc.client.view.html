@@ -1,9 +1,9 @@
-<section class="container" data-ng-controller="DocsController" data-ng-init="findOne(); findOne2();">
+<section class="container" data-ng-controller="DocsController" data-ng-init="findOne(); findOne2();"><!--Allow the user to view a single document and more of its information -->
 	<div class="page-header">
 		<h1 class="awesome-font" data-ng-bind="doc.title"></h1>
 	</div>
 	<div ng-switch on="doc.type">
-		<!-- google powerpoint/document/pdf viewer -->
+		<!-- google powerpoint/document/pdf viewer, This will switch the type of view based on the type of document -->
 		<div ng-switch-when="ppt/pptx">
 			<iframe ng-src="{{'http://docs.google.com/gview?url='+ doc.url +'&embedded=true' | trustAsResourceUrl}}" class="col-md-10 col-lg-10 col-xs-12 col-sm-10" style="height:500px" frameborder="0"></iframe>
 		</div>
@@ -18,19 +18,21 @@
 			<iframe id="iframe_container" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" class="col-md-9 col-lg-9 col-xs-9 col-sm-9" style="height:500px" src="https://prezi.com/embed/c2dn7lls4rsc/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;landing_data=bHVZZmNaNDBIWnNjdEVENDRhZDFNZGNIUE43MHdLNWpsdFJLb2ZHanI5enlwNU1hQmxVTnkrdGlwUjZWeWRWbjlBPT0&amp;landing_sign=ii2uzlcsDAC_T1TU0yMEBEt1W1fKeFavKx0TMErdztk"></iframe>
 		</div>
 		<!-- TODO image embedding -->
-		<div ng-switch-when="png" style="float:left">
+		<div ng-switch-when="png" style="float:left; padding-right:20px">
 			<img alt={{doc.type}} src={{doc.url}} style="width:600px;height:500px;">
 		</div>
-		<div ng-switch-when="jpg" style="float:left">
+		<div ng-switch-when="jpg" style="float:left; padding-right:20px">
 			<img alt={{doc.type}} src={{doc.url}} style="width:600px;height:500px;">
 		</div>
-		<div ng-switch-when="image" style="float:left">
+		<div ng-switch-when="image" style="float:left; padding-right:20px">
 			<img alt={{doc.type}} src={{doc.url}} style="width:600px;height:500px;">
 		</div>
 	</div>
 	<div class="visible-xs-block" style=" width:100%; float:left; height:30px">
 	</div>
+
 	<div style="float:left" >
+	<!--The next lines allow the user to save the document into their savedDocs folder, or if it is a document that they have already saved then they can unsave it -->
 	<div ng-controller="SavedDocsController as sdCtrl" ng-show="authentication.user" ng-init="find()">
 		<a class="btn btn-primary" ng-hide="sdCtrl.hasDoc(authentication.user._id, doc._id)" ng-click="sdCtrl.create(doc._id, doc.title, doc.description, doc.type, doc.url, doc.thumbnail_image, doc.tags)">
 			Save
@@ -41,6 +43,7 @@
 			<i class="glyphicon glyphicon-remove" style="padding-left:5px;"></i>
 		</a>
 	</div>
+	<!-- The next lines make sure the user is an admin and then shows the edit and delete button-->
 		<div data-ng-show="authentication.user._id == doc.user._id || authentication.user.roles[1] == 'admin'" style="padding-top:10px; padding-bottom:8px">
 			<a class="btn btn-primary" href="/#!/docs/{{doc._id}}/edit">
 				Edit &nbsp;
@@ -54,6 +57,7 @@
 			</a>
 		</div>
 	</div>
+	<!-- Display the docs description-->
 	<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="margin-top:20px; padding-top:10px; border-top: 2px solid #eee">
 		<p>{{doc.description}}</p>
 	</div>

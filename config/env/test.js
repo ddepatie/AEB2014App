@@ -2,12 +2,18 @@
 
 var defaultEnvConfig = require('./default');
 
+// Rename this file to local.js for having a local configuration variables that
+// will not get commited and pushed to remote repositories.
+// Use it for your API keys, passwords, etc.
+
 module.exports = {
+
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean-test',
+    uri: 'mongodb://AEB2014:group10cuf@ds041934.mongolab.com:41934/aeb2014',
     options: {
-      user: '',
-      pass: ''
+
+      user: 'admin',
+      pass: 'group10cuf'
     },
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false

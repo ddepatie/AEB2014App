@@ -1,4 +1,4 @@
-<section data-ng-controller="DocsController" data-ng-init="find()">
+<section data-ng-controller="DocsController" data-ng-init="find()"><!--this will display the results of any search that the user creates-->
     <div class="page-header">
         <h1 class="awesome-font">Search Results</h1>
     </div>
@@ -70,7 +70,7 @@
                                         {{doc.title}}
                                     </h2>
                                     <p style="overflow:hidden; max-height:44px; margin: 0; line-height:22px">
-                                        <font style="color:#101010"> {{ doc.description+ ', ' + x.type}} </font>
+                                        <font style="color:#101010"> {{ doc.description+ ', ' + doc.type}} </font>
                                     </p>
                                 </div>
                             </a>

@@ -1,11 +1,11 @@
-<section data-ng-controller="FeedbackController">
+<section data-ng-controller="FeedbackController"><!--This page is viewable to anyone and allows the user to create new feedback for the admin to see-->
     <div class="page-header">
         <h1 class="awesome-font">New Feedback</h1>
     </div>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+        <form class="form-horizontal" data-ng-submit="create()" novalidate><!--Create is called when the submit button is pressed and the title and description are stored to mongolab -->
             <fieldset>
-                <div class="form-group">
+                <div class="form-group"><!--Create a form for the user to enter the feedback in -->
                     <label class="control-label" for="name">Title</label>
                     <div class="controls">
                         <input type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required>

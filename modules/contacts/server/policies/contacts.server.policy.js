@@ -49,7 +49,7 @@ exports.isAllowed = function(req, res, next) {
 	var roles = (req.user) ? req.user.roles : ['guest'];
 
 	// If an contact is being processed and the current user created it then allow any manipulation
-	if (req.contact && req.user && req.contact.user.id === req.user.id) {
+	if (req.contact && req.user) {
 		return next();
 	}
 

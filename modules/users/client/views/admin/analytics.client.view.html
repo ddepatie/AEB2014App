@@ -2,6 +2,8 @@
   <div class="page-header">
     <div class="row">
       <div class="awesome-font" style="padding-top:10px; padding-left:60px; padding-bottom:10px">
+      <!--Displays different analytics, such as the user count, document count, tag count and announcement count -->
+      <!--TODO: Add a feedback count to check if there is new feedback-->
         <h1>Analytics</h1>
         <h2>User Count: {{filteredItems.length}}</h2>
         <h2>Document Count: {{docsFiltered.length}}</h2>
@@ -39,7 +41,7 @@
     </div>
   </div>
 
-
+<!--TODO: this displays all the analytics, every time someone opens a new document an analytic is made. This could be used to create a graph of how often each document is accessed or when the last time a document was opened-->
 <section data-ng-controller="AnalyticsController" data-ng-init="find()">
     <div class="list-group pre-scrollable">
         <div data-ng-repeat="analytic in analytics" class="list-group-item">

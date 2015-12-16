@@ -14,6 +14,16 @@ angular.module('users.admin').run(['Menus',
     });
 
     Menus.addSubMenuItem('topbar', 'admin', {
+      title: 'List Topics',
+      state: 'topics.list'
+    });
+
+    Menus.addSubMenuItem('topbar', 'admin', {
+      title: 'Create Topics',
+      state: 'topics.create'
+    });
+
+    Menus.addSubMenuItem('topbar', 'admin', {
       title: 'List Tags',
       state: 'tags.list'
     });
@@ -38,5 +48,7 @@ angular.module('users.admin').run(['Menus',
       title: 'Edit Contact Section',
       state: 'admin.contact-edit'
     });
+
+
   }
 ]);

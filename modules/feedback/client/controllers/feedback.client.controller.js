@@ -52,12 +52,12 @@ angular.module('feedback').controller('FeedbackController', ['$scope', '$statePa
 			});
 		};
 
-		// Find a list of Feedback
+		// Find a list of Feedback, lists all of them on the view feedback page
 		$scope.find = function() {
 			$scope.feedback = Feedback.query();
 		};
 
-		// Find existing Feedback
+		// Find existing Feedback, called when the user wants to view a specific feedback
 		$scope.findOne = function() {
 			$scope.feedback = Feedback.get({
 				feedbackId: $stateParams.feedbackId

@@ -11,9 +11,9 @@ angular.module('docs').factory('Docs', ['$resource',
 		});
 	}
 ]);
-
+//TODO: process the analytics tot create a better analytics view, could include graph
 angular.module('analytics').factory('Service', ['Analytics', 
-	function(Analytics){
+	function(Analytics){//creates a new analytic every time that someone views a document
 		var Service = {
 			create: function(doc){
 						var analytic = new Analytics ({

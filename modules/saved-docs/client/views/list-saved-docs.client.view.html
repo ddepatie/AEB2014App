@@ -22,13 +22,13 @@
                             <h2 style="overflow:hidden; max-height:46px; margin-top: 15px; line-height:23px">
                                 {{doc.title}}
                             </h2>
-                            <p style="overflow:hidden; max-height:44px; margin: 0; line-height:22px">
-                                <font color=#101010> {{ doc.description+ ', ' + x.type}} </font>
+                            <p style="max-height:44px; margin: 0; line-height:22px">
+                                <font color=#101010> {{ doc.description+ ', ' + doc.type}} </font>
                             </p>
                         </div>
                     </div>
                 <div>
-            </li>
+            </li>            
         </ul>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="docNum(authentication.user._id) > 0">

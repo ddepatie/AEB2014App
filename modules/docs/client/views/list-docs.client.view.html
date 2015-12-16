@@ -1,4 +1,4 @@
-<section data-ng-controller="DocsController" data-ng-init="find()">
+<section data-ng-controller="DocsController" data-ng-init="find()"><!--This page will display all the documents that are currently in the docs collection in mongolab -->
     <div class="page-header">
         <h1 class="awesome-font">Docs</h1>
     </div>
@@ -20,7 +20,7 @@
                                 {{doc.title}}
                             </h2>
                             <p style="overflow:hidden; max-height:44px; margin: 0; line-height:22px">
-                                <font color=#a6a6a6> {{ doc.description+ ', ' + x.type}} </font>
+                                <font color=#a6a6a6> {{ doc.description+ ', ' + doc.type}} </font>
                             </p>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-<section data-ng-controller="TagsController" data-ng-init="find()">
+<section data-ng-controller="TagsController" data-ng-init="find()"><!--Useed to create a new tag and store it in mongolab-->
     <div class="page-header">
         <h1 class="awesome-font">New Tag</h1>
     </div>
@@ -6,7 +6,7 @@
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="tag">Name</label>
+                    <label class="control-label" for="tag">Name</label><!--create a new form that creates the tage with a name and list of subtopics-->
                     <div class="controls">
                         <input type="text" data-ng-model="tag" id="tag" class="form-control" placeholder="Name" required>
                     </div>
@@ -15,7 +15,7 @@
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         <div class="form-group">
                             <label class="control-label" for="topics">Topics</label>
-                            <div class="controls">
+                            <div class="controls"><!--Holds the dropDown for subtopics -->
                                 <div ng-dropdown-multiselect="" options="getTopics" selected-model="selectedTopics" extra-settings="dropSettings" required></div>
                             </div>
                         </div>
