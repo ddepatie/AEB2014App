@@ -7,24 +7,36 @@ angular.module('topics').config(['$stateProvider',
 		$stateProvider.
 		state('topics', {
 			abstract: true,
-			url: '/topics',
+			url: '/admin/topics',
 			template: '<ui-view/>'
 		}).
 		state('topics.list', {
 			url: '',
-			templateUrl: 'modules/topics/client/views/list-topics.client.view.html'
+			templateUrl: 'modules/topics/client/views/list-topics.client.view.html',
+			data: {
+	          roles: ['admin']
+	        }
 		}).
 		state('topics.create', {
 			url: '/create',
-			templateUrl: 'modules/topics/client/views/create-topic.client.view.html'
+			templateUrl: 'modules/topics/client/views/create-topic.client.view.html',
+			data: {
+	          roles: ['admin']
+	        }
 		}).
 		state('topics.view', {
 			url: '/:topicId',
-			templateUrl: 'modules/topics/client/views/view-topic.client.view.html'
+			templateUrl: 'modules/topics/client/views/view-topic.client.view.html',
+			data: {
+	          roles: ['admin']
+	        }
 		}).
 		state('topics.edit', {
 			url: '/:topicId/edit',
-			templateUrl: 'modules/topics/client/views/edit-topic.client.view.html'
+			templateUrl: 'modules/topics/client/views/edit-topic.client.view.html',
+			data: {
+	          roles: ['admin']
+	        }
 		});
 	}
 ]);

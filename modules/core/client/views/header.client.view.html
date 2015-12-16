@@ -57,22 +57,6 @@
         </ul>
       </li>
       -->
-
-      <li class="search-reveal dropdown">
-        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <i class="glyphicon glyphicon-search"></i>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <div class="input-group" style="padding: 5px 10px; width: 200px; margin-top:2px;">
-              <input type="text" ng-model="typing" typeahead="item.tag for item in tags | filter: $viewValue:startsWith | orderBy: '+tag'" typeahead-on-select="doSomethingOnSelect(item.tag)" class="form-control" placeholder="Search">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-              </span>
-            </div>
-          </li>
-        </ul>
-      </li>
     </ul>
     <!--Buttons shown if the user is not already signed in-->
     <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
