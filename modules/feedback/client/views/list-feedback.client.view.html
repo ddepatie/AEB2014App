@@ -2,8 +2,16 @@
     <div class="page-header">
         <h1 class="awesome-font">Feedback</h1>
     </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <input type="text" ng-model="search" class="form-control" placeholder="Search">
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+    </div>
+    <br/>
     <div class="list-group">
-        <a data-ng-repeat="feedback in feedback" data-ng-href="/#!/feedback/{{feedback._id}}" class="list-group-item">
+        <a data-ng-repeat="feedback in feedback | filter: search" data-ng-href="/#!/feedback/{{feedback._id}}" class="list-group-item">
             <h4 class="list-group-item-heading" data-ng-bind="feedback.title"></h4>
             <p class="list-group-item-text" ng-bind="feedback.text"></p>
 			<small class="list-group-item-text">
