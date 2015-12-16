@@ -56,7 +56,14 @@ var DocSchema = new Schema({
 	viewCount: {
 		type: Number,
 		default: 0
-	}
+	}//,
+	//to add new schema simply uncomment the default one below and rename the variables.
+	//Also uncomment out the comma after the viewCount schema above
+	//test: {
+		//type: String,
+		//default:  ' '
+	//}
+
 });
 
 mongoose.model('Doc', DocSchema);
