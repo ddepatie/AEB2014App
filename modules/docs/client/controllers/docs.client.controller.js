@@ -296,7 +296,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		$scope.incrementViewCount = function(doc){
 			//simply add one to the current doc's view count and then save
 			doc.viewCount += 1;
-			console.log(doc.viewCount);
+			//console.log(doc.viewCount);
       
 			//saves the document again in the same location after updating the viewcount
 			doc.$update(function(response) {

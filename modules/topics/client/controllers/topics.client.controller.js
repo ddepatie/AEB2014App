@@ -9,15 +9,15 @@ angular.module('topics').controller('TopicsController', ['$scope', '$stateParams
 		$scope.create = function() {
 			// Create new Topic object
 			var topic = new Topics ({
-				name: this.name
+				topic: this.topic
 			});
 
 			// Redirect after save
 			topic.$save(function(response) {
-				$location.path('topics/' + response._id);
+				$location.path('admin/topics/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.topic = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -34,7 +34,7 @@ angular.module('topics').controller('TopicsController', ['$scope', '$stateParams
 				}
 			} else {
 				$scope.topic.$remove(function() {
-					$location.path('topics');
+					$location.path('admin/topics');
 				});
 			}
 		};
@@ -44,7 +44,7 @@ angular.module('topics').controller('TopicsController', ['$scope', '$stateParams
 			var topic = $scope.topic ;
 
 			topic.$update(function() {
-				$location.path('topics/' + topic._id);
+				$location.path('admin/topics/' + topic._id);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
