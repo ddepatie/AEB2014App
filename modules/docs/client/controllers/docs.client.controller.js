@@ -48,18 +48,18 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 		$scope.create = function() {
 			// Create new Doc object
 			var doc = new Docs ({
-				title: this.title,
-				description: this.description,
-				type: this.type,
-				url: this.url,
-				thumbnail_image: this.thumbnail_image,
-				tags: $scope.selectedTags,
-				viewCount: 0
+				title: this.title,//store the title
+				description: this.description,///store the description
+				type: this.type,//type can be either jpeg, docx, ppptx, pdf, 
+				url: this.url,//url of location of document
+				thumbnail_image: this.thumbnail_image,//url of the thumbnail you want to use
+				tags: $scope.selectedTags,//select the tags of the doc from a dropdown
+				viewCount: 0//number of views of each document, automatically set to zero
 			});
 
 			// Redirect after save
 			doc.$save(function(response) {
-				$location.path('docs/' + response._id);
+				$location.path('docs/' + response._id);//store the doc at a specific location
 
 				// Clear form fields
 				$scope.title = '';
@@ -70,12 +70,12 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 				$scope.tags = '';
 
 				$scope.selectedTags = [];
-			}, function(errorResponse) {
+			}, function(errorResponse) {//If there is an error in creation display it
 				$scope.error = errorResponse.data.message;
 			});
 		};
 		Docs.query(function (data){
-      		$scope.thesedocs = data;
+      		$scope.thesedocs = data;//query function that pulls in all the docs
       	 });
 
 		// Used to add/remove filters on search results page
@@ -272,11 +272,11 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			if ($stateParams.filterId) { 
 				$scope.initialize(); 
 			}
-			$scope.docs = Docs.query();
-			$scope.getTags = Tags.query();
+			$scope.docs = Docs.query();//returns all docs to the docs page
+			$scope.getTags = Tags.query();//returns all tags
 		};
 
-		// Find existing Doc
+		// Find existing Doc, used when you want to view a single document
 		$scope.findOne = function() {
 			$scope.doc = Docs.get({
 				docId: $stateParams.docId
@@ -294,16 +294,14 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 
 		//Incerement view count upon viewing a doc
 		$scope.incrementViewCount = function(doc){
-
+			//simply add one to the current doc's view count and then save
 			doc.viewCount += 1;
 			console.log(doc.viewCount);
 			
-
-			// Redirect after save
+			//saves the document again in the same location after updating the viewcount
+			
 			doc.$update(function(response) {
 				$location.path('docs/' + response._id);
-
-				// Clear form fields
 				$scope.title = '';
 				$scope.description = '';
 				$scope.type = '';

@@ -1,11 +1,11 @@
-<section class="container" data-ng-controller="DocsController" data-ng-init="findOne()">
+<section class="container" data-ng-controller="DocsController" data-ng-init="findOne()"><!--Page to edit a document, only viewable by admin-->
     <div class="page-header">
         <h1 class="awesome-font">Edit Doc</h1>
     </div>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+        <form class="form-horizontal" data-ng-submit="update()" novalidate><!--Page calls the update function when the user presses submit-->
             <fieldset>
-                <div class="form-group">
+                <div class="form-group"><!--Page has the same basic layout as the create page, except the forms will already be filled with the existing info, the user just has to edit the info and hit update button-->
                     <label class="control-label" for="title">Title</label>
                     <div class="controls">
                         <input type="text" data-ng-model="doc.title" id="title" class="form-control" placeholder="Title" required>

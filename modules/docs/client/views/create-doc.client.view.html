@@ -1,8 +1,8 @@
-<section class="container" data-ng-controller="DocsController" data-ng-init="find()">
+<section class="container" data-ng-controller="DocsController" data-ng-init="find()"><!--Page to create a document, only viewable by admin-->
     <div class="page-header">
-        <h1 class="awesome-font">New Doc</h1>
+        <h1 class="awesome-font">New Doc</h1><!--Page header-->
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12"><!--Create a form with all of the different groups that you need to describe a document-->
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
@@ -48,7 +48,7 @@
                     <label class="control-label" for="type">Type</label>
                     <div class="controls">
                         <select name="types" data-ng-model="type" id="type"class="form-control" style="padding-left:5px;">
-                            <option value="pdf">Pdf</option>
+                            <option value="pdf">Pdf</option><!--Create a dropdown for the different types of documents you can upload-->
                             <option value="doc/docx">Doc/Docx</option>
                             <option value="ppt/pptx">Ppt/Pptx</option>
                             <option value="jpg">Jpg/Jpeg</option>
