@@ -40,13 +40,14 @@ describe('About CRUD tests', function() {
 			email: 'test@test.com',
 			username: credentials.username,
 			password: credentials.password,
+			roles: ['user', 'admin'],
 			provider: 'local'
 		});
 
 		// Save a user to the test db and create new About
 		user.save(function() {
 			about = {
-				name: 'About Name'
+				text: 'About Name'
 			};
 
 			done();
@@ -123,7 +124,7 @@ describe('About CRUD tests', function() {
 					.end(function(aboutSaveErr, aboutSaveRes) {
 						// Set message assertion
 						(aboutSaveRes.body.message).should.match('Please fill About name');
-						
+
 						// Handle About save error
 						done(aboutSaveErr);
 					});
@@ -246,7 +247,7 @@ describe('About CRUD tests', function() {
 	});
 
 	it('should not be able to delete About instance if not signed in', function(done) {
-		// Set About user 
+		// Set About user
 		about.user = user;
 
 		// Create new About model instance
