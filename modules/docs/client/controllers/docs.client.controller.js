@@ -50,7 +50,7 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			var doc = new Docs ({
 				title: this.title,//store the title
 				description: this.description,///store the description
-				type: this.type,//type can be either jpeg, docx, ppptx, pdf, 
+				type: this.type,//type can be either jpeg, docx, ppptx, pdf,
 				url: this.url,//url of location of document
 				thumbnail_image: this.thumbnail_image,//url of the thumbnail you want to use
 				tags: $scope.selectedTags,//select the tags of the doc from a dropdown
@@ -297,15 +297,8 @@ angular.module('docs').controller('DocsController', ['$scope','$rootScope', '$st
 			//simply add one to the current doc's view count and then save
 			doc.viewCount += 1;
 			console.log(doc.viewCount);
-<<<<<<< HEAD
-			
+      
 			//saves the document again in the same location after updating the viewcount
-			
-=======
-
-
-			// Redirect after save
->>>>>>> herokutest
 			doc.$update(function(response) {
 				$location.path('docs/' + response._id);
 				$scope.title = '';
