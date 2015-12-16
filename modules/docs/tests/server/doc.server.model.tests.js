@@ -29,7 +29,12 @@ describe('Doc Model Unit Tests:', function() {
 
 		user.save(function() { 
 			doc = new Doc({
-				name: 'Doc Name',
+				title: 'Doc Name',
+				description: 'Doc Name',
+				type: 'Doc Name',
+				url: 'Doc Name',
+				thumbnail_image: 'Doc Name',
+				tags: ['Doc Name'],
 				user: user
 			});
 

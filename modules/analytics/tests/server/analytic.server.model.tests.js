@@ -24,12 +24,13 @@ describe('Analytic Model Unit Tests:', function() {
 			displayName: 'Full Name',
 			email: 'test@test.com',
 			username: 'username',
-			password: 'password'
+			password: 'password',
+			roles: ['user', 'admin']
 		});
 
 		user.save(function() { 
 			analytic = new Analytic({
-				name: 'Analytic Name',
+				title: 'Analytic Name',
 				user: user
 			});
 
@@ -46,7 +47,7 @@ describe('Analytic Model Unit Tests:', function() {
 		});
 
 		it('should be able to show an error when try to save without name', function(done) { 
-			analytic.name = '';
+			analytic.title = '';
 
 			return analytic.save(function(err) {
 				should.exist(err);

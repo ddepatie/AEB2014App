@@ -24,12 +24,14 @@ describe('Announcement Model Unit Tests:', function() {
 			displayName: 'Full Name',
 			email: 'test@test.com',
 			username: 'username',
-			password: 'password'
+			password: 'password',
+			roles: ['user','admin']
 		});
 
 		user.save(function() { 
 			announcement = new Announcement({
-				name: 'Announcement Name',
+				title: 'Announcement Name',
+				text: 'Announcement Name',
 				user: user
 			});
 
@@ -45,8 +47,16 @@ describe('Announcement Model Unit Tests:', function() {
 			});
 		});
 
-		it('should be able to show an error when try to save without name', function(done) { 
-			announcement.name = '';
+		it('should be able to show an error when try to save without title', function(done) { 
+			announcement.title = '';
+
+			return announcement.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+		it('should be able to show an error when try to save without text', function(done) { 
+			announcement.text = '';
 
 			return announcement.save(function(err) {
 				should.exist(err);

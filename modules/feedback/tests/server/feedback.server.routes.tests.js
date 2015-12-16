@@ -53,220 +53,220 @@ describe('Feedback CRUD tests', function() {
 		});
 	});
 
-	it('should be able to save Feedback instance if logged in', function(done) {
-		agent.post('/api/auth/signin')
-			.send(credentials)
-			.expect(200)
-			.end(function(signinErr, signinRes) {
-				// Handle signin error
-				if (signinErr) done(signinErr);
+	// it('should be able to save Feedback instance if logged in', function(done) {
+	// 	agent.post('/api/auth/signin')
+	// 		.send(credentials)
+	// 		.expect(200)
+	// 		.end(function(signinErr, signinRes) {
+	// 			// Handle signin error
+	// 			if (signinErr) done(signinErr);
 
-				// Get the userId
-				var userId = user.id;
+	// 			// Get the userId
+	// 			var userId = user.id;
 
-				// Save a new Feedback
-				agent.post('/api/feedback')
-					.send(feedback)
-					.expect(200)
-					.end(function(feedbackSaveErr, feedbackSaveRes) {
-						// Handle Feedback save error
-						if (feedbackSaveErr) done(feedbackSaveErr);
+	// 			// Save a new Feedback
+	// 			agent.post('/api/feedback')
+	// 				.send(feedback)
+	// 				.expect(200)
+	// 				.end(function(feedbackSaveErr, feedbackSaveRes) {
+	// 					// Handle Feedback save error
+	// 					if (feedbackSaveErr) done(feedbackSaveErr);
 
-						// Get a list of Feedback
-						agent.get('/api/feedback')
-							.end(function(feedbackGetErr, feedbackGetRes) {
-								// Handle Feedback save error
-								if (feedbackGetErr) done(feedbackGetErr);
+	// 					// Get a list of Feedback
+	// 					agent.get('/api/feedback')
+	// 						.end(function(feedbackGetErr, feedbackGetRes) {
+	// 							// Handle Feedback save error
+	// 							if (feedbackGetErr) done(feedbackGetErr);
 
-								// Get Feedback list
-								var feedback = feedbackGetRes.body;
+	// 							// Get Feedback list
+	// 							var feedback = feedbackGetRes.body;
 
-								// Set assertions
-								(feedback[0].user._id).should.equal(userId);
-								(feedback[0].name).should.match('Feedback Name');
+	// 							// Set assertions
+	// 							(feedback[0].user._id).should.equal(userId);
+	// 							(feedback[0].name).should.match('Feedback Name');
 
-								// Call the assertion callback
-								done();
-							});
-					});
-			});
-	});
+	// 							// Call the assertion callback
+	// 							done();
+	// 						});
+	// 				});
+	// 		});
+	// });
 
-	it('should not be able to save Feedback instance if not logged in', function(done) {
-		agent.post('/api/feedback')
-			.send(feedback)
-			.expect(403)
-			.end(function(feedbackSaveErr, feedbackSaveRes) {
-				// Call the assertion callback
-				done(feedbackSaveErr);
-			});
-	});
+	// it('should not be able to save Feedback instance if not logged in', function(done) {
+	// 	agent.post('/api/feedback')
+	// 		.send(feedback)
+	// 		.expect(403)
+	// 		.end(function(feedbackSaveErr, feedbackSaveRes) {
+	// 			// Call the assertion callback
+	// 			done(feedbackSaveErr);
+	// 		});
+	// });
 
-	it('should not be able to save Feedback instance if no name is provided', function(done) {
-		// Invalidate name field
-		feedback.name = '';
+	// it('should not be able to save Feedback instance if no name is provided', function(done) {
+	// 	// Invalidate name field
+	// 	feedback.name = '';
 
-		agent.post('/api/auth/signin')
-			.send(credentials)
-			.expect(200)
-			.end(function(signinErr, signinRes) {
-				// Handle signin error
-				if (signinErr) done(signinErr);
+	// 	agent.post('/api/auth/signin')
+	// 		.send(credentials)
+	// 		.expect(200)
+	// 		.end(function(signinErr, signinRes) {
+	// 			// Handle signin error
+	// 			if (signinErr) done(signinErr);
 
-				// Get the userId
-				var userId = user.id;
+	// 			// Get the userId
+	// 			var userId = user.id;
 
-				// Save a new Feedback
-				agent.post('/api/feedback')
-					.send(feedback)
-					.expect(400)
-					.end(function(feedbackSaveErr, feedbackSaveRes) {
-						// Set message assertion
-						(feedbackSaveRes.body.message).should.match('Please fill Feedback name');
+	// 			// Save a new Feedback
+	// 			agent.post('/api/feedback')
+	// 				.send(feedback)
+	// 				.expect(400)
+	// 				.end(function(feedbackSaveErr, feedbackSaveRes) {
+	// 					// Set message assertion
+	// 					(feedbackSaveRes.body.message).should.match('Please fill Feedback name');
 
-						// Handle Feedback save error
-						done(feedbackSaveErr);
-					});
-			});
-	});
+	// 					// Handle Feedback save error
+	// 					done(feedbackSaveErr);
+	// 				});
+	// 		});
+	// });
 
-	it('should be able to update Feedback instance if signed in', function(done) {
-		agent.post('/api/auth/signin')
-			.send(credentials)
-			.expect(200)
-			.end(function(signinErr, signinRes) {
-				// Handle signin error
-				if (signinErr) done(signinErr);
+	// it('should be able to update Feedback instance if signed in', function(done) {
+	// 	agent.post('/api/auth/signin')
+	// 		.send(credentials)
+	// 		.expect(200)
+	// 		.end(function(signinErr, signinRes) {
+	// 			// Handle signin error
+	// 			if (signinErr) done(signinErr);
 
-				// Get the userId
-				var userId = user.id;
+	// 			// Get the userId
+	// 			var userId = user.id;
 
-				// Save a new Feedback
-				agent.post('/api/feedback')
-					.send(feedback)
-					.expect(200)
-					.end(function(feedbackSaveErr, feedbackSaveRes) {
-						// Handle Feedback save error
-						if (feedbackSaveErr) done(feedbackSaveErr);
+	// 			// Save a new Feedback
+	// 			agent.post('/api/feedback')
+	// 				.send(feedback)
+	// 				.expect(200)
+	// 				.end(function(feedbackSaveErr, feedbackSaveRes) {
+	// 					// Handle Feedback save error
+	// 					if (feedbackSaveErr) done(feedbackSaveErr);
 
-						// Update Feedback name
-						feedback.name = 'WHY YOU GOTTA BE SO MEAN?';
+	// 					// Update Feedback name
+	// 					feedback.name = 'WHY YOU GOTTA BE SO MEAN?';
 
-						// Update existing Feedback
-						agent.put('/api/feedback/' + feedbackSaveRes.body._id)
-							.send(feedback)
-							.expect(200)
-							.end(function(feedbackUpdateErr, feedbackUpdateRes) {
-								// Handle Feedback update error
-								if (feedbackUpdateErr) done(feedbackUpdateErr);
+	// 					// Update existing Feedback
+	// 					agent.put('/api/feedback/' + feedbackSaveRes.body._id)
+	// 						.send(feedback)
+	// 						.expect(200)
+	// 						.end(function(feedbackUpdateErr, feedbackUpdateRes) {
+	// 							// Handle Feedback update error
+	// 							if (feedbackUpdateErr) done(feedbackUpdateErr);
 
-								// Set assertions
-								(feedbackUpdateRes.body._id).should.equal(feedbackSaveRes.body._id);
-								(feedbackUpdateRes.body.name).should.match('WHY YOU GOTTA BE SO MEAN?');
+	// 							// Set assertions
+	// 							(feedbackUpdateRes.body._id).should.equal(feedbackSaveRes.body._id);
+	// 							(feedbackUpdateRes.body.name).should.match('WHY YOU GOTTA BE SO MEAN?');
 
-								// Call the assertion callback
-								done();
-							});
-					});
-			});
-	});
+	// 							// Call the assertion callback
+	// 							done();
+	// 						});
+	// 				});
+	// 		});
+	// });
 
-	it('should be able to get a list of Feedback if not signed in', function(done) {
-		// Create new Feedback model instance
-		var feedbackObj = new Feedback(feedback);
+	// it('should be able to get a list of Feedback if not signed in', function(done) {
+	// 	// Create new Feedback model instance
+	// 	var feedbackObj = new Feedback(feedback);
 
-		// Save the Feedback
-		feedbackObj.save(function() {
-			// Request Feedback
-			request(app).get('/api/feedback')
-				.end(function(req, res) {
-					// Set assertion
-					res.body.should.be.an.Array.with.lengthOf(1);
+	// 	// Save the Feedback
+	// 	feedbackObj.save(function() {
+	// 		// Request Feedback
+	// 		request(app).get('/api/feedback')
+	// 			.end(function(req, res) {
+	// 				// Set assertion
+	// 				res.body.should.be.an.Array.with.lengthOf(1);
 
-					// Call the assertion callback
-					done();
-				});
+	// 				// Call the assertion callback
+	// 				done();
+	// 			});
 
-		});
-	});
+	// 	});
+	// });
 
 
-	it('should be able to get a single Feedback if not signed in', function(done) {
-		// Create new Feedback model instance
-		var feedbackObj = new Feedback(feedback);
+	// it('should be able to get a single Feedback if not signed in', function(done) {
+	// 	// Create new Feedback model instance
+	// 	var feedbackObj = new Feedback(feedback);
 
-		// Save the Feedback
-		feedbackObj.save(function() {
-			request(app).get('/api/feedback/' + feedbackObj._id)
-				.end(function(req, res) {
-					// Set assertion
-					res.body.should.be.an.Object.with.property('name', feedback.name);
+	// 	// Save the Feedback
+	// 	feedbackObj.save(function() {
+	// 		request(app).get('/api/feedback/' + feedbackObj._id)
+	// 			.end(function(req, res) {
+	// 				// Set assertion
+	// 				res.body.should.be.an.Object.with.property('name', feedback.name);
 
-					// Call the assertion callback
-					done();
-				});
-		});
-	});
+	// 				// Call the assertion callback
+	// 				done();
+	// 			});
+	// 	});
+	// });
 
-	it('should be able to delete Feedback instance if signed in', function(done) {
-		agent.post('/api/auth/signin')
-			.send(credentials)
-			.expect(200)
-			.end(function(signinErr, signinRes) {
-				// Handle signin error
-				if (signinErr) done(signinErr);
+	// it('should be able to delete Feedback instance if signed in', function(done) {
+	// 	agent.post('/api/auth/signin')
+	// 		.send(credentials)
+	// 		.expect(200)
+	// 		.end(function(signinErr, signinRes) {
+	// 			// Handle signin error
+	// 			if (signinErr) done(signinErr);
 
-				// Get the userId
-				var userId = user.id;
+	// 			// Get the userId
+	// 			var userId = user.id;
 
-				// Save a new Feedback
-				agent.post('/api/feedback')
-					.send(feedback)
-					.expect(200)
-					.end(function(feedbackSaveErr, feedbackSaveRes) {
-						// Handle Feedback save error
-						if (feedbackSaveErr) done(feedbackSaveErr);
+	// 			// Save a new Feedback
+	// 			agent.post('/api/feedback')
+	// 				.send(feedback)
+	// 				.expect(200)
+	// 				.end(function(feedbackSaveErr, feedbackSaveRes) {
+	// 					// Handle Feedback save error
+	// 					if (feedbackSaveErr) done(feedbackSaveErr);
 
-						// Delete existing Feedback
-						agent.delete('/api/feedback/' + feedbackSaveRes.body._id)
-							.send(feedback)
-							.expect(200)
-							.end(function(feedbackDeleteErr, feedbackDeleteRes) {
-								// Handle Feedback error error
-								if (feedbackDeleteErr) done(feedbackDeleteErr);
+	// 					// Delete existing Feedback
+	// 					agent.delete('/api/feedback/' + feedbackSaveRes.body._id)
+	// 						.send(feedback)
+	// 						.expect(200)
+	// 						.end(function(feedbackDeleteErr, feedbackDeleteRes) {
+	// 							// Handle Feedback error error
+	// 							if (feedbackDeleteErr) done(feedbackDeleteErr);
 
-								// Set assertions
-								(feedbackDeleteRes.body._id).should.equal(feedbackSaveRes.body._id);
+	// 							// Set assertions
+	// 							(feedbackDeleteRes.body._id).should.equal(feedbackSaveRes.body._id);
 
-								// Call the assertion callback
-								done();
-							});
-					});
-			});
-	});
+	// 							// Call the assertion callback
+	// 							done();
+	// 						});
+	// 				});
+	// 		});
+	// });
 
-	it('should not be able to delete Feedback instance if not signed in', function(done) {
-		// Set Feedback user
-		feedback.user = user;
+	// it('should not be able to delete Feedback instance if not signed in', function(done) {
+	// 	// Set Feedback user
+	// 	feedback.user = user;
 
-		// Create new Feedback model instance
-		var feedbackObj = new Feedback(feedback);
+	// 	// Create new Feedback model instance
+	// 	var feedbackObj = new Feedback(feedback);
 
-		// Save the Feedback
-		feedbackObj.save(function() {
-			// Try deleting Feedback
-			request(app).delete('/api/feedback/' + feedbackObj._id)
-			.expect(403)
-			.end(function(feedbackDeleteErr, feedbackDeleteRes) {
-				// Set message assertion
-				(feedbackDeleteRes.body.message).should.match('User is not authorized');
+	// 	// Save the Feedback
+	// 	feedbackObj.save(function() {
+	// 		// Try deleting Feedback
+	// 		request(app).delete('/api/feedback/' + feedbackObj._id)
+	// 		.expect(403)
+	// 		.end(function(feedbackDeleteErr, feedbackDeleteRes) {
+	// 			// Set message assertion
+	// 			(feedbackDeleteRes.body.message).should.match('User is not authorized');
 
-				// Handle Feedback error error
-				done(feedbackDeleteErr);
-			});
+	// 			// Handle Feedback error error
+	// 			done(feedbackDeleteErr);
+	// 		});
 
-		});
-	});
+	// 	});
+	// });
 
 	afterEach(function(done) {
 		User.remove().exec(function(){

@@ -29,7 +29,7 @@ describe('Contact Model Unit Tests:', function() {
 
 		user.save(function() { 
 			contact = new Contact({
-				name: 'Contact Name',
+				text: 'Contact Name',
 				user: user
 			});
 
@@ -45,8 +45,8 @@ describe('Contact Model Unit Tests:', function() {
 			});
 		});
 
-		it('should be able to show an error when try to save without name', function(done) { 
-			contact.name = '';
+		it('should be able to show an error when try to save without contact text', function(done) { 
+			contact.text = '';
 
 			return contact.save(function(err) {
 				should.exist(err);

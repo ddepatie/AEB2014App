@@ -39,7 +39,7 @@ describe('About Model Unit Tests:', function() {
 	});
 
 	describe('Method Save', function() {
-		it('should be able to save as admin without problems', function(done) {
+		it('should be able to save without problems', function(done) {
 			return about.save(function(err) {
 				should.not.exist(err);
 				done();
@@ -48,16 +48,6 @@ describe('About Model Unit Tests:', function() {
 
 		it('should be able to show an error when try to save without text', function(done) { 
 			about.text = '';
-
-			return about.save(function(err) {
-				should.exist(err);
-				done();
-			});
-		});
-
-		it('should be able to show an error when try to save when not an admin', function(done) { 
-			about.text = '';
-			user.roles = ['user'];
 
 			return about.save(function(err) {
 				should.exist(err);

@@ -28,16 +28,16 @@ describe('About CRUD tests', function() {
 	beforeEach(function(done) {
 		// Create user credentials
 		credentials = {
-			username: 'username',
-			password: 'password'
+			username: 'admin',
+			password: 'Admin1234.'
 		};
 
 		// Create a new user
 		user = new User({
-			firstName: 'Full',
-			lastName: 'Name',
-			displayName: 'Full Name',
-			email: 'test@test.com',
+			firstName: 'admin',
+			lastName: 'admin',
+			displayName: 'admin',
+			email: 'admin@admin.com',
 			username: credentials.username,
 			password: credentials.password,
 			roles: ['user', 'admin']
@@ -83,7 +83,7 @@ describe('About CRUD tests', function() {
 
 	// 							// Set assertions
 	// 							(abouts[0].user._id).should.equal(userId);
-	// 							(abouts[0].name).should.match('About Name');
+	// 							(abouts[0].test).should.match('About Name');
 
 	// 							// Call the assertion callback
 	// 							done();
