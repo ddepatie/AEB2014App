@@ -53,7 +53,7 @@
 		it('$scope.find() should create an array with at least one About object fetched from XHR', inject(function(Abouts) {
 			// Create sample About using the Abouts service
 			var sampleAbout = new Abouts({
-				name: 'New About'
+				text: 'New About'
 			});
 
 			// Create a sample Abouts array that includes the new About
@@ -73,7 +73,7 @@
 		it('$scope.findOne() should create an array with one About object fetched from XHR using a aboutId URL parameter', inject(function(Abouts) {
 			// Define a sample About object
 			var sampleAbout = new Abouts({
-				name: 'New About'
+				text: 'New About'
 			});
 
 			// Set the URL parameter
@@ -93,17 +93,17 @@
 		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Abouts) {
 			// Create a sample About object
 			var sampleAboutPostData = new Abouts({
-				name: 'New About'
+				text: 'New About'
 			});
 
 			// Create a sample About response
 			var sampleAboutResponse = new Abouts({
 				_id: '525cf20451979dea2c000001',
-				name: 'New About'
+				text: 'New About'
 			});
 
 			// Fixture mock form input values
-			scope.name = 'New About';
+			scope.text = 'New About';
 
 			// Set POST response
 			$httpBackend.expectPOST('api/abouts', sampleAboutPostData).respond(sampleAboutResponse);
@@ -113,7 +113,7 @@
 			$httpBackend.flush();
 
 			// Test form inputs are reset
-			expect(scope.name).toEqual('');
+			expect(scope.text).toEqual('');
 
 			// Test URL redirection after the About was created
 			expect($location.path()).toBe('/abouts/' + sampleAboutResponse._id);
@@ -123,7 +123,7 @@
 			// Define a sample About put data
 			var sampleAboutPutData = new Abouts({
 				_id: '525cf20451979dea2c000001',
-				name: 'New About'
+				text: 'New About'
 			});
 
 			// Mock About in scope
